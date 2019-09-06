@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import PlanRevista, Forma_Pago, Contrato
-from revista.serializers import SoloRevistaSerializer
+from accounts.serializers import ProfileSerializer
+#from revista.serializers import SoloRevistaSerializer
 
 class PlanSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,7 +24,7 @@ class NomFormaPagoSerializer(serializers.ModelSerializer):
         fields  =   ['nombre']
 
 class ContratoSerializer(serializers.ModelSerializer):
-    revista     = SoloRevistaSerializer(many=False, read_only=True)
+    #revista     = SoloRevistaSerializer(many=False, read_only=True)
     forma_pago  = NomFormaPagoSerializer(many=False, read_only=True)
     class Meta:
         model   =   Contrato
