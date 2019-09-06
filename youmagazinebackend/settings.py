@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'magazine.wsgi.application'
+WSGI_APPLICATION = 'youmagazinebackend.wsgi.application'
 
 
 # Database
