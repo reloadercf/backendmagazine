@@ -6,6 +6,8 @@ from rest_framework import viewsets
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
 
 class ProfileViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
@@ -32,3 +34,20 @@ class MyUser(APIView):
 		my_user = User.objects.all().get(id=request.user.id)
 		serializer = MyUserSerializer(my_user)
 		return Response(serializer.data)
+
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        uid= token.key
+        custom_token=auth.create_custom_token(uid)
+
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'username': user.username,
+            'firebase':custom_token
+        })
