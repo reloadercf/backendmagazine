@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Articulo
-from revista.models import Revista
 from .serializers import ArticuloSerializer,EspecialArticulo
 from rest_framework import viewsets
 from django.db.models import Q

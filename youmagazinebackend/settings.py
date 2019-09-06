@@ -39,11 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'articulos',
-    'cliente',
-    'revista',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',  
+    'corsheaders',
+    'revista',
+    'planrevista',
+    'clientes',
     'import_export',
 ]
 
@@ -76,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'youmagazinebackend.wsgi.application'
+WSGI_APPLICATION = 'magazine.wsgi.application'
 
 
 # Database
