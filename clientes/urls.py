@@ -6,9 +6,8 @@ from django.conf import settings
 from .views import *
 
 router = routers.DefaultRouter()
-router.register('registros-de-articulos',ArticuloViewSet)
-router.register('registros-de-especiales',EspecialArticuloViewSet)
+router.register('registros-de-clientes',ClienteViewSet)
 
-articulo = [
-    path('articulo/', include(router.urls)),
+clientes= [
+    path('clientes/', include(router.urls)),
 ]

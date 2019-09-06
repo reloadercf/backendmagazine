@@ -6,9 +6,9 @@ from django.conf import settings
 from .views import *
 
 router = routers.DefaultRouter()
-router.register('registros-de-articulos',ArticuloViewSet)
-router.register('registros-de-especiales',EspecialArticuloViewSet)
+router.register('resgistro-de-categoria',CategoriaRevistaViewSet)
+router.register('registro-de-revista',RevistaViewSet)
 
-articulo = [
-    path('articulo/', include(router.urls)),
+revista = [
+    path('revista/', include(router.urls)),
 ]

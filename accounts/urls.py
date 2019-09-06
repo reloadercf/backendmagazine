@@ -7,6 +7,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 router.register('registro-perfiles',ProfileViewSet)
+router.register('revista-usuario',UserRevistaViewSet)
 
 accounts = [
     path('apis/', include(router.urls)),
