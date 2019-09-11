@@ -14,9 +14,12 @@ class ProfileViewSet(viewsets.ModelViewSet):
 	serializer_class = UserSerializer
 	def get_queryset(self, *args, **kwargs):
 		profile = self.request.GET.get('iduser')
+		revista = self.request.GET.get('idrevista')
 		queryset_list = super(ProfileViewSet, self).get_queryset()
 		if profile:
 			queryset_list = queryset_list.filter(id=profile)
+		if revista:
+			queryset_list = queryset_list.filter(id=revista)
 			return queryset_list
 
 class UserRevistaViewSet(viewsets.ModelViewSet):
