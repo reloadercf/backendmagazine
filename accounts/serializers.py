@@ -4,7 +4,6 @@ from rest_framework import serializers
 from revista.serializers import *
 from revista.serializers import RevistaSerializer,NomRevistaSerializer
 
-
 class ProfileSerializer(serializers.ModelSerializer):
 	revista		=	RevistaSerializer(many=False,read_only=True)
 	class Meta:
