@@ -10,7 +10,7 @@ router.register('registro-perfiles',ProfileViewSet)
 router.register('revista-usuario',UserRevistaViewSet)
 
 accounts = [
-    path('apis/', include(router.urls)),
+    path('accounts/', include(router.urls)),
     path('my_user/', MyUser.as_view()),
     url(
         regex=r'^media/(?P<path>.*)$',

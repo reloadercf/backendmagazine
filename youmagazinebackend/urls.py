@@ -13,4 +13,4 @@ from clientes.urls import clientes
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
-]+accounts+revista+articulo+planes
+]+revista+articulo+planes+accounts
