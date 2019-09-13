@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'clientes',
     'revista',
     'planrevista',
+    'regiones',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',  

@@ -1,5 +1,4 @@
 from django.db import models
-from planrevista.models import PlanRevista
 
 # Create your models here.
 class Categorias(models.Model):
@@ -12,6 +11,14 @@ class Revista(models.Model):
     nombre_revista          =   models.CharField(max_length=80)
     logo                    =   models.URLField(max_length=200, blank=True, null=True)
     descripcion             =   models.TextField(blank=True, null=True)
+    pais                    =   models.ForeignKey('regiones.Region', related_name='revista_pais', on_delete=models.CASCADE)
+    estado                  =   models.ForeignKey('regiones.Subregion', related_name='revista_estado', on_delete=models.CASCADE)
     plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre_revista
+
+class Subcategorias(models.Model):
+    nombre_subcategoria     =   models.CharField(max_length=80)
+    categoria               =   models.ForeignKey("revista.Categorias", related_name="categoria_sub", on_delete=models.CASCADE)
+    def __str__(self):
+        return self.nombre_categoria 
