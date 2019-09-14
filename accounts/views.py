@@ -17,29 +17,32 @@ class ProfileViewSet(viewsets.ModelViewSet):
 		iduser 	= 	self.request.GET.get('iduser')
 		first	=	self.request.GET.get('nombre')
 		last	=	self.request.GET.get('apellido')
+		revista	=	self.request.GET.get('idrevista')
 		queryset_list = super(ProfileViewSet, self).get_queryset()
 		if user:
 			queryset_list = queryset_list.filter(username=user)
-			return queryset_list
 		if iduser:
 			queryset_list = queryset_list.filter(id=iduser)
-			return queryset_list
 		if first:
 			queryset_list = queryset_list.filter(first_name=first)
-			return queryset_list
 		if last:
 			queryset_list = queryset_list.filter(last_name=last)
-			return queryset_list
+		if revista:
+			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
+		return queryset_list
 
 class UserRevistaViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserRevistaSerializer
 	def get_queryset(self, *args, **kwargs):
 		revista = self.request.GET.get('idrevista')
+		user	= self.request.GET.get('iduser')
 		queryset_list = super(UserRevistaViewSet, self).get_queryset()
 		if revista:
 			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
-			return queryset_list
+		if user:
+			queryset_list = queryset_list.filter(id=user)
+		return queryset_list
 
 class MyUser(APIView):	
 	def get(self, request, format=None):

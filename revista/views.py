@@ -9,9 +9,18 @@ class RevistaViewSet(viewsets.ModelViewSet):
     serializer_class=RevistaSerializer
     def get_queryset(self, *args, **kwargs):
         revista = self.request.GET.get('idrevista')
+        plan    = self.request.GET.get('idplan')
+        estado  = self.request.GET.get('idestado')
+        pais    = self.request.GET.get('idpais')
         queryset_list = super(RevistaViewSet, self).get_queryset()
         if revista:
             queryset_list = queryset_list.filter(id=revista)
+        if plan:
+            queryset_list = queryset_list.filter(id=plan)
+        if estado:
+            queryset_list = queryset_list.filter(id=estado)
+        if pais:
+            queryset_list = queryset_list.filter(id=pais)
         return queryset_list
 
 class CategoriaRevistaViewSet(viewsets.ModelViewSet):

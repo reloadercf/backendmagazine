@@ -21,4 +21,4 @@ class Subcategorias(models.Model):
     nombre_subcategoria     =   models.CharField(max_length=80)
     categoria               =   models.ForeignKey("revista.Categorias", related_name="categoria_sub", on_delete=models.CASCADE)
     def __str__(self):
-        return self.nombre_categoria 
+        return self.nombre_subcategoria 
