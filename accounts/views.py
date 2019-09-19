@@ -18,6 +18,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 		first	=	self.request.GET.get('nombre')
 		last	=	self.request.GET.get('apellido')
 		revista	=	self.request.GET.get('idrevista')
+		tipo	=	self.request.GET.get('idtipo')
 		queryset_list = super(ProfileViewSet, self).get_queryset()
 		if user:
 			queryset_list = queryset_list.filter(username=user)
@@ -29,6 +30,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
 			queryset_list = queryset_list.filter(last_name=last)
 		if revista:
 			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
+		if tipo:
+			queryset_list = queryset_list.filter(profile_user__tipo_usuario__id=tipo)
 		return queryset_list
 
 class UserRevistaViewSet(viewsets.ModelViewSet):

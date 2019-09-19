@@ -5,13 +5,13 @@ from django.contrib.auth.models import User
 from  .utils import unique_slug_generator
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
-from revista.models import Revista
-
 
 class Profile(models.Model):
-    user        = models.OneToOneField(User, related_name='profile_user', on_delete=models.CASCADE)    
-    revista     = models.ForeignKey(Revista,related_name='revista_perfil',blank=True,null=True, on_delete=models.CASCADE)
-    slug        = models.SlugField(unique=True, blank=True)
+    user            = models.OneToOneField(User, related_name='profile_user', on_delete=models.CASCADE)    
+    revista         = models.ForeignKey("revista.Revista",related_name='revista_perfil', blank=True, null=True, on_delete=models.CASCADE)
+    foto            = models.URLField(max_length=300, blank=True, null=True)
+    tipo_usuario    = models.ForeignKey("accounts.TipoUsuario",related_name='revista_perfil', blank=True, null=True, on_delete=models.CASCADE)       
+    slug            = models.SlugField(unique=True, blank=True)
     
     class Meta:
         permissions = (
@@ -47,3 +47,9 @@ def ensure_profile_exists(sender, **kwargs):
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
+
+class TipoUsuario(models.Model):
+    nombre      =   models.CharField(max_length=100)
+    descripcion =   models.CharField(max_length=200)
+    def __str__(self):
+        return self.nombre

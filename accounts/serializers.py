@@ -1,11 +1,17 @@
-from .models import Profile
+from .models import Profile, TipoUsuario
 from django.contrib.auth.models import User, Permission
 from rest_framework import serializers
 from revista.serializers import *
 from revista.serializers import RevistaSerializer,NomRevistaSerializer
 
+class TipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model	= 	TipoUsuario
+		fields 	=	 ['nombre']
+
 class ProfileSerializer(serializers.ModelSerializer):
-	revista		=	RevistaSerializer(many=False,read_only=True)
+	revista			=	RevistaSerializer(many=False,read_only=True)
+	tipo_usuario	=	TipoSerializer(many=False,read_only=True)
 	class Meta:
 		model	= 	Profile
 		fields 	=	 '__all__'

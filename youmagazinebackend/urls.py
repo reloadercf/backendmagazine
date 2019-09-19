@@ -9,8 +9,11 @@ from accounts.urls import accounts
 from revista.urls import revista
 from articulos.urls import articulo
 from planrevista.urls import planes
-from clientes.urls import clientes
+from patrocinadores.urls import patrocinadores
+from publicos.urls import publicos
 
 urlpatterns = [
-    path('admin/', admin.site.urls),    
-]+revista+articulo+planes+accounts+clientes
+    path('admin/', admin.site.urls),
+    path('publicos/', include(publicos))
+]+revista+articulo+planes+patrocinadores+accounts
+

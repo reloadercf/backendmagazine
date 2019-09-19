@@ -37,11 +37,13 @@ class Articulo(models.Model):
     cuerpo_dos              =   models.TextField(null=True,blank=True)
     video_tipo              =   models.CharField(choices=video_choice, default="sin video", max_length=50)
     urlvideo                =   models.URLField(blank=True,null=True)
-    llamada_accion_uno      =   models.CharField(choices=llamadas,max_length=50)
+    llamada_accion_uno      =   models.CharField(max_length=50,null=True,blank=True)
+    icon1                    =   models.ForeignKey('articulos.Icon', related_name='call1_icon', on_delete=models.CASCADE)
     imagen_llamada_uno      =   models.URLField( max_length=200)
     llamada_per_uno         =   models.CharField(max_length=50,null=True,blank=True)
     url_llamada_uno         =   models.TextField(null=True,blank=True)
-    llamada_accion_dos      =   models.CharField(choices=llamadas,max_length=50)
+    llamada_accion_dos      =   models.CharField(max_length=50,null=True,blank=True)
+    icon2                    =   models.ForeignKey('articulos.Icon', related_name='call2_icon', on_delete=models.CASCADE)
     imagen_llamada_dos      =   models.URLField( max_length=200)
     llamada_per_dos	        =   models.CharField(max_length=50,null=True,blank=True)
     url_llamada_dos         =   models.TextField(null=True,blank=True)
@@ -51,6 +53,7 @@ class Articulo(models.Model):
     fecha_fin               =   models.DateField(blank=False,null=False)
     fecha_creacion          =   models.DateTimeField(auto_now_add=True)
     fecha_modificacion      =   models.DateTimeField(auto_now=True)
+    patrocinador            =   models.ForeignKey("patrocinadores.Patrocinador", related_name='pat_articulo', on_delete=models.CASCADE)
     slug                    =   models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
@@ -71,3 +74,10 @@ def pre_save_articulo(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(pre_save_articulo, sender=Articulo)
+
+
+class Icon(models.Model):
+    nombre      =   models.CharField(max_length=200)
+    relacion    =   models.CharField(max_length=200)
+    def __str__(self):
+        return self.nombre
