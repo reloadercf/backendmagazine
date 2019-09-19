@@ -101,3 +101,11 @@ Dentro de este endpoint se pueden filtrar los clientes por su identificador o el
 http://localhost:8000/clientes/registros-de-clientes/?idcliente=identifiacador_de_cliente``
 http://localhost:8000/clientes/registros-de-clientes/?idrevista=identificador_de_la_revista``
 ```
+
+### `Endpoints pubicos`
+Debes entrar al siguiente endpoint:
+Dentro de estos endpoint se pueden filtrar de la misma manera que en los endpoints originales.
+(recuerda que cada tipo de endpoint tiene caracteristicas de filtrado diferentes)
+````
+http://localhost:8000/publicos``
+```
