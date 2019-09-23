@@ -1,18 +1,8 @@
-from rest_framework import generics
+from rest_framework import viewsets
 from patrocinadores.pagination import PatrocinadorPagination
-#
-from revista.serializers import *
-from planrevista.serializers import *
-from patrocinadores.serializers import *
-from articulos.serializers import *
-from accounts.serializers import *
-from revista.models import *
-from planrevista.models import *
-from patrocinadores.models import *
-from articulos.models import *
-from accounts.models import *
+from .serializers import *
 
-class RevistaList(generics.ListAPIView):
+class RevistaList(viewsets.ReadOnlyModelViewSet):
     serializer_class    =   RevistaSerializer
     queryset            =   Revista.objects.all()
     def get_queryset(self, *args, **kwargs):
@@ -24,14 +14,14 @@ class RevistaList(generics.ListAPIView):
         if revista:
             queryset_list = queryset_list.filter(id=revista)
         if plan:
-            queryset_list = queryset_list.filter(id=plan)
+            queryset_list = queryset_list.filter(plan__id=plan)
         if estado:
-            queryset_list = queryset_list.filter(id=estado)
+            queryset_list = queryset_list.filter(estado__id=estado)
         if pais:
-            queryset_list = queryset_list.filter(id=pais)
+            queryset_list = queryset_list.filter(pais__id=pais)
         return queryset_list
 
-class CategoriaRevistaList(generics.ListAPIView):
+class CategoriaRevistaList(viewsets.ReadOnlyModelViewSet):
     serializer_class    =   CategoriaSerializer
     queryset            =   Categorias.objects.all()
     def get_queryset(self, *args, **kwargs):
@@ -44,7 +34,7 @@ class CategoriaRevistaList(generics.ListAPIView):
             queryset_list = queryset_list.filter(revista_origen=revista)
         return queryset_list
 
-class PlanList(generics.ListAPIView):
+class PlanList(viewsets.ReadOnlyModelViewSet):
     queryset            =   PlanRevista.objects.all()
     serializer_class    =   PlanSerializer
     def get_queryset(self, *args, **kwargs):
@@ -54,7 +44,7 @@ class PlanList(generics.ListAPIView):
             queryset_list=queryset_list.filter(id=plan)
         return queryset_list
 
-class ContratoList(generics.ListAPIView):
+class ContratoList(viewsets.ReadOnlyModelViewSet):
     queryset            =   Contrato.objects.all()
     serializer_class    =   ContratoSerializer
     def get_queryset(self, *args, **kwargs):
@@ -73,7 +63,7 @@ class ContratoList(generics.ListAPIView):
             queryset_list=queryset_list.filter(fecha_inicio=fecha)
         return queryset_list
 
-class PatrocinadorList(generics.ListAPIView):
+class PatrocinadorList(viewsets.ReadOnlyModelViewSet):
     queryset            =   Patrocinador.objects.all()
     serializer_class    =   PatrocinadorSerializer
     pagination_class    =   PatrocinadorPagination
@@ -87,7 +77,7 @@ class PatrocinadorList(generics.ListAPIView):
             queryset_list = queryset_list.filter(revista_pertenencia=revista)
         return queryset_list
 
-class ArticuloList(generics.ListAPIView):
+class ArticuloList(viewsets.ReadOnlyModelViewSet):
     queryset = Articulo.objects.all()
     serializer_class = ArticuloSerializer
     def get_queryset(self,*args,**kwargs):
@@ -100,7 +90,7 @@ class ArticuloList(generics.ListAPIView):
         if categoria:
             queryset_list = queryset_list.filter(categoria=categoria)
         if subcategoria:
-            queryset_list = queryset_list.filter(categoria=subcategoria)
+            queryset_list = queryset_list.filter(subcategoria=subcategoria)
         if origen_revista:
             queryset_list = queryset_list.filter(origen_revista__nombre_revista=origen_revista)
         if fin:
@@ -109,7 +99,7 @@ class ArticuloList(generics.ListAPIView):
             queryset_list = queryset_list.filter(slug=titulo)
         return queryset_list
 
-class EspecialArticuloList(generics.ListAPIView):
+class EspecialArticuloList(viewsets.ReadOnlyModelViewSet):
     queryset = Articulo.objects.all()
     serializer_class = EspecialArticulo
     def get_queryset(self,*args,**kwargs):
@@ -134,7 +124,7 @@ class EspecialArticuloList(generics.ListAPIView):
             queryset_list = queryset_list.filter(status=status)
         return queryset_list
 
-class ProfileList(generics.ListAPIView):
+class ProfileList(viewsets.ReadOnlyModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
 	def get_queryset(self, *args, **kwargs):
@@ -159,7 +149,7 @@ class ProfileList(generics.ListAPIView):
 			queryset_list = queryset_list.filter(profile_user__tipo_usuario__id=tipo)
 		return queryset_list
 
-class UserRevistaList(generics.ListAPIView):
+class UserRevistaList(viewsets.ReadOnlyModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserRevistaSerializer
 	def get_queryset(self, *args, **kwargs):

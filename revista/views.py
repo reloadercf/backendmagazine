@@ -16,11 +16,11 @@ class RevistaViewSet(viewsets.ModelViewSet):
         if revista:
             queryset_list = queryset_list.filter(id=revista)
         if plan:
-            queryset_list = queryset_list.filter(id=plan)
+            queryset_list = queryset_list.filter(plan__id=plan)
         if estado:
-            queryset_list = queryset_list.filter(id=estado)
+            queryset_list = queryset_list.filter(estado__id=estado)
         if pais:
-            queryset_list = queryset_list.filter(id=pais)
+            queryset_list = queryset_list.filter(pais__id=pais)
         return queryset_list
 
 class CategoriaRevistaViewSet(viewsets.ModelViewSet):

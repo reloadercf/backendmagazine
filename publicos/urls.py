@@ -1,14 +1,22 @@
+from django.urls import path,include
+from rest_framework import routers
 from django.conf.urls import url
+from django.views.static import serve
+from django.conf import settings
 from .views import *
 
+router = routers.DefaultRouter()
+
+router.register('Lista-Revistas',RevistaList)
+router.register('Lista-Categorias',CategoriaRevistaList)
+router.register('Lista-Planes',PlanList)
+router.register('Lista-Contratos',ContratoList)
+router.register('Lista-Patrocinadores',PatrocinadorList)
+router.register('Lista-Articulos',ArticuloList)
+router.register('Lista-Especiales',EspecialArticuloList)
+router.register('Lista-Perfiles',ProfileList)
+router.register('Lista-Usuario_Revista',UserRevistaList)
+
 publicos = [
-    url(r'revistas/', RevistaList.as_view()),
-    url(r'categorias/', CategoriaRevistaList.as_view()),
-    url(r'planes/', PlanList.as_view()),
-    url(r'contratos/', ContratoList.as_view()),
-    url(r'patrocinadores/', PatrocinadorList.as_view()),
-    url(r'articulos/', ArticuloList.as_view()),
-    url(r'articulos-especiales/', EspecialArticuloList.as_view()),
-    url(r'perfiles/', ProfileList.as_view()),
-    url(r'usuario-revista/', UserRevistaList.as_view()),
+    path('publicos/', include(router.urls)),
 ]

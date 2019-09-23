@@ -10,14 +10,14 @@ class TipoSerializer(serializers.ModelSerializer):
 		fields 	=	 ['nombre']
 
 class ProfileSerializer(serializers.ModelSerializer):
-	revista			=	RevistaSerializer(many=False,read_only=True)
+	revista			=	RevistaSerializer(many=True,read_only=True)
 	tipo_usuario	=	TipoSerializer(many=False,read_only=True)
 	class Meta:
 		model	= 	Profile
 		fields 	=	 '__all__'
 
 class ProfileRSerializer(serializers.ModelSerializer):
-	revista		=	NomRevistaSerializer(many=False,read_only=True)
+	revista		=	NomRevistaSerializer(many=True,read_only=True)
 	class Meta:
 		model = Profile
 		fields = ['revista']

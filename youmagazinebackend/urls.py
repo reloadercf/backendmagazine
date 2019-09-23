@@ -14,6 +14,5 @@ from publicos.urls import publicos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('publicos/', include(publicos))
-]+revista+articulo+planes+patrocinadores+accounts
+]+revista+articulo+planes+patrocinadores+accounts+publicos
 
