@@ -105,6 +105,7 @@ http://localhost:8000/clientes/registros-de-clientes/?idrevista=identificador_de
 ### `Endpoints pubicos`
 Debes entrar al siguiente endpoint:
 Dentro de estos endpoint se pueden filtrar de la misma manera que en los endpoints originales.
+Cada endpoint tiene nombres relacionados con lo que hace cada uno.
 (recuerda que cada tipo de endpoint tiene caracteristicas de filtrado diferentes)
 ````
 http://localhost:8000/publicos``
