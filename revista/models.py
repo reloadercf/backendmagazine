@@ -13,6 +13,7 @@ class Revista(models.Model):
     descripcion             =   models.TextField(blank=True, null=True)
     country                 =   models.ForeignKey('regiones.Region', related_name='revista_pais', on_delete=models.CASCADE)
     state                   =   models.ForeignKey('regiones.Subregion', related_name='revista_estado', on_delete=models.CASCADE)
+    city                    =   models.ForeignKey('regiones.Ciudad', related_name='revista_ciudad', on_delete=models.CASCADE)
     plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre_revista

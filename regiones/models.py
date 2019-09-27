@@ -11,3 +11,9 @@ class Subregion(models.Model):
     pais                =   models.ForeignKey('regiones.Region', related_name='pais_estado', on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre_estado
+
+class Ciudad(models.Model):
+    nombre_ciudad       =   models.CharField(max_length=80)
+    estado              =   models.ForeignKey('regiones.Subregion', related_name='estado_ciudad', on_delete=models.CASCADE)
+    def __str__(self):
+        return self.nombre_estado

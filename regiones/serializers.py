@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Region,Subregion
+from .models import Region,Subregion, Ciudad
 
 class NomRegionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,3 +10,8 @@ class NomSubregionSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Subregion
         fields  =   ['nombre_estado']
+
+class NomCiudadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Ciudad
+        fields  =   ['nombre_ciudad']
