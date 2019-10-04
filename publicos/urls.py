@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.conf.urls import include
 from rest_framework import routers
 from django.conf.urls import url
 from django.views.static import serve
@@ -18,5 +18,5 @@ router.register('Lista-Perfiles',ProfileList)
 router.register('Lista-Usuario_Revista',UserRevistaList)
 
 publicos = [
-    path('publicos/', include(router.urls)),
+    url('publicos/', include(router.urls)),
 ]

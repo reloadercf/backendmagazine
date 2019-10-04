@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.conf.urls import include
 from rest_framework import routers
 from django.conf.urls import url
 from django.views.static import serve
@@ -10,5 +10,5 @@ router.register('resgistro-de-categoria',CategoriaRevistaViewSet)
 router.register('registro-de-revista',RevistaViewSet)
 
 revista = [
-    path('revista/', include(router.urls)),
+    url('revista/', include(router.urls)),
 ]

@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.conf.urls import include
 from rest_framework import routers
 from django.conf.urls import url
 from django.views.static import serve
@@ -9,5 +9,5 @@ router = routers.DefaultRouter()
 router.register('registros-de-Patrocinadores',PatrocinadorViewSet)
 
 patrocinadores= [
-    path('patrocinadores/', include(router.urls)),
+    url('patrocinadores/', include(router.urls)),
 ]

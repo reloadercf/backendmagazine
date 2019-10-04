@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.conf.urls import include, url
 from rest_framework import routers
 from django.views.static import serve
 from django.conf import settings
@@ -13,6 +13,7 @@ from patrocinadores.urls import patrocinadores
 from publicos.urls import publicos
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
+    url('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ]+revista+articulo+planes+patrocinadores+accounts+publicos
 

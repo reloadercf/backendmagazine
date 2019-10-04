@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.conf.urls import include
 from rest_framework import routers
 from django.conf.urls import url
 from django.views.static import serve
@@ -12,5 +12,5 @@ router.register('registro-de-formas-de-pago',FormaPagoViewSet)
 router.register('registro-de-contratos',ContratoViewSet)
 
 planes = [
-    path('planes/', include(router.urls)),
+    url('planes/', include(router.urls)),
 ]
