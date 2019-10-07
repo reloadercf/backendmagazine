@@ -44,15 +44,7 @@ INSTALLED_APPS = [
     'planrevista',
     'regiones',
     'publicos',
-<<<<<<< HEAD
-    'templates',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'corsheaders',  
     'django_rest_passwordreset',
-=======
-  
->>>>>>> 6af3e7659c1219a98b3957eca43a2ef525f2e8f6
     'import_export',
 ]
 
