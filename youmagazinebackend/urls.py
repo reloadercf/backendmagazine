@@ -16,5 +16,5 @@ from regiones.urls import regiones
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-]+accounts+articulo+patrocinadores+planes+regiones+revista+publicos
+]+articulo+patrocinadores+planes+regiones+revista+publicos+accounts
 

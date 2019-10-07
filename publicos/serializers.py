@@ -4,6 +4,7 @@ from planrevista.models import *
 from patrocinadores.models import *
 from articulos.models import *
 from accounts.models import *
+from regiones.models import *
 from revista.serializers import NomPlanSerializer, NomRevistaSerializer, RevistaPlanSerializer, NomCategoriaSerializer, NomSubcategoriaSerializer
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer 
 from planrevista.serializers import NomFormaPagoSerializer
@@ -76,3 +77,20 @@ class UserRevistaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ['username','profile_user']
+
+class CiudadSerializer(serializers.ModelSerializer):
+    estado      =   NomSubregionSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Ciudad
+        fields  =   '__all__'
+
+class SubregionSerializer(serializers.ModelSerializer):
+    pais        =   NomRegionSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Subregion
+        fields  =   '__all__'
+
+class RegionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Region
+        fields  =   '__all__'

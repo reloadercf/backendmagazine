@@ -16,6 +16,9 @@ router.register('Lista-Articulos',ArticuloList)
 router.register('Lista-Especiales',EspecialArticuloList)
 router.register('Lista-Perfiles',ProfileList)
 router.register('Lista-Usuario_Revista',UserRevistaList)
+router.register('Lista-Paises',PaisViewSet)
+router.register('Lista-Estados',EstadoViewSet)
+router.register('Lista-Ciudades',CiudadViewSet)
 
 publicos = [
     url('publicos/', include(router.urls)),
