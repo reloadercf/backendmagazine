@@ -44,7 +44,15 @@ INSTALLED_APPS = [
     'planrevista',
     'regiones',
     'publicos',
+<<<<<<< HEAD
+    'templates',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',  
+    'django_rest_passwordreset',
+=======
   
+>>>>>>> 6af3e7659c1219a98b3957eca43a2ef525f2e8f6
     'import_export',
 ]
 
@@ -64,7 +72,7 @@ ROOT_URLCONF = 'youmagazinebackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,3 +159,9 @@ UTHENTICATION_BACKENDS = (
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'webmail.planb.com.mx'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
+EMAIL_HOST_PASSWORD = '14200531'
