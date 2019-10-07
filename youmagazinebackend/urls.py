@@ -11,9 +11,10 @@ from articulos.urls import articulo
 from planrevista.urls import planes
 from patrocinadores.urls import patrocinadores
 from publicos.urls import publicos
+from regiones.urls import regiones
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-]+revista+articulo+planes+patrocinadores+accounts+publicos
+]+accounts+articulo+patrocinadores+planes+regiones+revista+publicos
 

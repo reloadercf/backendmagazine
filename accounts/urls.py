@@ -6,8 +6,11 @@ from django.conf import settings
 from .views import *
 
 router = routers.DefaultRouter()
-router.register('registro-perfiles',ProfileViewSet)
-router.register('revista-usuario',UserRevistaViewSet)
+router.register('Lista-de-perfiles',ProfileViewSet)
+router.register('Lista-de-usuarios_revistas',UserRevistaViewSet)
+router.register('Registro-de-perfiles',POSTPerfilesViewSet)
+router.register('Resgistro-de-usuarios_revistas',POSTUserRevistaViewSet)
+router.register('Resgistro-de-usuario',POSTProfileViewSet)
 
 accounts = [
     url('accounts/', include(router.urls)),

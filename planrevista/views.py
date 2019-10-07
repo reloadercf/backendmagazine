@@ -36,3 +36,22 @@ class ContratoViewSet(viewsets.ModelViewSet):
         if fecha:
             queryset_list=queryset_list.filter(fecha_inicio=fecha)
         return queryset_list
+
+class POSTContratoViewSet(viewsets.ModelViewSet):
+    queryset            =   Contrato.objects.all()
+    serializer_class    =   POSTContratoSerializer
+    def get_queryset(self, *args, **kwargs):
+        contrato = self.request.GET.get('idcontrato')
+        revista = self.request.GET.get('idrevista')
+        pago = self.request.GET.get('idpago')
+        fecha = self.request.GET.get('inicio')
+        queryset_list=super(POSTContratoViewSet, self).get_queryset()
+        if contrato:
+            queryset_list=queryset_list.filter(id=contrato)
+        if revista:
+            queryset_list=queryset_list.filter(revista=revista)
+        if pago:
+            queryset_list=queryset_list.filter(forma_pago=pago)
+        if fecha:
+            queryset_list=queryset_list.filter(fecha_inicio=fecha)
+        return queryset_list

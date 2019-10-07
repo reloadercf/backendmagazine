@@ -23,3 +23,16 @@ class ContratoSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Contrato
         fields  =   '__all__'
+
+class POSTContratoSerializer(serializers.ModelSerializer):
+    revista     =   serializers.PrimaryKeyRelatedField(
+                    queryset=Revista.objects.all(),
+                    required=True,
+                    many=False)
+    forma_pago  =   serializers.PrimaryKeyRelatedField(
+                    queryset=Forma_Pago.objects.all(),
+                    required=True,
+                    many=False)
+    class Meta:
+        model   =   Contrato
+        fields  =   '__all__'

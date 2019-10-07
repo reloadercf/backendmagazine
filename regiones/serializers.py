@@ -15,3 +15,38 @@ class NomCiudadSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Ciudad
         fields  =   ['nombre_ciudad']
+    
+class RegionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Region
+        fields  =   '__all__'
+
+class SubregionSerializer(serializers.ModelSerializer):
+    pais        =   NomRegionSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Subregion
+        fields  =   '__all__'
+
+class POSTSubegionSerializer(serializers.ModelSerializer):
+    pais        =   serializers.PrimaryKeyRelatedField(
+                    queryset=Region.objects.all(),
+                    required=True,
+                    many=False)
+    class Meta:
+        model   =   Subregion
+        fields  =   '__all__'
+
+class CiudadSerializer(serializers.ModelSerializer):
+    estado      =   NomSubregionSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Ciudad
+        fields  =   '__all__'
+
+class POSTCiudadSerializer(serializers.ModelSerializer):
+    estado      =   serializers.PrimaryKeyRelatedField(
+                    queryset=Subregion.objects.all(),
+                    required=True,
+                    many=False)
+    class Meta:
+        model   =   Ciudad
+        fields  =   '__all__'

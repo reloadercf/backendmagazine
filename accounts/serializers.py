@@ -3,15 +3,35 @@ from django.contrib.auth.models import User, Permission
 from rest_framework import serializers
 from revista.serializers import *
 from revista.serializers import RevistaSerializer,NomRevistaSerializer
+from revista.models import Revista
 
 class TipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model	= 	TipoUsuario
 		fields 	=	 ['nombre']
 
+class NomUserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model	= 	User
+		fields 	=	 ['username']
+
 class ProfileSerializer(serializers.ModelSerializer):
 	revista			=	RevistaSerializer(many=True,read_only=True)
 	tipo_usuario	=	TipoSerializer(many=False,read_only=True)
+	user 			= 	NomUserSerializer(many=False,read_only=True)
+	class Meta:
+		model	= 	Profile
+		fields 	=	 '__all__'
+
+class POSTProfileSerializer(serializers.ModelSerializer):
+	revista			=	serializers.PrimaryKeyRelatedField(
+						queryset=Revista.objects.all(),
+						required=True,
+						many=True)
+	tipo_usuario	=	serializers.PrimaryKeyRelatedField(
+						queryset=TipoUsuario.objects.all(),
+						required=True,
+						many=False)
 	class Meta:
 		model	= 	Profile
 		fields 	=	 '__all__'
@@ -40,11 +60,32 @@ class UserSerializer(serializers.ModelSerializer):
 		user.save()
 		return user
 
+class POSTUserSerializer(serializers.ModelSerializer):
+	password 		=	serializers.CharField(write_only=True)
+	class Meta:
+		model 	= 	User
+		fields 	= 	['username','first_name', 'last_name', 'email', 'id', 'password']
+	def create(self, validated_data):
+		password = validated_data.pop('password')
+		user = User.objects.create(**validated_data)
+		user.set_password(password)
+		user.save()
+		return user
+
 class UserRevistaSerializer(serializers.ModelSerializer):
 	profile_user = ProfileRSerializer(many=False, read_only=True)
 	class Meta:
 		model = User
 		fields = ['username','profile_user']
+
+class POSTUserRevistaSerializer(serializers.ModelSerializer):
+	revista 	= serializers.PrimaryKeyRelatedField(
+					queryset=Revista.objects.all(),
+					required=True,
+					many=True)
+	class Meta:
+		model = Profile
+		fields = ['user','revista']
 
 class MyUserSerializer(serializers.ModelSerializer):
 	profile_user		=	ProfileSerializer(read_only=True)

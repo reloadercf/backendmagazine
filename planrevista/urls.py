@@ -7,9 +7,10 @@ from .views import *
 
 router = routers.DefaultRouter()
 
-router.register('registro-de-planes',PlanViewSet)
-router.register('registro-de-formas-de-pago',FormaPagoViewSet)
-router.register('registro-de-contratos',ContratoViewSet)
+router.register('Registro-de-planes',PlanViewSet)
+router.register('Registro-de-formas-de-pago',FormaPagoViewSet)
+router.register('Lista-de-contratos',ContratoViewSet)
+router.register('Registro-de-contratos',POSTContratoViewSet)
 
 planes = [
     url('planes/', include(router.urls)),
