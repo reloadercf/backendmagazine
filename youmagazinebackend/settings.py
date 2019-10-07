@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',  
     'accounts',
     'articulos',
     'patrocinadores',
@@ -41,10 +44,6 @@ INSTALLED_APPS = [
     'planrevista',
     'regiones',
     'publicos',
-    'templates',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'corsheaders',  
     'django_rest_passwordreset',
     'import_export',
 ]
@@ -110,6 +109,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+##instalacion de rest_Framework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        #'rest_framework.permissions.AllowAny'
+        #'rest_framework.permissions.DjangoModelPermissions',
+    ]
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -123,7 +139,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+CORS_ORIGIN_ALLOW_ALL = True
 
+
+UTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
