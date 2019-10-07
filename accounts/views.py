@@ -104,11 +104,11 @@ class MyUser(APIView):
 		serializer = MyUserSerializer(my_user)
 		return Response(serializer.data)
 
-import firebase_admin
-from firebase_admin import credentials, auth
-
-cred = credentials.Certificate('serviceAccountKey.json')
-default_app = firebase_admin.initialize_app(cred)
+#import firebase_admin
+#from firebase_admin import credentials, auth
+#
+#cred = credentials.Certificate('serviceAccountKey.json')
+#default_app = firebase_admin.initialize_app(cred)
 
 class CustomAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
