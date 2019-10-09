@@ -94,3 +94,9 @@ class RegionSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Region
         fields  =   '__all__'
+
+class SubcategoriaSerializer(serializers.ModelSerializer):
+    categoria   =   NomCategoriaSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Subcategorias
+        fields  =   '__all__'

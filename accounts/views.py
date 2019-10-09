@@ -85,17 +85,14 @@ class UserRevistaViewSet(viewsets.ModelViewSet):
 			queryset_list = queryset_list.filter(id=user)
 		return queryset_list
 
-class POSTUserRevistaViewSet(viewsets.ModelViewSet):
-	queryset = Profile.objects.all()
-	serializer_class = POSTUserRevistaSerializer
+class TipoViewSet(viewsets.ModelViewSet):
+	queryset = TipoUsuario.objects.all()
+	serializer_class = TipoSerializer
 	def get_queryset(self, *args, **kwargs):
-		revista = self.request.GET.get('idrevista')
-		user	= self.request.GET.get('iduser')
-		queryset_list = super(POSTUserRevistaViewSet, self).get_queryset()
-		if revista:
-			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
-		if user:
-			queryset_list = queryset_list.filter(id=user)
+		tipo = self.request.GET.get('idtipo')
+		queryset_list = super(TipoViewSet, self).get_queryset()
+		if tipo:
+			queryset_list = queryset_list.filter(id=tipo)
 		return queryset_list
 
 class MyUser(APIView):	
@@ -104,11 +101,11 @@ class MyUser(APIView):
 		serializer = MyUserSerializer(my_user)
 		return Response(serializer.data)
 
-#import firebase_admin
-#from firebase_admin import credentials, auth
-#
-#cred = credentials.Certificate('serviceAccountKey.json')
-#default_app = firebase_admin.initialize_app(cred)
+import firebase_admin
+from firebase_admin import credentials, auth
+
+cred = credentials.Certificate('serviceAccountKey.json')
+default_app = firebase_admin.initialize_app(cred)
 
 class CustomAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):

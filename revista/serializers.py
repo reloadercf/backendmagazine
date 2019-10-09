@@ -74,3 +74,18 @@ class NomSubcategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Subcategorias
         fields  =   ['nombre_subcategoria']
+
+class SubcategoriaSerializer(serializers.ModelSerializer):
+    categoria   =   NomCategoriaSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Subcategorias
+        fields  =   '__all__'
+
+class POSTSubcategoriaSerializer(serializers.ModelSerializer):
+    categoria   =   serializers.PrimaryKeyRelatedField(
+                        queryset=Categorias.objects.all(),
+                        required=True,
+                        many=False)
+    class Meta:
+        model   =   Subcategorias
+        fields  =   '__all__'

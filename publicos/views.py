@@ -34,6 +34,19 @@ class CategoriaRevistaList(viewsets.ReadOnlyModelViewSet):
             queryset_list = queryset_list.filter(revista_origen=revista)
         return queryset_list
 
+class SubcategoriaRevistaList(viewsets.ReadOnlyModelViewSet):
+    queryset            =   Subcategorias.objects.all()
+    serializer_class    =   SubcategoriaSerializer
+    def get_queryset(self, *args, **kwargs):
+        categoria       = self.request.GET.get('idcategoria')
+        subcategoria    = self.request.GET.get('idsubcategoria')
+        queryset_list = super(SubcategoriaRevistaViewSet, self).get_queryset()
+        if categoria:
+            queryset_list = queryset_list.filter(categoria__id=categoria)
+        if subcategoria:
+            queryset_list = queryset_list.filter(id=subcategoria)
+        return queryset_list
+
 class PlanList(viewsets.ReadOnlyModelViewSet):
     queryset            =   PlanRevista.objects.all()
     serializer_class    =   PlanSerializer
@@ -197,3 +210,4 @@ class EstadoViewSet(viewsets.ReadOnlyModelViewSet):
         if estado:
             queryset_list=queryset_list.filter(id=estado)
         return queryset_list
+

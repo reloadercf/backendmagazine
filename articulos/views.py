@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Articulo
+from .models import *
 from .serializers import *
 from rest_framework import viewsets
 from django.db.models import Q
@@ -78,28 +78,12 @@ class EspecialArticuloViewSet(viewsets.ModelViewSet):
             queryset_list = queryset_list.filter(status=status)
         return queryset_list
 
-class POSTEspecialArticuloViewSet(viewsets.ModelViewSet):
-    queryset = Articulo.objects.all()
-    serializer_class = POSTEspecialArticuloSerializer
-
+class IconViewSet(viewsets.ModelViewSet):
+    queryset = Icon.objects.all()
+    serializer_class = IconSerializer
     def get_queryset(self,*args,**kwargs):
-        categoria       =       self.request.GET.get("idcategoria")
-        subcategoria    =       self.request.GET.get("idsubcategoria")
-        origen_revista  =       self.request.GET.get("idrevista")
-        titulo          =       self.request.GET.get("slug")
-        portada         =       self.request.GET.get("portada")
-        status          =       self.request.GET.get("status")
-        queryset_list = super(POSTEspecialArticuloViewSet, self).get_queryset()
-        if categoria:
-            queryset_list = queryset_list.filter(categoria=categoria)
-        if subcategoria:
-            queryset_list = queryset_list.filter(categoria=subcategoria)
-        if origen_revista:
-            queryset_list = queryset_list.filter(origen_revista__nombre_revista=origen_revista)
-        if titulo:
-            queryset_list = queryset_list.filter(slug=titulo)
-        if portada:
-            queryset_list = queryset_list.filter(en_portada=portada)
-        if status:
-            queryset_list = queryset_list.filter(status=status)
+        icon       =       self.request.GET.get("idicon")
+        queryset_list = super(IconViewSet, self).get_queryset()
+        if icon:
+            queryset_list = queryset_list.filter(id=icon)
         return queryset_list
