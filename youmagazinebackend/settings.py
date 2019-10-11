@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'corsheaders',  
     'accounts',
     'articulos',
+    'cotizador',
     'patrocinadores',
     'revista',
     'planrevista',

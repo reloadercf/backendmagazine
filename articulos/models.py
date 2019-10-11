@@ -21,7 +21,6 @@ llamadas=(
     ("Llamar","Llamar"),
     ("Sinllamada","Sinllamada")
 )
-#El modelo
 
 class Articulo(models.Model):
     titulo                  =   models.CharField(max_length=150)
