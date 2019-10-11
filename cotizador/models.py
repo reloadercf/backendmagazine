@@ -1,28 +1,22 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 forma_de_pago =(
     ("Mensual","Mensual"),
     ("Anual","Anual")
 )
 
+tecnologias_choice = (
+    ('Andorid', "Android"),
+    ('IOS', "IOS"),
+    ('Web', "Web"),
+)
+
 
 class Cotizador(models.Model):
-
-    Andorid = 'a'
-    IOS = 'i'
-    Web = 'p'
-    tecnologias_choice = (
-        (Andorid, 'Android'),
-        (IOS, 'IOS'),
-        (Web, 'Web'),
-    )
-
     no_publicaciones    =   models.IntegerField()
     no_usuarios         =   models.IntegerField()
-    tecnologias         =   SelectMultipleField (
-                            max_length = 10,
-                            opciones = tecnologias_choice
-                            )
+    tecnologias         =   MultiSelectField (choices = tecnologias_choice)
     estadistica         =   models.BooleanField(default=False)
     patrocinadores      =   models.BooleanField(default=False)
     regitrso_sesion     =   models.BooleanField(default=False)
