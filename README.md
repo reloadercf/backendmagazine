@@ -37,7 +37,7 @@ http://localhost:8000/revista/resgistro-de-categoria/?idrevista=identificador_de
 Debes entrar al siguiente endpoint:
 Dentro de este endpoint se pueden filtrar las revistas por el identificador de cada revista, el plan de la revista, el país en al que pertenece la revista o el estado.
 (recuerda que idrevista es el identificador de cada revista, idplan es el identificador del plan contratado por la revista, idpais es el identificador del pais al que pertenece la revista, idestado es el identificador del estado al que pertenece la revista)
-````
+```
 http://localhost:8000/revista/registro-de-revista/?idrevista=identificador_de_la_revista``
 http://localhost:8000/revista/registro-de-revista/?idplan=identificador_del_plan``
 http://localhost:8000/revista/registro-de-revista/?idpais=identificador_del_pais``
@@ -97,16 +97,16 @@ http://localhost:8000/planes/registro-de-contratos/?inicio=fecha_de_inicio_de_co
 Debes entrar al siguiente endpoint:
 Dentro de este endpoint se pueden filtrar los clientes por su identificador o el identificador de la revista.
 (recuerda que idcliente es el identificador de cada cliente, idrevista es el identificador de la revista a la que pertence)
-````
+```
 http://localhost:8000/clientes/registros-de-clientes/?idcliente=identifiacador_de_cliente``
 http://localhost:8000/clientes/registros-de-clientes/?idrevista=identificador_de_la_revista``
 ```
 
-### `Endpoints pubicos`
+### `Endpoints públicos`
 Debes entrar al siguiente endpoint:
 Dentro de estos endpoint se pueden filtrar de la misma manera que en los endpoints originales.
 Cada endpoint tiene nombres relacionados con lo que hace cada uno.
 (recuerda que cada tipo de endpoint tiene caracteristicas de filtrado diferentes)
-````
+```
 http://localhost:8000/publicos``
 ```

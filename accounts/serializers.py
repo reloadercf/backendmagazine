@@ -49,7 +49,6 @@ class PermissionSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 	profile_user	=	ProfileSerializer(many=False, read_only=True)
-	password 		=	serializers.CharField(write_only=True)
 	class Meta:
 		model 	= 	User
 		fields 	= 	['first_name', 'last_name', 'email', 'id', 'password', 'profile_user','user_permissions']
@@ -81,14 +80,10 @@ class UserRevistaSerializer(serializers.ModelSerializer):
 		model = User
 		fields = ['username','profile_user']
 
-class POSTUserRevistaSerializer(serializers.ModelSerializer):
-	revista 	= serializers.PrimaryKeyRelatedField(
-					queryset=Revista.objects.all(),
-					required=True,
-					many=True)
-	class Meta:
-		model = Profile
-		fields = ['user','revista']
+class TipoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoUsuario
+        fields = '__all__'
 
 class MyUserSerializer(serializers.ModelSerializer):
 	profile_user		=	ProfileSerializer(read_only=True)

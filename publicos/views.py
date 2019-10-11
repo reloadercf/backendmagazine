@@ -34,6 +34,19 @@ class CategoriaRevistaList(viewsets.ReadOnlyModelViewSet):
             queryset_list = queryset_list.filter(revista_origen=revista)
         return queryset_list
 
+class SubcategoriaRevistaList(viewsets.ReadOnlyModelViewSet):
+    queryset            =   Subcategorias.objects.all()
+    serializer_class    =   SubcategoriaSerializer
+    def get_queryset(self, *args, **kwargs):
+        categoria       = self.request.GET.get('idcategoria')
+        subcategoria    = self.request.GET.get('idsubcategoria')
+        queryset_list = super(SubcategoriaRevistaViewSet, self).get_queryset()
+        if categoria:
+            queryset_list = queryset_list.filter(categoria__id=categoria)
+        if subcategoria:
+            queryset_list = queryset_list.filter(id=subcategoria)
+        return queryset_list
+
 class PlanList(viewsets.ReadOnlyModelViewSet):
     queryset            =   PlanRevista.objects.all()
     serializer_class    =   PlanSerializer
@@ -161,3 +174,40 @@ class UserRevistaList(viewsets.ReadOnlyModelViewSet):
 		if user:
 			queryset_list = queryset_list.filter(id=user)
 		return queryset_list
+
+class PaisViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset            =   Region.objects.all()
+    serializer_class    =   RegionSerializer
+    def get_queryset(self, *args, **kwargs):
+        pais=self.request.GET.get('idpais')
+        queryset_list=super(PaisViewSet, self).get_queryset()
+        if pais:
+            queryset_list=queryset_list.filter(id=pais)
+        return queryset_list
+
+class CiudadViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset            =   Ciudad.objects.all()
+    serializer_class    =   CiudadSerializer
+    def get_queryset(self, *args, **kwargs):
+        ciudad=self.request.GET.get('idciudad')
+        estado=self.request.GET.get('idestado')
+        queryset_list=super(CiudadViewSet, self).get_queryset()
+        if ciudad:
+            queryset_list=queryset_list.filter(id=ciudad)
+        if estado:
+            queryset_list=queryset_list.filter(estado__id=estado)
+        return queryset_list
+
+class EstadoViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset            =   Subregion.objects.all()
+    serializer_class    =   SubregionSerializer
+    def get_queryset(self, *args, **kwargs):
+        estado=self.request.GET.get('idestado')
+        pais=self.request.GET.get('idpais')
+        queryset_list=super(EstadoViewSet, self).get_queryset()
+        if pais:
+            queryset_list=queryset_list.filter(pais__id=pais)
+        if estado:
+            queryset_list=queryset_list.filter(id=estado)
+        return queryset_list
+

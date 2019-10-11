@@ -9,8 +9,8 @@ router = routers.DefaultRouter()
 router.register('Lista-de-perfiles',ProfileViewSet)
 router.register('Lista-de-usuarios_revistas',UserRevistaViewSet)
 router.register('Registro-de-perfiles',POSTPerfilesViewSet)
-router.register('Resgistro-de-usuarios_revistas',POSTUserRevistaViewSet)
 router.register('Resgistro-de-usuario',POSTProfileViewSet)
+router.register('Resgistro-de-tipo_usuario',TipoViewSet)
 
 accounts = [
     url('accounts/', include(router.urls)),

@@ -4,6 +4,11 @@ from revista.serializers import NomRevistaSerializer, NomPlanSerializer
 from revista.models import Revista
 from planrevista.models import PlanRevista
 
+class NomPatrocinadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Patrocinador
+        fields  =   ['nombre']
+
 class PatrocinadorSerializer(serializers.ModelSerializer):
     revista_pertenencia =   NomRevistaSerializer(read_only=True)
     class Meta:

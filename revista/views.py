@@ -67,3 +67,29 @@ class POSTCategoriaRevistaViewSet(viewsets.ModelViewSet):
         if revista:
             queryset_list = queryset_list.filter(revista_origen=revista)
         return queryset_list
+
+class SubcategoriaRevistaViewSet(viewsets.ModelViewSet):
+    queryset            =   Subcategorias.objects.all()
+    serializer_class    =   SubcategoriaSerializer
+    def get_queryset(self, *args, **kwargs):
+        categoria       = self.request.GET.get('idcategoria')
+        subcategoria    = self.request.GET.get('idsubcategoria')
+        queryset_list = super(SubcategoriaRevistaViewSet, self).get_queryset()
+        if categoria:
+            queryset_list = queryset_list.filter(categoria__id=categoria)
+        if subcategoria:
+            queryset_list = queryset_list.filter(id=subcategoria)
+        return queryset_list
+
+class POSTSubcategoriaRevistaViewSet(viewsets.ModelViewSet):
+    queryset            =   Subcategorias.objects.all()
+    serializer_class    =   POSTSubcategoriaSerializer
+    def get_queryset(self, *args, **kwargs):
+        categoria       = self.request.GET.get('idcategoria')
+        subcategoria    = self.request.GET.get('idsubcategoria')
+        queryset_list = super(POSTSubcategoriaRevistaViewSet, self).get_queryset()
+        if categoria:
+            queryset_list = queryset_list.filter(categoria__id=categoria)
+        if subcategoria:
+            queryset_list = queryset_list.filter(id=subcategoria)
+        return queryset_list

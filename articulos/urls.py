@@ -9,7 +9,7 @@ router = routers.DefaultRouter()
 router.register('Lista-de-articulos',ArticuloViewSet)
 router.register('Lista-de-especiales',EspecialArticuloViewSet)
 router.register('Registro-de-articulos',POSTArticuloViewSet)
-router.register('Registro-de-especiales',POSTEspecialArticuloViewSet)
+router.register('Registro-de-iconos',IconViewSet)
 
 articulo = [
     url('articulo/', include(router.urls)),

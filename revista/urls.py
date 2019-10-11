@@ -8,6 +8,8 @@ from .views import *
 router = routers.DefaultRouter()
 router.register('Lista-de-categoria',CategoriaRevistaViewSet)
 router.register('Lista-de-revista',RevistaViewSet)
+router.register('Lista-de-subcategorias',SubcategoriaRevistaViewSet)
+router.register('Registro-de-subcategorias',POSTSubcategoriaRevistaViewSet)
 router.register('Registro-de-categorias',POSTCategoriaRevistaViewSet)
 router.register('Registro-de-revistas',POSTRevistaViewSet)
 

@@ -16,7 +16,7 @@ class Forma_Pago(models.Model):
         return self.nombre
 
 class Contrato(models.Model):
-    revista         =   models.OneToOneField(Revista, on_delete=models.CASCADE, primary_key=True)
+    revista         =   models.ForeignKey("revista.Revista", related_name='revista_contrato', on_delete=models.CASCADE)
     forma_pago      =   models.ForeignKey("Forma_Pago", related_name='pago_contrato', on_delete=models.CASCADE)
     fecha_inicio    =   models.DateField(auto_now=False, auto_now_add=False)
     def __str__(self):
