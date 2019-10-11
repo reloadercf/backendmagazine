@@ -51,13 +51,22 @@ class UserSerializer(serializers.ModelSerializer):
 	profile_user	=	ProfileSerializer(many=False, read_only=True)
 	class Meta:
 		model 	= 	User
-		fields 	= 	['first_name', 'last_name', 'email', 'id', 'profile_user']
+		fields 	= 	['first_name', 'last_name', 'email', 'id', 'password', 'profile_user','user_permissions']
+	def create(self, validated_data):
+		password = validated_data.pop('password')
+		user = User.objects.create(**validated_data)
+		user.set_password(password)
+		user.save()
+		return user
+
+
 
 class POSTUserSerializer(serializers.ModelSerializer):
+	profile_user	=	ProfileSerializer(many=False, read_only=True)
 	password 		=	serializers.CharField(write_only=True)
 	class Meta:
 		model 	= 	User
-		fields 	= 	['username','first_name', 'last_name', 'email', 'id', 'password']
+		fields 	= 	['id','username','first_name', 'last_name', 'email', 'password', 'profile_user']
 	def create(self, validated_data):
 		password = validated_data.pop('password')
 		user = User.objects.create(**validated_data)
