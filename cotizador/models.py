@@ -1,5 +1,5 @@
 from django.db import models
-from multiselectfield import MultiSelectField
+#from multiselectfield import MultiSelectField
 
 forma_de_pago =(
     ("Mensual","Mensual"),
@@ -16,7 +16,7 @@ tecnologias_choice = (
 class Cotizador(models.Model):
     no_publicaciones    =   models.IntegerField()
     no_usuarios         =   models.IntegerField()
-    tecnologias         =   MultiSelectField (choices = tecnologias_choice)
+    #tecnologias         =   MultiSelectField (choices = tecnologias_choice)
     estadistica         =   models.BooleanField(default=False)
     patrocinadores      =   models.BooleanField(default=False)
     regitrso_sesion     =   models.BooleanField(default=False)
