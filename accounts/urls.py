@@ -7,9 +7,12 @@ from .views import *
 
 router = routers.DefaultRouter()
 router.register('Lista-de-perfiles',ProfileViewSet)
-router.register('Lista-de-usuarios_revistas',UserRevistaViewSet)
+router.register('Resgistro-de-usuario',POSTUserViewSet)
+
 router.register('Registro-de-perfiles',POSTPerfilesViewSet)
-router.register('Resgistro-de-usuario',POSTProfileViewSet)
+
+
+router.register('Lista-de-usuarios_revistas',UserRevistaViewSet)
 router.register('Resgistro-de-tipo_usuario',TipoViewSet)
 
 accounts = [

@@ -3,74 +3,48 @@ from django.contrib.auth.models import User
 from .serializers import *
 from .models import Profile
 from rest_framework import viewsets
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet,ReadOnlyModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from django.db.models import Q
 
-class ProfileViewSet(viewsets.ModelViewSet):
+class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
 	def get_queryset(self, *args, **kwargs):
-		user	=	self.request.GET.get('username')
-		iduser 	= 	self.request.GET.get('iduser')
-		first	=	self.request.GET.get('nombre')
-		last	=	self.request.GET.get('apellido')
+		nombre = self.request.GET.get("nombre")
 		revista	=	self.request.GET.get('idrevista')
 		tipo	=	self.request.GET.get('idtipo')
 		queryset_list = super(ProfileViewSet, self).get_queryset()
-		if user:
-			queryset_list = queryset_list.filter(username=user)
-		if iduser:
-			queryset_list = queryset_list.filter(id=iduser)
-		if first:
-			queryset_list = queryset_list.filter(first_name=first)
-		if last:
-			queryset_list = queryset_list.filter(last_name=last)
+		if nombre:
+			queryset_list = queryset_list.filter(
+				Q(first_name__contains=nombre)|
+				Q(last_name__contains=nombre)|
+				Q(username__contains=nombre)
+            )
 		if revista:
 			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
 		if tipo:
 			queryset_list = queryset_list.filter(profile_user__tipo_usuario__id=tipo)
 		return queryset_list
+
+class POSTUserViewSet(viewsets.ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = POSTUserSerializer
+
+	def get_serializer_class(self):
+		serializer_class = self.serializer_class
+		if self.request.method == ['PUT', 'PATCH']:
+			serializer_class = SerializerWithoutPasswordField
+		return serializer_class
+
 
 class POSTPerfilesViewSet(viewsets.ModelViewSet):
 	queryset = Profile.objects.all()
 	serializer_class = POSTProfileSerializer
-	def get_queryset(self, *args, **kwargs):
-		user	=	self.request.GET.get('username')
-		iduser 	= 	self.request.GET.get('iduser')
-		revista	=	self.request.GET.get('idrevista')
-		tipo	=	self.request.GET.get('idtipo')
-		queryset_list = super(POSTPerfilesViewSet, self).get_queryset()
-		if user:
-			queryset_list = queryset_list.filter(username=user)
-		if iduser:
-			queryset_list = queryset_list.filter(id=iduser)
-		if revista:
-			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
-		if tipo:
-			queryset_list = queryset_list.filter(profile_user__tipo_usuario__id=tipo)
-		return queryset_list
 
-class POSTProfileViewSet(viewsets.ModelViewSet):
-	queryset = User.objects.all()
-	serializer_class = POSTUserSerializer
-	def get_queryset(self, *args, **kwargs):
-		user	=	self.request.GET.get('username')
-		iduser 	= 	self.request.GET.get('iduser')
-		first	=	self.request.GET.get('nombre')
-		last	=	self.request.GET.get('apellido')
-		queryset_list = super(POSTProfileViewSet, self).get_queryset()
-		if user:
-			queryset_list = queryset_list.filter(username=user)
-		if iduser:
-			queryset_list = queryset_list.filter(id=iduser)
-		if first:
-			queryset_list = queryset_list.filter(first_name=first)
-		if last:
-			queryset_list = queryset_list.filter(last_name=last)
-		return queryset_list
 
 class UserRevistaViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
