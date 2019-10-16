@@ -3,6 +3,7 @@ from .models import Categorias,Revista, Subcategorias
 from planrevista.models import PlanRevista
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer, NomCiudadSerializer
 from regiones.models import *
+from accounts.models import Profile
 
 class NomPlanSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,23 +28,30 @@ class RevistaSerializer(serializers.ModelSerializer):
 class POSTRevistaSerializer(serializers.ModelSerializer):
     plan    =   serializers.PrimaryKeyRelatedField(
                         queryset=PlanRevista.objects.all(),
-                        required=True,
+                        required=False,
                         many=False)
     country =   serializers.PrimaryKeyRelatedField(
                         queryset=Region.objects.all(),
-                        required=True,
+                        required=False,
                         many=False)
     state   =   serializers.PrimaryKeyRelatedField(
                         queryset=Subregion.objects.all(),
-                        required=True,
+                        required=False,
                         many=False)
     city    =   serializers.PrimaryKeyRelatedField(
                         queryset=Ciudad.objects.all(),
-                        required=True,
+                        required=False,
                         many=False)
     class Meta:
         model   =   Revista
-        fields  =   '__all__'
+        fields  =   ['id','nombre_revista', 'plan', 'country', 'state', 'city']
+    
+
+# class AddRevistaProfileSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model   =  Profile
+#         fields  =   ['id', 'revista']
+
 
 class NomRevistaSerializer(serializers.ModelSerializer):
     class Meta:

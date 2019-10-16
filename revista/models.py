@@ -8,13 +8,14 @@ class Categorias(models.Model):
         return self.nombre_categoria 
     
 class Revista(models.Model):
-    nombre_revista          =   models.CharField(max_length=80)
-    logo                    =   models.URLField(max_length=200, blank=True, null=True)
+    nombre_revista          =   models.CharField(max_length=100, unique=True)
+    logo                    =   models.URLField(max_length=300, blank=True, null=True)
     descripcion             =   models.TextField(blank=True, null=True)
-    country                 =   models.ForeignKey('regiones.Region', related_name='revista_pais', on_delete=models.CASCADE)
-    state                   =   models.ForeignKey('regiones.Subregion', related_name='revista_estado', on_delete=models.CASCADE)
-    city                    =   models.ForeignKey('regiones.Ciudad', related_name='revista_ciudad', on_delete=models.CASCADE)
-    plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE)
+    country                 =   models.ForeignKey('regiones.Region', related_name='revista_pais', on_delete=models.CASCADE, blank=True, null=True)
+    state                   =   models.ForeignKey('regiones.Subregion', related_name='revista_estado', on_delete=models.CASCADE,blank=True, null=True)
+    city                    =   models.ForeignKey('regiones.Ciudad', related_name='revista_ciudad', on_delete=models.CASCADE,blank=True, null=True)
+    plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE,blank=True, null=True)
+
     def __str__(self):
         return self.nombre_revista
 

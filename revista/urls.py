@@ -12,7 +12,6 @@ router.register('Lista-de-subcategorias',SubcategoriaRevistaViewSet)
 router.register('Registro-de-subcategorias',POSTSubcategoriaRevistaViewSet)
 router.register('Registro-de-categorias',POSTCategoriaRevistaViewSet)
 router.register('Registro-de-revistas',POSTRevistaViewSet)
-
 revista = [
     url('revista/', include(router.urls)),
 ]
