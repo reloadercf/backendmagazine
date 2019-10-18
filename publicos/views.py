@@ -162,19 +162,6 @@ class ProfileList(viewsets.ReadOnlyModelViewSet):
 			queryset_list = queryset_list.filter(profile_user__tipo_usuario__id=tipo)
 		return queryset_list
 
-class UserRevistaList(viewsets.ReadOnlyModelViewSet):
-	queryset = User.objects.all()
-	serializer_class = UserRevistaSerializer
-	def get_queryset(self, *args, **kwargs):
-		revista = self.request.GET.get('idrevista')
-		user	= self.request.GET.get('iduser')
-		queryset_list = super(UserRevistaList, self).get_queryset()
-		if revista:
-			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
-		if user:
-			queryset_list = queryset_list.filter(id=user)
-		return queryset_list
-
 class PaisViewSet(viewsets.ReadOnlyModelViewSet):
     queryset            =   Region.objects.all()
     serializer_class    =   RegionSerializer

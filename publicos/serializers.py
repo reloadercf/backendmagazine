@@ -8,7 +8,7 @@ from regiones.models import *
 from revista.serializers import NomPlanSerializer, NomRevistaSerializer, RevistaPlanSerializer, NomCategoriaSerializer, NomSubcategoriaSerializer
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer 
 from planrevista.serializers import NomFormaPagoSerializer
-from accounts.serializers import ProfileSerializer, ProfileRSerializer
+from accounts.serializers import ProfileSerializer
 
 class RevistaSerializer(serializers.ModelSerializer):
     plan    =   NomPlanSerializer(many=False, read_only=True)
@@ -71,12 +71,6 @@ class UserSerializer(serializers.ModelSerializer):
 		user.set_password(password)
 		user.save()
 		return user
-
-class UserRevistaSerializer(serializers.ModelSerializer):
-	profile_user = ProfileRSerializer(many=False, read_only=True)
-	class Meta:
-		model = User
-		fields = ['username','profile_user']
 
 class CiudadSerializer(serializers.ModelSerializer):
     estado      =   NomSubregionSerializer(many=False, read_only=True)

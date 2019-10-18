@@ -19,7 +19,6 @@ router.register('Lista-Revistas',RevistaList)
 router.register('Lista-Categorias',CategoriaRevistaList)
 router.register('Lista-Subcategorias',SubcategoriaRevistaList)
 router.register('Lista-Perfiles',ProfileList)
-router.register('Lista-Usuario_Revista',UserRevistaList)
 
 publicos = [
     url('publicos/', include(router.urls)),

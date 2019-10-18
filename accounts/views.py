@@ -33,31 +33,15 @@ class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
 class POSTUserViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = POSTUserSerializer
-
 	def get_serializer_class(self):
 		serializer_class = self.serializer_class
 		if self.request.method == ['PUT', 'PATCH']:
 			serializer_class = SerializerWithoutPasswordField
 		return serializer_class
 
-
 class POSTPerfilesViewSet(viewsets.ModelViewSet):
 	queryset = Profile.objects.all()
 	serializer_class = POSTProfileSerializer
-
-
-class UserRevistaViewSet(viewsets.ModelViewSet):
-	queryset = User.objects.all()
-	serializer_class = UserRevistaSerializer
-	def get_queryset(self, *args, **kwargs):
-		revista = self.request.GET.get('idrevista')
-		user	= self.request.GET.get('iduser')
-		queryset_list = super(UserRevistaViewSet, self).get_queryset()
-		if revista:
-			queryset_list = queryset_list.filter(profile_user__revista__id=revista)
-		if user:
-			queryset_list = queryset_list.filter(id=user)
-		return queryset_list
 
 class TipoViewSet(viewsets.ModelViewSet):
 	queryset = TipoUsuario.objects.all()

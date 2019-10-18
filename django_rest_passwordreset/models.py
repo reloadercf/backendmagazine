@@ -145,7 +145,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
         # message:
         email_html_message,
         # from:
-        "noreply@youmagazine.com",
+        "mariovaldez@planb.com.mx",
         # to:
         [reset_password_token.user.email]
     )
