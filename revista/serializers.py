@@ -5,17 +5,20 @@ from regiones.serializers import NomRegionSerializer, NomSubregionSerializer, No
 from regiones.models import *
 from accounts.models import Profile
 
+#serializador para sacar nombre de plan de la revista
 class NomPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   PlanRevista
         fields  =   ['nombre']
 
+#serializador para sacar nombre de plan y de la revista
 class RevistaPlanSerializer(serializers.ModelSerializer):
     plan    =   NomPlanSerializer(many=False, read_only=True)
     class Meta:
         model   =   Revista
         fields  =   ['nombre_revista','plan']
 
+#serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
     plan    =   NomPlanSerializer(many=False, read_only=True)
     country =   NomRegionSerializer(many=False, read_only=True)
@@ -25,6 +28,7 @@ class RevistaSerializer(serializers.ModelSerializer):
         model   =   Revista
         fields  =   '__all__'
 
+#serializador CRUD de revista
 class POSTRevistaSerializer(serializers.ModelSerializer):
     plan    =   serializers.PrimaryKeyRelatedField(
                         queryset=PlanRevista.objects.all(),
@@ -45,25 +49,21 @@ class POSTRevistaSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Revista
         fields  =   ['id','nombre_revista', 'plan', 'country', 'state', 'city']
-    
 
-# class AddRevistaProfileSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model   =  Profile
-#         fields  =   ['id', 'revista']
-
-
+#serializador para sacar nombre de la revista
 class NomRevistaSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Revista
         fields  =   ['nombre_revista']
 
+#serializador para sacar datos de la categoria
 class CategoriaSerializer(serializers.ModelSerializer):
     revista_origen  =   NomRevistaSerializer(many=False, read_only=True)
     class Meta:
         model       =   Categorias
         fields      =   '__all__'
 
+#serializador para CRUD de categoria
 class POSTCategoriaSerializer(serializers.ModelSerializer):
     revista_origen  =   serializers.PrimaryKeyRelatedField(
                         queryset=Revista.objects.all(),
@@ -73,22 +73,26 @@ class POSTCategoriaSerializer(serializers.ModelSerializer):
         model       =   Categorias
         fields      =   '__all__'
 
+#serializador para sacar nombre de categoria
 class NomCategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Categorias
         fields  =   ['nombre_categoria']
 
+#serializador para sacar nombre de subcategoria
 class NomSubcategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Subcategorias
         fields  =   ['nombre_subcategoria']
 
+#serializador para datos de subcategoria
 class SubcategoriaSerializer(serializers.ModelSerializer):
     categoria   =   NomCategoriaSerializer(many=False, read_only=True)
     class Meta:
         model   =   Subcategorias
         fields  =   '__all__'
 
+#serializador para CRUD de subcategoria
 class POSTSubcategoriaSerializer(serializers.ModelSerializer):
     categoria   =   serializers.PrimaryKeyRelatedField(
                         queryset=Categorias.objects.all(),

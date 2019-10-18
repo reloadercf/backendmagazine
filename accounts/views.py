@@ -10,6 +10,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from django.db.models import Q
 
+#vista para visualizacion de datos de usuarios
 class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
@@ -30,6 +31,7 @@ class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
 			queryset_list = queryset_list.filter(profile_user__tipo_usuario__id=tipo)
 		return queryset_list
 
+#vista para CRUD de datos de usuarios
 class POSTUserViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = POSTUserSerializer
@@ -39,26 +41,25 @@ class POSTUserViewSet(viewsets.ModelViewSet):
 			serializer_class = SerializerWithoutPasswordField
 		return serializer_class
 
+#vista para CRUD de datos de perfiles
 class POSTPerfilesViewSet(viewsets.ModelViewSet):
 	queryset = Profile.objects.all()
 	serializer_class = POSTProfileSerializer
 
+#vista para CRUD de datos de tipo de usuarios
 class TipoViewSet(viewsets.ModelViewSet):
 	queryset = TipoUsuario.objects.all()
 	serializer_class = TipoSerializer
-	def get_queryset(self, *args, **kwargs):
-		tipo = self.request.GET.get('idtipo')
-		queryset_list = super(TipoViewSet, self).get_queryset()
-		if tipo:
-			queryset_list = queryset_list.filter(id=tipo)
-		return queryset_list
 
+#vista para visualizacion de datos de usuario loggeado
 class MyUser(APIView):	
 	def get(self, request, format=None):
 		my_user = User.objects.all().get(id=request.user.id)
 		serializer = MyUserSerializer(my_user)
 		return Response(serializer.data)
 
+
+#----------- Firebase------------------------------------------------------
 import firebase_admin
 from firebase_admin import credentials, auth
 

@@ -6,7 +6,9 @@ from django.conf import settings
 from .views import *
 
 router = routers.DefaultRouter()
+#visualizacion de datos de patrocinadres
 router.register('Lista-de-Patrocinadores',PatrocinadorViewSet)
+#visualizacion CRUD de patrocinadres
 router.register('Registro-de-Patrocinadores',POSTPatrocinadorViewSet)
 
 patrocinadores= [

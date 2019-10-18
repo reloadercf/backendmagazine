@@ -6,12 +6,16 @@ from django.conf import settings
 from .views import *
 
 router = routers.DefaultRouter()
-
-router.register('Lista-de-estados',EstadoViewSet)
-router.register('Lista-de-ciudades',CiudadViewSet)
+#visualizacion de CRUD de paises
 router.register('Registro-de-paises',PaisViewSet)
+#visualizacion de CRUD de estados
 router.register('Registro-de-estados',POSTEstadoViewSet)
+#visualizacion de datos de estados
+router.register('Lista-de-estados',EstadoViewSet)
+#visualizacion de CRUD de ciudades
 router.register('Registro-de-ciudades',POSTCiudadViewSet)
+#visualizacion de datos de ciudades
+router.register('Lista-de-ciudades',CiudadViewSet)
 
 regiones = [
     url('regiones/', include(router.urls)),
