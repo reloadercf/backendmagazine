@@ -45,8 +45,11 @@ INSTALLED_APPS = [
     'planrevista',
     'regiones',
     'publicos',
+    'publicidad',
+    'contenido',
     'django_rest_passwordreset',
     'import_export',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [

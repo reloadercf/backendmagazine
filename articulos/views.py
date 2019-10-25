@@ -58,8 +58,3 @@ class EspecialArticuloViewSet(viewsets.ReadOnlyModelViewSet):
         if status:
             queryset_list = queryset_list.filter(status=status)
         return queryset_list
-
-#vista para CRUD de datos de iconos
-class IconViewSet(viewsets.ModelViewSet):
-    queryset = Icon.objects.all()
-    serializer_class = IconSerializer

@@ -9,16 +9,13 @@ router = routers.DefaultRouter()
 
 router.register('Lista-Articulos',ArticuloList)
 router.register('Lista-Especiales',EspecialArticuloList)
-router.register('Lista-Patrocinadores',PatrocinadorList)
+router.register('Lista-Cotizaciones',CotizacionesList)
 router.register('Lista-Planes',PlanList)
-router.register('Lista-Contratos',ContratoList)
 router.register('Lista-Paises',PaisViewSet)
 router.register('Lista-Estados',EstadoViewSet)
 router.register('Lista-Ciudades',CiudadViewSet)
-router.register('Lista-Revistas',RevistaList)
 router.register('Lista-Categorias',CategoriaRevistaList)
 router.register('Lista-Subcategorias',SubcategoriaRevistaList)
-router.register('Lista-Perfiles',ProfileList)
 
 publicos = [
     url('publicos/', include(router.urls)),

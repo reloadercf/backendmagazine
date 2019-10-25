@@ -12,8 +12,6 @@ router.register('Lista-de-articulos',ArticuloViewSet)
 router.register('Lista-de-especiales',EspecialArticuloViewSet)
 #CRUD de articulos
 router.register('Registro-de-articulos',POSTArticuloViewSet)
-#CRUD de iconos
-router.register('Registro-de-iconos',IconViewSet)
 
 articulo = [
     url('articulo/', include(router.urls)),

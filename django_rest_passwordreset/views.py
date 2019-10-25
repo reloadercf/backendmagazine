@@ -119,7 +119,6 @@ class ResetPasswordConfirm(GenericAPIView):#modificacion de contraseña
             ResetPasswordToken.objects.filter(user=reset_password_token.user).delete()
 
             return Response({'Estado': 'Contraseña modificada'})
-
         else:
             return Response({'Estado': 'Contraseñas diferentes'})
 
@@ -191,6 +190,6 @@ class ResetPasswordRequestToken(GenericAPIView): #Manda correo con token
         return Response({'Estado': 'Correo enviado'})
 
 
-reset_password_validate_token = ResetPasswordValidateToken.as_view() #token
+reset_password_validate_token = ResetPasswordValidateToken.as_view() #validacion de token
 reset_password_confirm = ResetPasswordConfirm.as_view() #modificacion contraseña
 reset_password_request_token = ResetPasswordRequestToken.as_view() #Manda correo con token

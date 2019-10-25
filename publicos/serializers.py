@@ -5,18 +5,11 @@ from patrocinadores.models import *
 from articulos.models import *
 from accounts.models import *
 from regiones.models import *
+from cotizador.models import *
 from revista.serializers import NomPlanSerializer, NomRevistaSerializer, RevistaPlanSerializer, NomCategoriaSerializer, NomSubcategoriaSerializer
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer 
 from planrevista.serializers import NomFormaPagoSerializer
 from accounts.serializers import ProfileSerializer
-
-class RevistaSerializer(serializers.ModelSerializer):
-    plan    =   NomPlanSerializer(many=False, read_only=True)
-    pais    =   NomRegionSerializer(many=False, read_only=True)
-    estado  =   NomSubregionSerializer(many=False, read_only=True)
-    class Meta:
-        model   =   Revista
-        fields  =   '__all__'
 
 class CategoriaSerializer(serializers.ModelSerializer):
     revista_origen  =   NomRevistaSerializer(read_only=True)
@@ -27,20 +20,6 @@ class CategoriaSerializer(serializers.ModelSerializer):
 class PlanSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   PlanRevista
-        fields  =   '__all__'
-
-class ContratoSerializer(serializers.ModelSerializer):
-    revista     =   RevistaPlanSerializer(many=False, read_only=True)
-    forma_pago  =   NomFormaPagoSerializer(many=False, read_only=True)
-    class Meta:
-        model   =   Contrato
-        fields  =   '__all__'
-
-class PatrocinadorSerializer(serializers.ModelSerializer):
-    revista_pertenencia =   NomRevistaSerializer(read_only=True)
-    plan_contratado     =   NomPlanSerializer(read_only=True)
-    class Meta:
-        model   =   Patrocinador
         fields  =   '__all__'
 
 class ArticuloSerializer(serializers.ModelSerializer):
@@ -58,19 +37,6 @@ class EspecialArticulo(serializers.ModelSerializer):
     class Meta:
         model       =   Articulo
         fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen_destacada_uno','status','fecha_fin']
-
-class UserSerializer(serializers.ModelSerializer):
-	profile_user	=	ProfileSerializer(many=False, read_only=True)
-	password 		=	serializers.CharField(write_only=True)
-	class Meta:
-		model 	= 	User
-		fields 	= 	['first_name', 'last_name', 'email', 'id', 'password', 'profile_user']
-	def create(self, validated_data):
-		password = validated_data.pop('password')
-		user = User.objects.create(**validated_data)
-		user.set_password(password)
-		user.save()
-		return user
 
 class CiudadSerializer(serializers.ModelSerializer):
     estado      =   NomSubregionSerializer(many=False, read_only=True)
@@ -93,4 +59,9 @@ class SubcategoriaSerializer(serializers.ModelSerializer):
     categoria   =   NomCategoriaSerializer(many=False, read_only=True)
     class Meta:
         model   =   Subcategorias
+        fields  =   '__all__'
+
+class CotizacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Cotizador
         fields  =   '__all__'

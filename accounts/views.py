@@ -10,9 +10,14 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from django.db.models import Q
 
+#vista para visualizacion de permisos
+class PermissionViewSet(viewsets.ReadOnlyModelViewSet):
+	queryset = Permission.objects.exclude(Q(name__contains="Can"))
+	serializer_class = PermissionCSerializer
+
 #vista para visualizacion de datos de usuarios
 class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
-	queryset = User.objects.all()
+	queryset = User.objects.all()#[:1]#lo que esta entre corchetes es la cantidad de objetos que se mostraran
 	serializer_class = UserSerializer
 	def get_queryset(self, *args, **kwargs):
 		nombre = self.request.GET.get("nombre")
@@ -37,7 +42,7 @@ class POSTUserViewSet(viewsets.ModelViewSet):
 	serializer_class = POSTUserSerializer
 	def get_serializer_class(self):
 		serializer_class = self.serializer_class
-		if self.request.method == ['PUT', 'PATCH']:
+		if self.request.method == 'PATCH' or self.request.method == 'PUT':
 			serializer_class = SerializerWithoutPasswordField
 		return serializer_class
 

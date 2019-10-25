@@ -1,112 +1,192 @@
 # Instrucciones para uso del backend 🚀
-### `Consulta de Usuario en revista`
-Para hacer una consulta referente a los perfiles registrados tiene que usar como elemento de busqueda en la api el nombreregistro-perfiles del usuario, su id de usuario, su nombre, su apellido o su id de la revista a la pertenece, para ello debes usar la siguiete url ( recuerda que el nombre de usuarios es el que se registro con la contraseña, el id de usuario es el identificador de cada perfil, el id de revista es el identificador de cada una de estas).
+## accounts 
+### `Lista de usuarios`
+Para hacer una consulta en la cual solo se podran saber los datos de los usuarios, se pueden filtrar estos usuarios con varios criterios como son nombre, apellido, username, revista o el tipo de usuario, para ello debera ingresar en la siguiente url, (recuerda que el username es el que se registro con la contraseña, el id de revista es el identificador de cada una de estas, el id de tipo de usuario variara segun el que se le asigne a cada usuario).
 ```
-http://localhost:8000/accounts/registro-perfiles/?username=nombre_de_usuario_para_login``
-http://localhost:8000/accounts/registro-perfiles/?iduser=identificador_de_usuario``
-http://localhost:8000/accounts/registro-perfiles/?first=nombre_de_usuario``
-http://localhost:8000/accounts/registro-perfiles/?last=apellido_de_usuario``
-http://localhost:8000/accounts/registro-perfiles/?idrevista=identificador_de_la_revista``
+"nombre_servidor"/accounts/registro-perfiles/?nombre=username-o-nombre-o-apellido``
+"nombre_servidor"/accounts/registro-perfiles/?idrevista=identificador_de_la_revista``
+"nombre_servidor"/accounts/registro-perfiles/?idtipo=identificador_del_tipo_de_usuario``
 ```
-
-### `Consulta de Revista - Usuario`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar las relación de revista y usuario por ir de usuario o id de la revista
-(recuerda que idrevista es el numero que identifica a cada revista e iduser es el identificador de cada usuario)
+### `Registro de usuarios`
+Para hacer una consulta en la cual se podran revisar los datos de usuarios y ademas el ingreso de nuevos usuarios, en esta API se pueden filtrar por el id de cada usuario donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/accounts/revista-usuario/?idrevista=identificador_de_la_revista``
-http://localhost:8000/accounts/revista-usuario/?iduser=identificador_del_usuario``
+"nombre_servidor"/accounts/Resgistro-de-usuario/identificador_del_usuario/``
 ```
-
-### `Consulta de Datos del usuario con el que se inicio sesion`
-Debes entrar al siguiente endpoint:
+### `Registro de perfiles`
+Para hacer una consulta en la cual se podran revisar los datos de los perfiles de usuarios y ademas el ingreso de nuevos perfiles, en esta API se pueden filtrar por el id de cada perfil donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/my_user/``
+"nombre_servidor"/accounts/Registro-de-perfiles/identificador_del_perfil/``
 ```
-
-### `Consulta de categorias`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar las categria por el identificador de cada categoria o el identificador de la revista
-(recuerda que idcategoria es el numero que identifica a cada categoria e idrevista es el identificador de cada revista)
+### `Registro de perfiles`
+Para hacer una consulta en la cual se podran revisar los datos de los tipos de usuarios y ademas el ingreso de nuevos tipos de usuarios, en esta API se pueden filtrar por el id de cada tipo de usuario donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/revista/resgistro-de-categoria/?idcategoria=identificador_de_la_categoria``
-http://localhost:8000/revista/resgistro-de-categoria/?idrevista=identificador_de_la_revista``
+"nombre_servidor"/accounts/Resgistro-de-tipo_usuario/identificador_del_tipo_de_usuario/``
 ```
-
-### `Consulta de revistas`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar las revistas por el identificador de cada revista, el plan de la revista, el país en al que pertenece la revista o el estado.
-(recuerda que idrevista es el identificador de cada revista, idplan es el identificador del plan contratado por la revista, idpais es el identificador del pais al que pertenece la revista, idestado es el identificador del estado al que pertenece la revista)
+_________________________________________________________________________________________________________
+## articulos
+### `Lista de articulos`
+Para hacer una consulta en la cual solo se podran saber los datos de los articulos, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug o la fecha en la que se termina el articulo(fin), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, fin se utiliza en base a la fecha en la cual se usara el formato aaaa-mm-dd).
 ```
-http://localhost:8000/revista/registro-de-revista/?idrevista=identificador_de_la_revista``
-http://localhost:8000/revista/registro-de-revista/?idplan=identificador_del_plan``
-http://localhost:8000/revista/registro-de-revista/?idpais=identificador_del_pais``
-http://localhost:8000/revista/registro-de-revista/?idestado=identificador_del_estado``
+"nombre_servidor"/articulo/Lista-de-articulos/?slug=nombre-articulo``
+"nombre_servidor"/articulo/Lista-de-articulos/?idrevista=identificador-de-la-revista``
+"nombre_servidor"/articulo/Lista-de-articulos/?idcategoria=identificador-de-la-categoria``
+"nombre_servidor"/articulo/Lista-de-articulos/?idsubcategoria=identificador-de-la-subcategoria``
+"nombre_servidor"/articulo/Lista-de-articulos/?fin=2019-10-21``
 ```
-
-### `Consulta de artículos especiales`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar los articulos especiales por su categoria, subcategria, revista de origen, su slug, su posicion o su estatus
-(recuerda que idrevista es el identificador de cada revista, idcategoria es el identificador de la categoria de ese articulo, idsubcategoria es el identificadr de la subcategoria a la que pertenece el articulo, slug es el titulo del articulo validado como slug, portada es el valor del checkbox, status es el valor que tiene el articulo)
+### `Lista de articulos especiales`
+Para hacer una consulta en la cual solo se podran saber los datos de los articulos especiales, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug, la validacion para saber si esta en portada(portada) o el estado del articulo(status), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, portada se utilizara en base a un valor booleano, status ).
 ```
-http://localhost:8000/articulo/registros-de-especiales/?idrevista=identificador_de_la_revista``
-http://localhost:8000/articulo/registros-de-especiales/?idcategoria=identificador_de_la_categoria``
-http://localhost:8000/articulo/registros-de-especiales/?idsubcategoria=identificador_de_la_subcategoria``
-http://localhost:8000/articulo/registros-de-especiales/?slug=slug_de_titulo
-http://localhost:8000/articulo/registros-de-especiales/?portada=validación``
-http://localhost:8000/articulo/registros-de-especiales/?status=vaidación``
+"nombre_servidor"/articulo/Lista-de-especiales/?slug=nombre-articulo``
+"nombre_servidor"/articulo/Lista-de-especiales/?idrevista=identificador-de-la-revista``
+"nombre_servidor"/articulo/Lista-de-especiales/?idcategoria=identificador-de-la-categoria``
+"nombre_servidor"/articulo/Lista-de-especiales/?idsubcategoria=identificador-de-la-subcategoria``
+"nombre_servidor"/articulo/Lista-de-especiales/?portada=False-o-True(deben ser escritos de esta forma)``
+"nombre_servidor"/articulo/Lista-de-especiales/?status=Publicado-o-No%20Publicado(deben ser escritos de esta forma)``
 ```
-
-### `Consulta de artículos`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar los articulos especiales por su categoria, subcategria, revista de origen, su slug o su fecha de finalizacion.
-(recuerda que idrevista es el identificador de cada revista, idcategoria es el identificador de la categoria de ese articulo, idsubcategoria es el identificadr de la subcategoria a la que pertenece el articulo, slug es el titulo del articulo validado como slug, fin es la fecha hasta la cual durara el articulo)
+### `Registro de articulo`
+Para hacer una consulta en la cual se podran revisar los datos de los articulos y ademas el ingreso de nuevos articulos, en esta API se pueden filtrar por el id de cada articulo donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/articulo/registros-de-articulos/?idrevista=identificador_de_la_revista``
-http://localhost:8000/articulo/registros-de-articulos/?idcategoria=identificador_de_la_categoria``
-http://localhost:8000/articulo/registros-de-articulos/?idsubcategoria=identificador_de_la_subcategoria``
-http://localhost:8000/articulo/registros-de-articulos/?slug=slug_de_titulo``
-http://localhost:8000/articulo/registros-de-articulos/?fin=fecha_limite_de_publicacion``
+"nombre_servidor"/articulo/Registro-de-articulos/identificador_del_articulo/``
 ```
-
+### `Registro de iconos`
+Para hacer una consulta en la cual se podran revisar los datos de los iconos y ademas el ingreso de nuevos iconos, en esta API se pueden filtrar por el id de cada icono donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/articulo/Registro-de-iconos/identificador_del_icono/``
+```
+_________________________________________________________________________________________________________
+## cotizador 
+### `Registro de cotizaciones`
+Para hacer una consulta en la cual se podran revisar los datos de ls cotizaciones y ademas el ingreso de nuevas cotizaciones, en esta API se pueden filtrar por el id de cada cotizacion donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/cotizacion/Registro-de-cotizaciones/identificador_de_cotizacion/``
+```
+_________________________________________________________________________________________________________
+## patrocinadores
+### `Lista de patrocinadores`
+Para hacer una consulta en la cual solo se podran saber los datos de los patrocinadores, se pueden filtrar estos patrocinadores con varios criterios como son su identificados y el identificador de la revista a la que pertenece, para ello debera ingresar en la siguiente url, (recuerda que id patrocinador se utilizara en base a su identificador, idrevista se utilizara en base a el identificador de la revista.
+```
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idrevista=identificador-de-la-revista-de-pertenencia``
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idpatrocinador=identificador-del-patrocinador``
+```
+### `Registro de patrocinadores`
+Para hacer una consulta en la cual se podran revisar los datos de los patrocinadores y ademas el ingreso de nuevos patrocinadores, en esta API se pueden filtrar por el id de cada patrocinador donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/patrocinadores/Registro-de-Patrocinadores/identificador_del_articulo/``
+```
+_________________________________________________________________________________________________________
+## planrevista
+### `Lista de contratos`
+Para hacer una consulta en la cual solo se podran saber los datos de los contratos, se pueden filtrar estos contratos con varios criterios como son su identificador, el identificador de la revista a la que pertenece, el identificador de la forma de pago(idpago), la fecha en la que inicio su contrato(inicio), para ello debera ingresar en la siguiente url, (recuerda que id del contrato se utilizara en base a su identificador, idrevista se utilizara en base a el identificador de la revista, idpago en base a el identificador de la forma de pago seleccionada y inicio en base a la fecha en la que inicio su contrato con el formato aaaa/mm/dd)
+```
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idcontrato=identificador-del-contrato``
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idrevista=identificador-de-la-revista-de-pertenencia``
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idpago=identificador-forma-de-pago``
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?inicio=fecha-de-inicio-de-contrato``
+```
 ### `Registro de planes`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar los planes por su identificador
-(recuerda que idplan es el identificador de cada plan creado)
+Para hacer una consulta en la cual se podran revisar los datos de los planes y ademas el ingreso de nuevos planes, en esta API se pueden filtrar por el id de cada plan donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/planes/registro-de-planes/?idplan=identificador_del_plan``
+"nombre_servidor"/planes/Registro-de-planes/identificador_del_plan/``
 ```
-
 ### `Registro de formas de pago`
+Para hacer una consulta en la cual se podran revisar los datos de las formas de pago y ademas el ingreso de nuevas formas de pago, en esta API se pueden filtrar por el id de cada forma de pago donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/planes/registro-de-formas-de-pago/``
+"nombre_servidor"/planes/Registro-de-formas-de-pago/identificador_de_la_forma_de_pago/``
 ```
-
-### `Consulta de Contratos`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar los contratos por su identificador, el identificador de la revista, el identificador de la forma de pago y la fecha en la que se inicio el contrato
-(recuerda que idcontrato es el identificador de cada contrato, idrevista es el identificador de la revista a la que pertence el contrato, idpago es el identificador de la forma de pago establecida en el contrato, inicio es la fecha en la cual comenzara a correr el contrato)
+### `Registro de contratos`
+Para hacer una consulta en la cual se podran revisar los datos de los contratos y ademas el ingreso de nuevos contratos, en esta API se pueden filtrar por el id de cada contrato donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
 ```
-http://localhost:8000/planes/registro-de-contratos/?idcontrato=identificador_de_contrato``
-http://localhost:8000/planes/registro-de-contratos/?idrevista=identificador_de_la_revista``
-http://localhost:8000/planes/registro-de-contratos/?idpago=identificador_de_la_forma_de_pago``
-http://localhost:8000/planes/registro-de-contratos/?inicio=fecha_de_inicio_de_contrato``
+"nombre_servidor"/planes/Registro-de-contratos/identificador_del_contrato/``
 ```
-
-### `Consulta de clientes`
-Debes entrar al siguiente endpoint:
-Dentro de este endpoint se pueden filtrar los clientes por su identificador o el identificador de la revista.
-(recuerda que idcliente es el identificador de cada cliente, idrevista es el identificador de la revista a la que pertence)
+_________________________________________________________________________________________________________
+## regiones
+### `Lista de estados`
+Para hacer una consulta en la cual solo se podran saber los datos de los estados, se pueden filtrar estos estados con varios criterios como son su identificador, el identificador del pais al que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence).
 ```
-http://localhost:8000/clientes/registros-de-clientes/?idcliente=identifiacador_de_cliente``
-http://localhost:8000/clientes/registros-de-clientes/?idrevista=identificador_de_la_revista``
+"nombre_servidor"/regiones/Lista-de-estados/?idestado=identificador-del-estado``
+"nombre_servidor"/regiones/Lista-de-estados/?idpais=identificador-del-pais-de-pertenencia``
 ```
-
+### `Lista de ciudades`
+Para hacer una consulta en la cual solo se podran saber los datos de las ciudades, se pueden filtrar estas ciudades con varios criterios como son su identificador, el identificador del estado al que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idciudad se utilizara en base a su identificador, idestado se utilizara en base al identificador del estado al que pertence).
+```
+"nombre_servidor"/regiones/Lista-de-ciudades/?idciudad=identificador-de-la-ciudad``
+"nombre_servidor"/regiones/Lista-de-ciudades/?idestado=identificador-del-estado-de-pertenencia``
+```
+### `Registro de ciudades`
+Para hacer una consulta en la cual se podran revisar los datos de las ciudades y ademas el ingreso de nuevas ciudades, en esta API se pueden filtrar por el id de cada ciudad donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/regiones/Registro-de-ciudades/identificador_de_la_ciudad/``
+```
+### `Registro de estados
+Para hacer una consulta en la cual se podran revisar los datos de los estados y ademas el ingreso de nuevos estados, en esta API se pueden filtrar por el id de cada estado donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/regiones/Registro-de-estados/identificador_del_estado/``
+```
+### `Registro de paises`
+Para hacer una consulta en la cual se podran revisar los datos de los paises y ademas el ingreso de nuevos paises, en esta API se pueden filtrar por el id de cada pais donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/regiones/Registro-de-paises/identificador_del_pais/``
+```
+_________________________________________________________________________________________________________
+## revista
+### `Lista de revistas`
+Para hacer una consulta en la cual solo se podran saber los datos de las revistas, se pueden filtrar estas revistas con varios criterios como son su identificador, el identificador del pais al que pertenece, el identificador del estado al que pertenece, el identificador de la ciudad a la que pertenece, el identificador del plan contratado por la revista, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence).
+```
+"nombre_servidor"/revista/Lista-de-revista/?idrevista=identificador-de-la-revista``
+"nombre_servidor"/revista/Lista-de-revista/?idpais=identificador-del-pais``
+"nombre_servidor"/revista/Lista-de-revista/?idestado=identificador-del-estado``
+"nombre_servidor"/revista/Lista-de-revista/?idciudad=identificador-de-la-ciudad``
+"nombre_servidor"/revista/Lista-de-revista/?idplan=identificador-del-plan``
+```
+### `Lista de categorias`
+Para hacer una consulta en la cual solo se podran saber los datos de las categorias, se pueden filtrar estas categorias con varios criterios como son su identificador, el identificador de la revista a la que pertenece, para ello debera ingresar en la siguiente url, (recuerda que idcategoria se utilizara en base a su identificador, idrevista se utilizara en base al identificador de la revista a la que pertence).
+```
+"nombre_servidor"/revista/Lista-de-categoria/?idcategoria=identificador-de-la-categria``
+"nombre_servidor"/revista/Lista-de-categoria/?idrevista=identificador-de-la-revista-de-pertenencia``
+```
+### `Lista de subcategorias`
+Para hacer una consulta en la cual solo se podran saber los datos de las subcategorias, se pueden filtrar estas subcategorias con varios criterios como son su identificador, el identificador de la categoria a la que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idsubcategoria se utilizara en base a su identificador, idcategoria se utilizara en base al identificador de la categoria a la que pertence).
+```
+"nombre_servidor"/revista/Lista-de-subcategorias/?idsubcategoria=identificador-de-la-subcategoria``
+"nombre_servidor"/revista/Lista-de-subcategorias/?idcategoria=identificador-de-la-categoria``
+```
+### `Registro de revistas`
+Para hacer una consulta en la cual se podran revisar los datos de las revistas y ademas el ingreso de nuevas revistas, en esta API se pueden filtrar por el id de cada revista donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/revista/Registro-de-revistas/identificador_de_la_revista/``
+```
+### `Registro de categorias
+Para hacer una consulta en la cual se podran revisar los datos de las categorias y ademas el ingreso de nuevas categorias, en esta API se pueden filtrar por el id de cada categoria donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/revista/Registro-de-categorias/identificador_de_la_categoria/``
+```
+### `Registro de subcategorias
+Para hacer una consulta en la cual se podran revisar los datos de las subcategorias y ademas el ingreso de nuevas subcategorias, en esta API se pueden filtrar por el id de cada subcategoria donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/revista/Registro-de-subcategorias/identificador_de_la_subcategoria/``
+```
+_________________________________________________________________________________________________________
+## publicos
 ### `Endpoints públicos`
-Debes entrar al siguiente endpoint:
-Dentro de estos endpoint se pueden filtrar de la misma manera que en los endpoints originales.
+Estos endpoints son solo de consulta en los cuales se habilitaran los modulos de reelevancia que no contengan informacion sensible de modo consulta, estos endpoint se pueden filtrar de la misma manera que en los endpoints originales.
 Cada endpoint tiene nombres relacionados con lo que hace cada uno.
 (recuerda que cada tipo de endpoint tiene caracteristicas de filtrado diferentes)
 ```
-http://localhost:8000/publicos``
+"nombre_servidor"/publicos``
 ```

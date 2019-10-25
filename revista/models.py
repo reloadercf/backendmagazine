@@ -2,8 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Categorias(models.Model):
-    nombre_categoria        =   models.CharField(max_length=80)
-    revista_origen          =   models.ForeignKey("revista.Revista", related_name="cat_revista", on_delete=models.CASCADE)
+    nombre_categoria    =   models.CharField(max_length=80)
+    revista_origen      =   models.ForeignKey("revista.Revista", related_name='cat_revista', on_delete=models.CASCADE)
+    icono               =   models.ForeignKey("revista.Icon", related_name='cat_icon', on_delete=models.CASCADE, blank=True, null=True)
     def __str__(self):
         return self.nombre_categoria 
     
@@ -14,7 +15,7 @@ class Revista(models.Model):
     country                 =   models.ForeignKey('regiones.Region', related_name='revista_pais', on_delete=models.CASCADE, blank=True, null=True)
     state                   =   models.ForeignKey('regiones.Subregion', related_name='revista_estado', on_delete=models.CASCADE,blank=True, null=True)
     city                    =   models.ForeignKey('regiones.Ciudad', related_name='revista_ciudad', on_delete=models.CASCADE,blank=True, null=True)
-    plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE,blank=True, null=True)
+    plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre_revista
@@ -24,3 +25,9 @@ class Subcategorias(models.Model):
     categoria               =   models.ForeignKey("revista.Categorias", related_name="categoria_sub", on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre_subcategoria 
+
+class Icon(models.Model):
+    nombre      =   models.CharField(max_length=200)
+    relacion    =   models.CharField(max_length=200)
+    def __str__(self):
+        return self.nombre

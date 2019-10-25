@@ -14,13 +14,7 @@ video_choice=(
     ("vimeo","vimeo"),
     ("sin video","sin video")
 )
-llamadas=(
-    ("Contactar","Contactar"),
-    ("Visitar","Visitar"),
-    ("Compar","Comprar"),
-    ("Llamar","Llamar"),
-    ("Sinllamada","Sinllamada")
-)
+
 
 class Articulo(models.Model):
     titulo                  =   models.CharField(max_length=150)
@@ -28,31 +22,15 @@ class Articulo(models.Model):
     origen_revista          =   models.ForeignKey("revista.Revista", related_name='art_revista', on_delete=models.CASCADE)
     categoria               =   models.ForeignKey("revista.Categorias", related_name='art_cat', on_delete=models.CASCADE)
     subcategoria            =   models.ForeignKey("revista.Subcategorias", related_name='art_subcat', on_delete=models.CASCADE)   
-    imagen_destacada_uno    =   models.URLField( max_length=200)
+    imagen                  =   models.TextField()
     redactado_por           =   models.CharField(default="Equipo MX OPPORTUNITY",max_length=300,null=True,blank=True)
     status                  =   models.CharField(choices=status_articulo_choice,default="Publicado", max_length=50)
-    cuerpo_uno              =   models.TextField(null=False,blank=False)
-    imagen_destacada_dos    =   models.URLField( max_length=200)
-    cuerpo_dos              =   models.TextField(null=True,blank=True)
-    video_tipo              =   models.CharField(choices=video_choice, default="sin video", max_length=50)
-    urlvideo                =   models.URLField(blank=True,null=True)
-    llamada_accion_uno      =   models.CharField(max_length=50,null=True,blank=True)
-    icon1                   =   models.ForeignKey('articulos.Icon', related_name='call1_icon', on_delete=models.CASCADE)
-    imagen_llamada_uno      =   models.URLField( max_length=200)
-    llamada_per_uno         =   models.CharField(max_length=50,null=True,blank=True)
-    url_llamada_uno         =   models.TextField(null=True,blank=True)
-    llamada_accion_dos      =   models.CharField(max_length=50,null=True,blank=True)
-    icon2                   =   models.ForeignKey('articulos.Icon', related_name='call2_icon', on_delete=models.CASCADE)
-    imagen_llamada_dos      =   models.URLField( max_length=200)
-    llamada_per_dos	        =   models.CharField(max_length=50,null=True,blank=True)
-    url_llamada_dos         =   models.TextField(null=True,blank=True)
     cortesia_de             =   models.CharField(max_length=300,null=True,blank=True)
     fecha_mostrada          =   models.DateField(blank=False,null=False)
     fecha_publicacion       =   models.DateTimeField(blank=False,null=False)
     fecha_fin               =   models.DateField(blank=False,null=False)
     fecha_creacion          =   models.DateTimeField(auto_now_add=True)
     fecha_modificacion      =   models.DateTimeField(auto_now=True)
-    patrocinador            =   models.ForeignKey("patrocinadores.Patrocinador", related_name='pat_articulo', on_delete=models.CASCADE)
     slug                    =   models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
@@ -73,10 +51,3 @@ def pre_save_articulo(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(pre_save_articulo, sender=Articulo)
-
-
-class Icon(models.Model):
-    nombre      =   models.CharField(max_length=200)
-    relacion    =   models.CharField(max_length=200)
-    def __str__(self):
-        return self.nombre

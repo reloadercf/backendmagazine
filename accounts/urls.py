@@ -6,6 +6,8 @@ from django.conf import settings
 from .views import *
 
 router = routers.DefaultRouter()
+#vista de permisos
+router.register('Lista-de-permisos',PermissionViewSet)
 #vista de usuarios con datos de perfil
 router.register('Lista-de-usuarios',ProfileViewSet)
 #CRUD de usuarios

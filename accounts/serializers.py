@@ -46,6 +46,12 @@ class PermissionSerializer(serializers.ModelSerializer):
         model = Permission
         fields = ['id', 'codename']
 
+#Serializador para sacar los datos completos de los permisos de usuario
+class PermissionCSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permission
+        fields = '__all__'
+
 #Serializador para sacar los datos completos del usuario(Lista)
 class UserSerializer(serializers.ModelSerializer):
 	user_permissions= PermissionSerializer(many=True)
@@ -56,7 +62,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 #Serializador para crear el perfil de usuario(Registro)
 class POSTUserSerializer(serializers.ModelSerializer):
-	profile_user	=	ProfileSerializer(many=False, read_only=True)
+	profile_user	=	ProfileSerializer(read_only=True)
 	password 		=	serializers.CharField(write_only=True)
 	class Meta:
 		model 	= 	User
@@ -76,11 +82,11 @@ class SerializerWithoutPasswordField(serializers.ModelSerializer):
     class Meta:
         model=User
         fields = [ 'username', 'first_name', 'last_name', 'email', 'user_permissions', 'is_active','profile_user']
-    def update(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    #def update(self, request, *args, **kwargs):
+    #    serializer = self.serializer_class(data=request.data, partial=True)
+    #    serializer.is_valid(raise_exception=True)
+    #    serializer.save()
+    #    return Response(serializer.data, status=status.HTTP_200_OK)
 
 #Serializador para sacar los datos del tipo de usuario
 class TipoSerializer(serializers.ModelSerializer):

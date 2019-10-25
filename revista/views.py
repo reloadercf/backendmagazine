@@ -12,6 +12,7 @@ class RevistaViewSet(viewsets.ReadOnlyModelViewSet):
         plan    = self.request.GET.get('idplan')
         estado  = self.request.GET.get('idestado')
         pais    = self.request.GET.get('idpais')
+        ciudad  = self.request.GET.get('idciudad')  
         queryset_list = super(RevistaViewSet, self).get_queryset()
         if revista:
             queryset_list = queryset_list.filter(id=revista)
@@ -21,6 +22,8 @@ class RevistaViewSet(viewsets.ReadOnlyModelViewSet):
             queryset_list = queryset_list.filter(estado__id=estado)
         if pais:
             queryset_list = queryset_list.filter(pais__id=pais)
+        if ciudad:
+            queryset_list = queryset_list.filter(ciudad__id=ciudad)
         return queryset_list
 
 #vista de CRUD de revista
