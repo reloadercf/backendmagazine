@@ -36,7 +36,7 @@ class EspecialArticulo(serializers.ModelSerializer):
     subcategoria    =   NomSubcategoriaSerializer(many=False, read_only=True)
     class Meta:
         model       =   Articulo
-        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen_destacada_uno','status','fecha_fin']
+        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','status','fecha_fin']
 
 class CiudadSerializer(serializers.ModelSerializer):
     estado      =   NomSubregionSerializer(many=False, read_only=True)
