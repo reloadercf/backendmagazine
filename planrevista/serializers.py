@@ -1,6 +1,18 @@
 from rest_framework import serializers
 from .models import *
-from revista.serializers import RevistaPlanSerializer
+
+#serializador para sacar nombre de plan de la revista
+class NomPlanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   PlanRevista
+        fields  =   ['nombre']
+
+#serializador para sacar nombre de plan y de la revista
+class RevistaPlanSerializer(serializers.ModelSerializer):
+    plan    =   NomPlanSerializer(many=False, read_only=True)
+    class Meta:
+        model   =   Revista
+        fields  =   ['nombre_revista','plan']
 
 #serializador CRUD de planes
 class PlanSerializer(serializers.ModelSerializer):

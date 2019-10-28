@@ -6,9 +6,9 @@ from articulos.models import *
 from accounts.models import *
 from regiones.models import *
 from cotizador.models import *
-from revista.serializers import NomPlanSerializer, NomRevistaSerializer, RevistaPlanSerializer, NomCategoriaSerializer, NomSubcategoriaSerializer
+from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, NomSubcategoriaSerializer
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer 
-from planrevista.serializers import NomFormaPagoSerializer
+from planrevista.serializers import NomFormaPagoSerializer, RevistaPlanSerializer, NomPlanSerializer
 from accounts.serializers import ProfileSerializer
 
 class CategoriaSerializer(serializers.ModelSerializer):

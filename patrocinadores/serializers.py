@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from .models import Patrocinador
-from revista.serializers import NomRevistaSerializer, NomPlanSerializer
+from revista.serializers import NomPlanSerializer
+from articulos.serializers import NomRevistaSerializer
 from revista.models import Revista
-from planrevista.models import PlanRevista
 
 #serializador para el nombre del patrocinador
 class NomPatrocinadorSerializer(serializers.ModelSerializer):
@@ -26,3 +26,9 @@ class POSTPatrocinadorSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Patrocinador
         fields  =   '__all__'
+
+#serializador de datos para revista
+class DatosPatrocinadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Patrocinador
+        fields  =   ['nombre','activo','razonsocial','correo','telefono']
