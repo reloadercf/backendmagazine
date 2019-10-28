@@ -1,7 +1,18 @@
 from rest_framework import serializers
 from .models import Contenido
 from articulos.models import Articulo
-from articulos.serializers import NomArticuloSerializer
+
+#serializador para sacar nombre de los articulos
+class NomArticuloSerializer(serializers.ModelSerializer):
+    class Meta:
+        model       =   Articulo
+        fields      =   ['titulo']
+
+#serializador para sacar para serializador de articulos
+class DatosContenidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model       =   Contenido
+        fields      =   ['tipo','recurso','alt']
 
 #serializador para CRUD del modelo contenido
 class POSTContenidoSerializer(serializers.ModelSerializer):

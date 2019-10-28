@@ -7,9 +7,9 @@ from .views import *
 
 router = routers.DefaultRouter()
 #visualizacion de publicidades
-router.register('Lista-de-publicidades',PublicidadViewSet)
+router.register('Lista-de-Publicidades',PublicidadViewSet)
 #CRUD de publicidades
-router.register('Registro-de-publicidad',POSTPublicidadViewSet)
+router.register('Registro-de-Publicidad',POSTPublicidadViewSet)
 
 publicidad = [
     url('publicidad/', include(router.urls)),

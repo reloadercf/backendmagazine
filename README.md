@@ -25,7 +25,7 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/accounts/Resgistro-de-tipo_usuario/identificador_del_tipo_de_usuario/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
 ## articulos
 ### `Lista de articulos`
 Para hacer una consulta en la cual solo se podran saber los datos de los articulos, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug o la fecha en la que se termina el articulo(fin), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, fin se utiliza en base a la fecha en la cual se usara el formato aaaa-mm-dd).
@@ -58,7 +58,22 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/articulo/Registro-de-iconos/identificador_del_icono/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
+## contenido
+### `Lista de Contenidos`
+Para hacer una consulta en la cual solo se podran saber los datos de los contenidos, se pueden filtrar estos contenidos con varios criterios como son su identificador, el identificador del articulo al que pertenece o el tipo de contenido que es, para ello debera ingresar en la siguiente url, (recuerda que idcontenido se utilizara en base a su identificador, idarticulo se utilizara en base a el identificador del articulo al que pertenece dicho contenido y tipo pertenece a la seleccion hecha a traves del choice (Texto,Video,Imagen,Publicidad)).
+```
+"nombre_servidor"/contenido/Lista-de-Contenidos/?idarticulo=identificador-del-articulo``
+"nombre_servidor"/contenido/Lista-de-Contenidos/?idcontenido=identificador-del-contenido``
+"nombre_servidor"/contenido/Lista-de-Contenidos/?tipo=Texto o Video o Imagen o Publicidad``
+```
+### `Registro de Contenidos`
+Para hacer una consulta en la cual se podran revisar los datos de los contenidos y ademas el ingreso de nuevos contenidos, en esta API se pueden filtrar por el id de cada publicidad donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/contenido/Registro-de-Contenidos/identificador_del_contenido/``
+```
+_____________________________________________________________________________________________________
 ## cotizador 
 ### `Registro de cotizaciones`
 Para hacer una consulta en la cual se podran revisar los datos de ls cotizaciones y ademas el ingreso de nuevas cotizaciones, en esta API se pueden filtrar por el id de cada cotizacion donde nos permitira hacer modificaciones y/o eliminaciones.
@@ -66,7 +81,7 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/cotizacion/Registro-de-cotizaciones/identificador_de_cotizacion/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
 ## patrocinadores
 ### `Lista de patrocinadores`
 Para hacer una consulta en la cual solo se podran saber los datos de los patrocinadores, se pueden filtrar estos patrocinadores con varios criterios como son su identificados y el identificador de la revista a la que pertenece, para ello debera ingresar en la siguiente url, (recuerda que id patrocinador se utilizara en base a su identificador, idrevista se utilizara en base a el identificador de la revista.
@@ -80,7 +95,7 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/patrocinadores/Registro-de-Patrocinadores/identificador_del_articulo/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
 ## planrevista
 ### `Lista de contratos`
 Para hacer una consulta en la cual solo se podran saber los datos de los contratos, se pueden filtrar estos contratos con varios criterios como son su identificador, el identificador de la revista a la que pertenece, el identificador de la forma de pago(idpago), la fecha en la que inicio su contrato(inicio), para ello debera ingresar en la siguiente url, (recuerda que id del contrato se utilizara en base a su identificador, idrevista se utilizara en base a el identificador de la revista, idpago en base a el identificador de la forma de pago seleccionada y inicio en base a la fecha en la que inicio su contrato con el formato aaaa/mm/dd)
@@ -108,7 +123,21 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/planes/Registro-de-contratos/identificador_del_contrato/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
+## publicidad
+### `Lista de publicidades`
+Para hacer una consulta en la cual solo se podran saber los datos de las publicidades, se pueden filtrar estas publicidades con varios criterios como son su identificador o el identificador del patrocinador al que pertenece, para ello debera ingresar en la siguiente url, (recuerda que idpublicidad de la publicidad se utilizara en base a su identificador y idpatrocinador se utilizara en base a el identificador del patrocinador al que pertenece dicha publicidad).
+```
+"nombre_servidor"/publicidad/Lista-de-Publicidades/?idpublicidad=identificador-de-la-publicidad``
+"nombre_servidor"/publicidad/Lista-de-Publicidades/?idpatrocinador=identificador-del-patrocinador``
+```
+### `Registro de contratos`
+Para hacer una consulta en la cual se podran revisar los datos de las publicidades y ademas el ingreso de nuevas publicidades, en esta API se pueden filtrar por el id de cada publicidad donde nos permitira hacer modificaciones y/o eliminaciones.
+Para ello deberan ingresar a la siguiente url:
+```
+"nombre_servidor"/publicidad/Registro-de-Publicidad/identificador_de_la_publicidad/``
+```
+_____________________________________________________________________________________________________
 ## regiones
 ### `Lista de estados`
 Para hacer una consulta en la cual solo se podran saber los datos de los estados, se pueden filtrar estos estados con varios criterios como son su identificador, el identificador del pais al que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence).
@@ -140,7 +169,7 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/regiones/Registro-de-paises/identificador_del_pais/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
 ## revista
 ### `Lista de revistas`
 Para hacer una consulta en la cual solo se podran saber los datos de las revistas, se pueden filtrar estas revistas con varios criterios como son su identificador, el identificador del pais al que pertenece, el identificador del estado al que pertenece, el identificador de la ciudad a la que pertenece, el identificador del plan contratado por la revista, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence).
@@ -181,7 +210,7 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/revista/Registro-de-subcategorias/identificador_de_la_subcategoria/``
 ```
-_________________________________________________________________________________________________________
+_____________________________________________________________________________________________________
 ## publicos
 ### `Endpoints públicos`
 Estos endpoints son solo de consulta en los cuales se habilitaran los modulos de reelevancia que no contengan informacion sensible de modo consulta, estos endpoint se pueden filtrar de la misma manera que en los endpoints originales.

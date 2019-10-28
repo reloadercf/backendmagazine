@@ -4,21 +4,17 @@ from revista.serializers import NomCategoriaSerializer, NomRevistaSerializer, No
 from revista.models import *
 from patrocinadores.models import Patrocinador
 from patrocinadores.serializers import NomPatrocinadorSerializer
+from contenido.serializers import DatosContenidoSerializer
 
 #serializador para sacar datos de los articulos
 class ArticuloSerializer(serializers.ModelSerializer):
     origen_revista  =   NomRevistaSerializer(many=False, read_only=True)
     categoria       =   NomCategoriaSerializer(many=False, read_only=True)
     subcategoria    =   NomSubcategoriaSerializer(many=False, read_only=True)
+    con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
         fields      =   '__all__'
-
-#serializador para sacar nombre de los articulos
-class NomArticuloSerializer(serializers.ModelSerializer):
-    class Meta:
-        model       =   Articulo
-        fields      =   ['titulo']
 
 #serializador para CRUD de articulos
 class POSTArticuloSerializer(serializers.ModelSerializer):
@@ -43,6 +39,7 @@ class EspecialArticuloSerializer(serializers.ModelSerializer):
     origen_revista  =   NomRevistaSerializer(many=False, read_only=True)
     categoria       =   NomCategoriaSerializer(many=False, read_only=True)
     subcategoria    =   NomSubcategoriaSerializer(many=False, read_only=True)
+    con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
-        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','status','fecha_fin']
+        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','con_art','status','fecha_fin']
