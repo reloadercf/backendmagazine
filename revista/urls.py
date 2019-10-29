@@ -18,6 +18,8 @@ router.register('Lista-de-categoria',CategoriaRevistaViewSet)
 router.register('Registro-de-subcategorias',POSTSubcategoriaRevistaViewSet)
 #Visualizacion de datos de subcategori
 router.register('Lista-de-subcategorias',SubcategoriaRevistaViewSet)
+#Visualizacion CRUD de iconos
+router.register('Registro-de-iconos',IconViewSet)
 
 revista = [
     url('revista/', include(router.urls)),

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from .serializers import *
 from rest_framework import viewsets
+from django.db.models import Q
 
 #vista CRUD de planes
 class PlanViewSet(viewsets.ModelViewSet):

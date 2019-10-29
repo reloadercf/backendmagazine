@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Categorias,Revista, Subcategorias
+from .models import Categorias,Revista, Subcategorias, Icon
 from planrevista.serializers import NomPlanSerializer
 from planrevista.models import PlanRevista
 from patrocinadores.serializers import DatosPatrocinadorSerializer
@@ -75,3 +75,8 @@ class POSTSubcategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   Subcategorias
         fields  =   '__all__'
+
+class IconSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Icon
+        fields ='__all__'

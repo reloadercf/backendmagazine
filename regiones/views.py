@@ -2,15 +2,21 @@ from django.shortcuts import render
 from .models import *
 from .serializers import *
 from rest_framework import viewsets
+from django.db.models import Q
 
 #vista de datos de estados
 class EstadoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset            =   Subregion.objects.all()
     serializer_class    =   SubregionSerializer
     def get_queryset(self, *args, **kwargs):
-        estado=self.request.GET.get('idestado')
-        pais=self.request.GET.get('idpais')
+        estado  =   self.request.GET.get('idestado')
+        pais    =   self.request.GET.get('idpais')
+        nombre  =   self.request.GET.get('nombre')
         queryset_list=super(EstadoViewSet, self).get_queryset()
+        if nombre:
+            queryset_list = queryset_list.filter(
+				Q(nombre_estado__contains=nombre)
+            )
         if pais:
             queryset_list=queryset_list.filter(pais__id=pais)
         if estado:
@@ -29,7 +35,12 @@ class CiudadViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self, *args, **kwargs):
         ciudad=self.request.GET.get('idciudad')
         estado=self.request.GET.get('idestado')
+        nombre  =   self.request.GET.get('nombre')
         queryset_list=super(CiudadViewSet, self).get_queryset()
+        if nombre:
+            queryset_list = queryset_list.filter(
+				Q(nombre_ciudad__contains=nombre)
+            )
         if ciudad:
             queryset_list=queryset_list.filter(id=ciudad)
         if estado:
