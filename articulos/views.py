@@ -17,7 +17,7 @@ class ArticuloViewSet(viewsets.ReadOnlyModelViewSet):
         origen_revista  =   self.request.GET.get("idrevista")
         titulo          =   self.request.GET.get("slug")
         fin             =   self.request.GET.get("fin")
-        nombre          =   self.request.GET.get('nombre')
+        nombre          =   self.request.GET.get('titulo')
         queryset_list = super(ArticuloViewSet, self).get_queryset()
         if nombre:
             queryset_list = queryset_list.filter(
@@ -42,7 +42,7 @@ class POSTArticuloViewSet(viewsets.ModelViewSet):
 
 #vista para visualizacion de datos de articulos especiales
 class EspecialArticuloViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Articulo.objects.all()
+    queryset = Articulo.objects.all().order_by('-fecha_publicacion')
     serializer_class = EspecialArticuloSerializer
     def get_queryset(self,*args,**kwargs):
         categoria       =       self.request.GET.get("idcategoria")
@@ -51,7 +51,12 @@ class EspecialArticuloViewSet(viewsets.ReadOnlyModelViewSet):
         titulo          =       self.request.GET.get("slug")
         portada         =       self.request.GET.get("portada")
         status          =       self.request.GET.get("status")
+        nombre          =   self.request.GET.get('titulo')
         queryset_list = super(EspecialArticuloViewSet, self).get_queryset()
+        if nombre:
+            queryset_list = queryset_list.filter(
+				Q(titulo__contains=nombre)
+            )
         if categoria:
             queryset_list = queryset_list.filter(categoria=categoria)
         if subcategoria:
