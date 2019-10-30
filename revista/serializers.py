@@ -7,6 +7,7 @@ from regiones.serializers import NomRegionSerializer, NomSubregionSerializer, No
 from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, DatosArticuloSerializer
 from regiones.models import *
 from accounts.models import Profile
+from django.core.paginator import Paginator
 
 #serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
@@ -14,11 +15,24 @@ class RevistaSerializer(serializers.ModelSerializer):
     country     =   NomRegionSerializer(many=False, read_only=True)
     state       =   NomSubregionSerializer(many=False, read_only=True)
     city        =   NomCiudadSerializer(many=False, read_only=True)
-    art_revista =   DatosArticuloSerializer(many=True, read_only=True)
-    pat_revista =   DatosPatrocinadorSerializer(many=True, read_only=True)
+    art_revista =   serializers.SerializerMethodField('paginated_art') #forma de definir paginacion a un atributo
+    pat_revista =   serializers.SerializerMethodField('paginated_pat') #forma de definir paginacion a un atributo
     class Meta:
         model   =   Revista
         fields  =   '__all__'
+#funcion para paginar la cantidad de articulos de la revista
+    def paginated_art(self, obj): 
+        paginator = Paginator(obj.art_revista.all(), 2) #pagina los objetos y la cantidad a mostrar
+        art_rev = paginator.page(1) #señala a donde se guardara y que pagina
+        serializer = DatosArticuloSerializer(art_rev, many=True) #toma el serializador para paginar
+        return serializer.data
+
+#funcion para paginar la cantidad de patrocinadores de la revista
+    def paginated_pat(self, obj):
+        paginator = Paginator(obj.pat_revista.all(), 2) #pagina los objetos y la cantidad a mostrar
+        pat_rev = paginator.page(1) #señala a donde se guardara y que pagina
+        serializer = DatosPatrocinadorSerializer(pat_rev, many=True) #toma el serializador para paginar
+        return serializer.data
 
 #serializador CRUD de revista
 class POSTRevistaSerializer(serializers.ModelSerializer):
