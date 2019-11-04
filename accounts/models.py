@@ -51,6 +51,6 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class TipoUsuario(models.Model):
     nombre      =   models.CharField(max_length=100)
-    descripcion =   models.CharField(max_length=200)
+    descripcion =   models.TextField()
     def __str__(self):
         return self.nombre

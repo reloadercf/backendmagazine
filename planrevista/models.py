@@ -6,6 +6,7 @@ class PlanRevista(models.Model):
     no_usuarios                 =   models.CharField(max_length=5)
     no_patrocinadores           =   models.CharField(max_length=5)
     no_publicaciones_mensual    =   models.CharField(max_length=5)
+    costo                       =   models.DecimalField(decimal_places=4, max_digits=10)
     def __str__(self):
         return self.nombre
 

@@ -3,7 +3,6 @@ from revista.models import Revista
 from .utils import unique_slug_generator
 from django.db.models.signals import pre_save, post_save
 
-# Create your models here.
 #los choices
 status_articulo_choice =(
     ("Publicado","Publicado"),
@@ -24,9 +23,8 @@ class Articulo(models.Model):
     subcategoria            =   models.ForeignKey("revista.Subcategorias", related_name='art_subcat', on_delete=models.CASCADE)   
     imagen                  =   models.TextField()
     redactado_por           =   models.CharField(default="Equipo MX OPPORTUNITY",max_length=300,null=True,blank=True)
-    status                  =   models.CharField(choices=status_articulo_choice,default="Publicado", max_length=50)
+    status                  =   models.BooleanField(default=False)
     cortesia_de             =   models.CharField(max_length=300,null=True,blank=True)
-    fecha_mostrada          =   models.DateField(blank=False,null=False)
     fecha_publicacion       =   models.DateTimeField(blank=False,null=False)
     fecha_fin               =   models.DateField(blank=False,null=False)
     fecha_creacion          =   models.DateTimeField(auto_now_add=True)

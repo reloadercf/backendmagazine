@@ -28,6 +28,6 @@ class Subcategorias(models.Model):
 
 class Icon(models.Model):
     nombre      =   models.CharField(max_length=200)
-    relacion    =   models.CharField(max_length=200)
+    relacion    =   models.TextField()
     def __str__(self):
         return self.nombre

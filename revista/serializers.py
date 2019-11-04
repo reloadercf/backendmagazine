@@ -26,11 +26,10 @@ class RevistaSerializer(serializers.ModelSerializer):
         art_rev = paginator.page(1) #señala a donde se guardara y que pagina
         serializer = DatosArticuloSerializer(art_rev, many=True) #toma el serializador para paginar
         return serializer.data
-
 #funcion para paginar la cantidad de patrocinadores de la revista
     def paginated_pat(self, obj):
-        paginator = Paginator(obj.pat_revista.all(), 2) #pagina los objetos y la cantidad a mostrar
-        pat_rev = paginator.page(1) #señala a donde se guardara y que pagina
+        paginator = Paginator(obj.pat_revista.all(), 1) #pagina los objetos y la cantidad a mostrar
+        pat_rev = paginator.page(2) #señala a donde se guardara y que pagina
         serializer = DatosPatrocinadorSerializer(pat_rev, many=True) #toma el serializador para paginar
         return serializer.data
 
