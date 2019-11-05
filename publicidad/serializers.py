@@ -15,7 +15,7 @@ class POSTPublicidadSerializer(serializers.ModelSerializer):
 
 #serializador para sacar datos de publicidad
 class PublicidadSerializer(serializers.ModelSerializer):
-    Patrocinador    =   NomPatrocinadorSerializer(read_only=True)
+    patrocinador    =   NomPatrocinadorSerializer(read_only=True)
     class Meta:
         model       =   Publicidad
         fields      =   '__all__'

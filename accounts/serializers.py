@@ -2,7 +2,7 @@ from .models import Profile, TipoUsuario
 from django.contrib.auth.models import User, Permission
 from rest_framework import serializers
 from revista.serializers import *
-from revista.serializers import RevistaSerializer,NomRevistaSerializer
+from revista.serializers import RevistaSerializer
 from revista.models import Revista
 
 #Serializador para sacar el nombre del tipo de usuario
