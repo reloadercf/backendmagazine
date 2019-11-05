@@ -7,7 +7,7 @@ from regiones.serializers import NomRegionSerializer, NomSubregionSerializer, No
 from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, DatosArticuloSerializer
 from regiones.models import *
 from accounts.models import Profile
-from django.core.paginator import Paginator
+#from django.core.paginator import Paginator
 
 #serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
