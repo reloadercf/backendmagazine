@@ -58,7 +58,7 @@ class EspecialArticuloSerializer(serializers.ModelSerializer):
     con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
-        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','con_art','status','fecha_fin']
+        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','con_art','publicado','fecha_fin']
     
 #serializador de sacar datos para revista
 class DatosArticuloSerializer(serializers.ModelSerializer):
@@ -67,4 +67,4 @@ class DatosArticuloSerializer(serializers.ModelSerializer):
     con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
-        fields      =   ['titulo','en_portada','categoria','subcategoria','imagen','con_art','redactado_por','status','cortesia_de','fecha_mostrada','fecha_publicacion','fecha_fin','fecha_creacion','fecha_modificacion','slug']
+        fields      =   ['titulo','en_portada','categoria','subcategoria','imagen','con_art','redactado_por','publicado','cortesia_de','fecha_publicacion','fecha_fin','fecha_creacion','fecha_modificacion','slug']

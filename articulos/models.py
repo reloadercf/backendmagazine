@@ -23,7 +23,7 @@ class Articulo(models.Model):
     subcategoria            =   models.ForeignKey("revista.Subcategorias", related_name='art_subcat', on_delete=models.CASCADE)   
     imagen                  =   models.TextField()
     redactado_por           =   models.CharField(default="Equipo MX OPPORTUNITY",max_length=300,null=True,blank=True)
-    status                  =   models.BooleanField(default=False)
+    publicado               =   models.BooleanField(default=False)
     cortesia_de             =   models.CharField(max_length=300,null=True,blank=True)
     fecha_publicacion       =   models.DateTimeField(blank=False,null=False)
     fecha_fin               =   models.DateField(blank=False,null=False)
