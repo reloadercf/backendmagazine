@@ -10,6 +10,7 @@ from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, 
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer 
 from planrevista.serializers import NomFormaPagoSerializer, RevistaPlanSerializer, NomPlanSerializer
 from accounts.serializers import ProfileSerializer
+from contenido.serializers import DatosContenidoSerializer
 
 class CategoriaSerializer(serializers.ModelSerializer):
     revista_origen  =   NomRevistaSerializer(read_only=True)
@@ -26,6 +27,7 @@ class ArticuloSerializer(serializers.ModelSerializer):
     origen_revista  =   NomRevistaSerializer(many=False, read_only=True)
     categoria       =   NomCategoriaSerializer(many=False, read_only=True)
     subcategoria    =   NomSubcategoriaSerializer(many=False, read_only=True)
+    con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
         fields      =   '__all__'
@@ -34,6 +36,7 @@ class EspecialArticulo(serializers.ModelSerializer):
     origen_revista  =   NomRevistaSerializer(many=False, read_only=True)
     categoria       =   NomCategoriaSerializer(many=False, read_only=True)
     subcategoria    =   NomSubcategoriaSerializer(many=False, read_only=True)
+    con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
         fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','status','fecha_fin']
