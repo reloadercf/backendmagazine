@@ -14,5 +14,5 @@ router.register('Lista-de-especiales',EspecialArticuloViewSet)
 router.register('Registro-de-articulos',POSTArticuloViewSet)
 
 articulo = [
-    url('articulo/', include(router.urls)),
+    url('articulos/', include(router.urls)),
 ]

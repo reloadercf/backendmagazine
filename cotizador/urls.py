@@ -10,5 +10,5 @@ router = routers.DefaultRouter()
 router.register('Registro-de-cotizaciones',CotizacionViewSet)
 
 cotizacion = [
-    url('cotizacion/', include(router.urls)),
+    url('cotizaciones/', include(router.urls)),
 ]

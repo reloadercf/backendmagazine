@@ -11,11 +11,11 @@ router.register('Lista-de-permisos',PermissionViewSet)
 #vista de usuarios con datos de perfil
 router.register('Lista-de-usuarios',ProfileViewSet)
 #CRUD de usuarios
-router.register('Resgistro-de-usuario',POSTUserViewSet)
+router.register('Resgistro-de-usuarios',POSTUserViewSet)
 #CRUD de perfiles para usuarios
 router.register('Registro-de-perfiles',POSTPerfilesViewSet)
 #CRUD de tipo de usuarios
-router.register('Registro-de-tipo_usuario',TipoViewSet)
+router.register('Registro-de-tipo_usuarios',TipoViewSet)
 
 accounts = [
     url('accounts/', include(router.urls)),

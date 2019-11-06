@@ -12,5 +12,5 @@ router.register('Lista-de-Contenidos',ContenidoViewSet)
 router.register('Registro-de-Contenidos',POSTContenidoViewSet)
 
 contenido = [
-    url('contenido/', include(router.urls)),
+    url('contenidos/', include(router.urls)),
 ]

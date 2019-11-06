@@ -10,7 +10,7 @@ router = routers.DefaultRouter()
 #visualizacion CRUD de planes
 router.register('Registro-de-planes',PlanViewSet)
 #visualizacion CRUD de formas de pago
-router.register('Registro-de-formas-de-pago',FormaPagoViewSet)
+router.register('Registro-de-formas_de_pago',FormaPagoViewSet)
 #visualizacion CRUD de contratos
 router.register('Registro-de-contratos',POSTContratoViewSet)
 #visualizacion de datos de contratos

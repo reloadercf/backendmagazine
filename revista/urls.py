@@ -22,5 +22,5 @@ router.register('Lista-de-subcategorias',SubcategoriaRevistaViewSet)
 router.register('Registro-de-iconos',IconViewSet)
 
 revista = [
-    url('revista/', include(router.urls)),
+    url('revistas/', include(router.urls)),
 ]
