@@ -56,7 +56,7 @@ class CategoriaRevistaViewSet(viewsets.ReadOnlyModelViewSet):
         if categoria:
             queryset_list = queryset_list.filter(id=categoria)
         if revista:
-            queryset_list = queryset_list.filter(revista_origen=revista)
+            queryset_list = queryset_list.filter(revista_origen_id=revista)
         return queryset_list
 
 #vista de CRUD de categoria

@@ -169,5 +169,5 @@ EMAIL_HOST_PASSWORD = '14200531'
 # }
 
 # SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1)
+#     'ACCESS_TOKEN_LIFETIME': timedelta(days=7)
 # }
