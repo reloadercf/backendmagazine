@@ -15,9 +15,10 @@ from regiones.urls import regiones
 from cotizador.urls import cotizacion
 from contenido.urls import contenido
 from publicidad.urls import publicidad
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    url(r'api-token-auth/', obtain_jwt_token),
 ]+articulo+patrocinadores+planes+regiones+revista+cotizacion+contenido+publicidad+publicos+accounts
 

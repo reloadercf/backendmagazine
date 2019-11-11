@@ -29,4 +29,3 @@ class PatrocinadorViewSet(viewsets.ReadOnlyModelViewSet):
 class POSTPatrocinadorViewSet(viewsets.ModelViewSet):
     queryset            =   Patrocinador.objects.all()
     serializer_class    =   POSTPatrocinadorSerializer
-    pagination_class    =   PatrocinadorPagination

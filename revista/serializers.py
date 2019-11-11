@@ -53,7 +53,7 @@ class POSTRevistaSerializer(serializers.ModelSerializer):
                         many=False)
     class Meta:
         model   =   Revista
-        fields  =   ['id','nombre_revista', 'plan', 'country', 'state', 'city']
+        fields  =   '__all__'
 
 #serializador para sacar datos de la categoria
 class CategoriaSerializer(serializers.ModelSerializer):
