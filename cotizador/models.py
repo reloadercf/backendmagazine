@@ -11,9 +11,9 @@ forma_de_pago =(
 )
 
 tecnologias_choice = (
-    ('Andorid', "Android"),
+    ('ANDROID', "ANDROID"),
     ('IOS', "IOS"),
-    ('Web', "Web"),
+    ('WEB', "WEB"),
 )
 
 

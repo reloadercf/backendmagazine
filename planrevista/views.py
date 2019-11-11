@@ -27,9 +27,9 @@ class ContratoViewSet(viewsets.ReadOnlyModelViewSet):
         if contrato:
             queryset_list=queryset_list.filter(id=contrato)
         if revista:
-            queryset_list=queryset_list.filter(revista=revista)
+            queryset_list=queryset_list.filter(revista__id=revista)
         if pago:
-            queryset_list=queryset_list.filter(forma_pago=pago)
+            queryset_list=queryset_list.filter(forma_pago__id=pago)
         if fecha:
             queryset_list=queryset_list.filter(fecha_inicio=fecha)
         return queryset_list

@@ -25,10 +25,10 @@ class Articulo(models.Model):
     redactado_por           =   models.CharField(default="Equipo MX OPPORTUNITY",max_length=300,null=True,blank=True)
     publicado               =   models.BooleanField(default=False)
     cortesia_de             =   models.CharField(max_length=300,null=True,blank=True)
-    fecha_publicacion       =   models.DateTimeField(blank=False,null=False)
+    fecha_publicacion       =   models.DateField(blank=False,null=False)
     fecha_fin               =   models.DateField(blank=False,null=False)
-    fecha_creacion          =   models.DateTimeField(auto_now_add=True)
-    fecha_modificacion      =   models.DateTimeField(auto_now=True)
+    fecha_creacion          =   models.DateField(auto_now_add=True)
+    fecha_modificacion      =   models.DateField(auto_now=True)
     slug                    =   models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):

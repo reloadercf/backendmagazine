@@ -13,20 +13,14 @@ class PatrocinadorViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self, *args, **kwargs):
         patrocinador    = self.request.GET.get('idpatrocinador')
         revista         = self.request.GET.get('idrevista')
-        nombre          = self.request.GET.get('nombre')
         queryset_list = super(PatrocinadorViewSet, self).get_queryset()
-        if nombre:
-            queryset_list = queryset_list.filter(
-				Q(nombre__contains=nombre)
-            )
         if patrocinador:
             queryset_list = queryset_list.filter(id=patrocinador)
         if revista:
-            queryset_list = queryset_list.filter(revista_pertenencia=revista)
+            queryset_list = queryset_list.filter(revista_pertenencia__id=revista)
         return queryset_list
 
 #vista para CRUD de patrocinadores
 class POSTPatrocinadorViewSet(viewsets.ModelViewSet):
     queryset            =   Patrocinador.objects.all()
     serializer_class    =   POSTPatrocinadorSerializer
-    pagination_class    =   PatrocinadorPagination

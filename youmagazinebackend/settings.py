@@ -6,7 +6,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+from datetime import timedelta 
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -113,23 +113,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-##instalacion de rest_Framework
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
+#instalacion de rest_Framework
+#REST_FRAMEWORK = {
+#    # Use Django's standard `django.contrib.auth` permissions,
+#    # or allow read-only access for unauthenticated users.
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.SessionAuthentication',
+#        'rest_framework.authentication.TokenAuthentication',
+#        'rest_framework.authentication.BasicAuthentication',
+#    ),
+#
+#    'DEFAULT_PERMISSION_CLASSES': [
+#        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#        #'rest_framework.permissions.AllowAny'
+#        #'rest_framework.permissions.DjangoModelPermissions',
+#    ]
+#}
 
-    'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        #'rest_framework.permissions.AllowAny'
-        #'rest_framework.permissions.DjangoModelPermissions',
-    ]
-}
+# Configure the authentication in Django Rest Framework to be JWT
 
+# http://www.django-rest-framework.org/
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -145,12 +148,6 @@ USE_L10N = True
 USE_TZ = True
 CORS_ORIGIN_ALLOW_ALL = True
 
-
-UTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', # this is default
-    'guardian.backends.ObjectPermissionBackend',
-)
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -161,3 +158,16 @@ EMAIL_HOST = 'webmail.planb.com.mx'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
 EMAIL_HOST_PASSWORD = '14200531'
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#     ),
+# }
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(days=7)
+# }
