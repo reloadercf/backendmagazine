@@ -11,7 +11,7 @@ router.register('Lista-de-permisos',PermissionViewSet)
 #vista de usuarios con datos de perfil
 router.register('Lista-de-usuarios',ProfileViewSet)
 #CRUD de usuarios
-router.register('Resgistro-de-usuarios',POSTUserViewSet)
+router.register('Registro-de-usuarios',POSTUserViewSet)
 #CRUD de perfiles para usuarios
 router.register('Registro-de-perfiles',POSTPerfilesViewSet)
 #CRUD de tipo de usuarios
