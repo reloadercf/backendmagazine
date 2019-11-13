@@ -12,7 +12,7 @@ from accounts.models import Profile
 #serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
     plan        =   NomPlanSerializer(many=False, read_only=True)
-    country     =   NomRegionSerializer(read_only=True)
+    country     =   NomRegionSerializer(many = True,read_only=True)
     state       =   NomSubregionSerializer(read_only=True)
     city        =   NomCiudadSerializer(read_only=True)
 #    art_revista =   serializers.SerializerMethodField('paginated_art') #forma de definir paginacion a un atributo
