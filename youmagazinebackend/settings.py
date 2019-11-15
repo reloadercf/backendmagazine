@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8uc9!o%gdq(npy(^@$sedqdy)rsn&%xrac1c@*^myd_5j57&v&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  True
+DEBUG =  False
 
-ALLOWED_HOSTS = ['beertual.pythonanywhere.com','*']
+ALLOWED_HOSTS = ['beertual.pythonanywhere.com','*','localhost','127.0.0.1']
 
 
 # Application definition
@@ -114,25 +114,21 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #instalacion de rest_Framework
-#REST_FRAMEWORK = {
-#    # Use Django's standard `django.contrib.auth` permissions,
-#    # or allow read-only access for unauthenticated users.
-#    'DEFAULT_AUTHENTICATION_CLASSES': (
-#        'rest_framework.authentication.SessionAuthentication',
-#        'rest_framework.authentication.TokenAuthentication',
-#        'rest_framework.authentication.BasicAuthentication',
-#    ),
-#
-#    'DEFAULT_PERMISSION_CLASSES': [
-#        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-#        #'rest_framework.permissions.AllowAny'
-#        #'rest_framework.permissions.DjangoModelPermissions',
-#    ]
-#}
+REST_FRAMEWORK = {
+   # Use Django's standard `django.contrib.auth` permissions,
+   # or allow read-only access for unauthenticated users.
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.SessionAuthentication',
+       'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.BasicAuthentication',
+   ),
 
-# Configure the authentication in Django Rest Framework to be JWT
-
-# http://www.django-rest-framework.org/
+   'DEFAULT_PERMISSION_CLASSES': [
+       #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+       #'rest_framework.permissions.AllowAny'
+       #'rest_framework.permissions.DjangoModelPermissions',
+   ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -158,6 +154,8 @@ EMAIL_HOST = 'webmail.planb.com.mx'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
 EMAIL_HOST_PASSWORD = '14200531'
+
+#Para autenticacion utilizando JWT
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
