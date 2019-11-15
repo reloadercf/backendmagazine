@@ -114,25 +114,22 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #instalacion de rest_Framework
-#REST_FRAMEWORK = {
-#    # Use Django's standard `django.contrib.auth` permissions,
-#    # or allow read-only access for unauthenticated users.
-#    'DEFAULT_AUTHENTICATION_CLASSES': (
-#        'rest_framework.authentication.SessionAuthentication',
-#        'rest_framework.authentication.TokenAuthentication',
-#        'rest_framework.authentication.BasicAuthentication',
-#    ),
-#
-#    'DEFAULT_PERMISSION_CLASSES': [
-#        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-#        #'rest_framework.permissions.AllowAny'
-#        #'rest_framework.permissions.DjangoModelPermissions',
-#    ]
-#}
+REST_FRAMEWORK = {
+   # Use Django's standard `django.contrib.auth` permissions,
+   # or allow read-only access for unauthenticated users.
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.SessionAuthentication',
+       'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.BasicAuthentication',
+   ),
 
-# Configure the authentication in Django Rest Framework to be JWT
+   'DEFAULT_PERMISSION_CLASSES': [
+       #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+       #'rest_framework.permissions.AllowAny'
+       #'rest_framework.permissions.DjangoModelPermissions',
+   ]
+}
 
-# http://www.django-rest-framework.org/
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -158,6 +155,8 @@ EMAIL_HOST = 'webmail.planb.com.mx'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
 EMAIL_HOST_PASSWORD = '14200531'
+
+#Para uso de autentificacion JWT
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
