@@ -68,7 +68,7 @@ class MyUser(APIView):
 import firebase_admin
 from firebase_admin import credentials, auth
 
-cred = credentials.Certificate('/home/beertual/backendmagazine/serviceAccountKey.json')
+cred = credentials.Certificate('serviceAccountKey.json')
 default_app = firebase_admin.initialize_app(cred)
 
 class CustomAuthToken(ObtainAuthToken):

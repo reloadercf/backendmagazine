@@ -1,5 +1,5 @@
 from django.db import models
-from regiones.models import Region, Subregion, Ciudad
+from regiones.models import Region,Subregion,Ciudad
 
 # Create your models here.
 class Categorias(models.Model):
@@ -13,9 +13,9 @@ class Revista(models.Model):
     nombre_revista          =   models.CharField(max_length=100, unique=True)
     logo                    =   models.URLField(max_length=300, blank=True, null=True)
     descripcion             =   models.TextField(blank=True, null=True)
-    country                 =   models.ForeignKey('regiones.Region', related_name='revista_plan', on_delete=models.CASCADE)
-    state                   =   models.ForeignKey('regiones.Subregion', related_name='revista_plan', on_delete=models.CASCADE)
-    city                    =   models.ForeignKey('regiones.Ciudad', related_name='revista_plan', on_delete=models.CASCADE)
+    country                 =   models.ManyToManyField(Region)
+    state                   =   models.ManyToManyField(Subregion)
+    city                    =   models.ManyToManyField(Ciudad)
     plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE)
 
     def __str__(self):

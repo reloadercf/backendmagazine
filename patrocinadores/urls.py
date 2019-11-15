@@ -7,9 +7,9 @@ from .views import *
 
 router = routers.DefaultRouter()
 #visualizacion de datos de patrocinadres
-router.register('Lista-de-Patrocinadores',PatrocinadorViewSet)
+router.register('Lista-de-patrocinadores',PatrocinadorViewSet)
 #visualizacion CRUD de patrocinadres
-router.register('Registro-de-Patrocinadores',POSTPatrocinadorViewSet)
+router.register('Registro-de-patrocinadores',POSTPatrocinadorViewSet)
 
 patrocinadores= [
     url('patrocinadores/', include(router.urls)),

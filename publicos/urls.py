@@ -7,15 +7,15 @@ from .views import *
 
 router = routers.DefaultRouter()
 
-router.register('Lista-Articulos',ArticuloList)
-router.register('Lista-Especiales',EspecialArticuloList)
-router.register('Lista-Cotizaciones',CotizacionesList)
-router.register('Lista-Planes',PlanList)
-router.register('Lista-Paises',PaisViewSet)
-router.register('Lista-Estados',EstadoViewSet)
-router.register('Lista-Ciudades',CiudadViewSet)
-router.register('Lista-Categorias',CategoriaRevistaList)
-router.register('Lista-Subcategorias',SubcategoriaRevistaList)
+router.register('Lista-articulos',ArticuloList)
+router.register('Lista-especiales',EspecialArticuloList)
+router.register('Lista-cotizaciones',CotizacionesList)
+router.register('Lista-planes',PlanList)
+router.register('Lista-paises',PaisViewSet)
+router.register('Lista-estados',EstadoViewSet)
+router.register('Lista-ciudades',CiudadViewSet)
+router.register('Lista-categorias',CategoriaRevistaList)
+router.register('Lista-subcategorias',SubcategoriaRevistaList)
 
 publicos = [
     url('publicos/', include(router.urls)),
