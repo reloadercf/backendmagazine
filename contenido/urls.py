@@ -7,9 +7,9 @@ from .views import *
 
 router = routers.DefaultRouter()
 #visualizacion de contenidos
-router.register('Lista-de-Contenidos',ContenidoViewSet)
+router.register('Lista-de-contenidos',ContenidoViewSet)
 #CRUD de contenidos
-router.register('Registro-de-Contenidos',POSTContenidoViewSet)
+router.register('Registro-de-contenidos',POSTContenidoViewSet)
 
 contenido = [
     url('contenidos/', include(router.urls)),

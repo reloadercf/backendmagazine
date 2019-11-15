@@ -9,11 +9,11 @@ router = routers.DefaultRouter()
 #Visualizacion CRUD de revista
 router.register('Registro-de-revistas',POSTRevistaViewSet)
 #Visualizacion de datos de revista
-router.register('Lista-de-revista',RevistaViewSet)
+router.register('Lista-de-revistas',RevistaViewSet)
 #Visualizacion CRUD de categoria
 router.register('Registro-de-categorias',POSTCategoriaRevistaViewSet)
 #Visualizacion de datos de categoria
-router.register('Lista-de-categoria',CategoriaRevistaViewSet)
+router.register('Lista-de-categorias',CategoriaRevistaViewSet)
 #Visualizacion CRUD de subcategoria
 router.register('Registro-de-subcategorias',POSTSubcategoriaRevistaViewSet)
 #Visualizacion de datos de subcategori

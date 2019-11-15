@@ -6,7 +6,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-from datetime import timedelta 
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8uc9!o%gdq(npy(^@$sedqdy)rsn&%xrac1c@*^myd_5j57&v&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =  True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['beertual.pythonanywhere.com','*','localhost','127.0.0.1']
 
 
 # Application definition
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',  
+    'corsheaders',
     'accounts',
     'articulos',
     'cotizador',
@@ -129,7 +129,10 @@ REST_FRAMEWORK = {
        #'rest_framework.permissions.DjangoModelPermissions',
    ]
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/python
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -156,7 +159,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
 EMAIL_HOST_PASSWORD = '14200531'
 
+<<<<<<< HEAD
 #Para uso de autentificacion JWT
+=======
+#Para autenticacion utilizando JWT
+>>>>>>> origin/python
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (

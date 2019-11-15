@@ -57,7 +57,7 @@ class TipoViewSet(viewsets.ModelViewSet):
 	serializer_class = TipoSerializer
 
 #vista para visualizacion de datos de usuario loggeado
-class MyUser(APIView):	
+class MyUser(APIView):
 	def get(self, request, format=None):
 		my_user = User.objects.all().get(id=request.user.id)
 		serializer = MyUserSerializer(my_user)
