@@ -19,7 +19,7 @@ Para ello deberan ingresar a la siguiente url:
 ```
 "nombre_servidor"/accounts/Registro-de-perfiles/identificador_del_perfil/``
 ```
-### `Registro de perfiles`
+### `Registro de tipo_usuario`
 Para hacer una consulta en la cual se podran revisar los datos de los tipos de usuarios y ademas el ingreso de nuevos tipos de usuarios, en esta API se pueden filtrar por el id de cada tipo de usuario donde nos permitira hacer modificaciones y/o eliminaciones.
 Para ello deberan ingresar a la siguiente url:
 ```
@@ -28,23 +28,26 @@ Para ello deberan ingresar a la siguiente url:
 _____________________________________________________________________________________________________
 ## articulos
 ### `Lista de articulos`
-Para hacer una consulta en la cual solo se podran saber los datos de los articulos, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug o la fecha en la que se termina el articulo(fin), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, fin se utiliza en base a la fecha en la cual se usara el formato aaaa-mm-dd).
+Para hacer una consulta en la cual solo se podran saber los datos de los articulos, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug, la fecha en la que se termina el articulo(fin), la fecha en la que se inicio el articulo(inicio) o la validacion si esta en portada, la validacion del estado del articulo (publicado), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, fin se utiliza en base a la fecha en la cual se usara el formato aaaa-mm-dd, inicio se utiliza en base a la fecha en la cual se usara el formato aaaa-mm-dd, para la validacion si el articulo esta en portada se utilizaran los valores logicos True o False y para la validacion de estado (publicado) tambien se utilizaran valore logicos).
 ```
 "nombre_servidor"/articulo/Lista-de-articulos/?slug=nombre-articulo``
 "nombre_servidor"/articulo/Lista-de-articulos/?idrevista=identificador-de-la-revista``
 "nombre_servidor"/articulo/Lista-de-articulos/?idcategoria=identificador-de-la-categoria``
 "nombre_servidor"/articulo/Lista-de-articulos/?idsubcategoria=identificador-de-la-subcategoria``
-"nombre_servidor"/articulo/Lista-de-articulos/?fin=2019-10-21``
+"nombre_servidor"/articulo/Lista-de-articulos/?fin=aaaa-mm-dd``
+"nombre_servidor"/articulo/Lista-de-articulos/?inicio=aaaa-mm-dd``
+"nombre_servidor"/articulo/Lista-de-articulos/?portada=(True o False)``
+"nombre_servidor"/articulo/Lista-de-articulos/?publicado=(True o False)``
 ```
 ### `Lista de articulos especiales`
-Para hacer una consulta en la cual solo se podran saber los datos de los articulos especiales, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug, la validacion para saber si esta en portada(portada) o el estado del articulo(status), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, portada se utilizara en base a un valor booleano, status ).
+Para hacer una consulta en la cual solo se podran saber los datos de los articulos especiales, se pueden filtrar estos articulos con varios criterios como son categoria, subcategoria, revista, slug, la validacion para saber si esta en portada(portada) o el estado del articulo(publicado), para ello debera ingresar en la siguiente url, (recuerda que categoria se utiliza en base a su identificador, subcategoria se utiliza en base a su identificador, revista se utiliza en base a su identificador, slug se utiliza en base nombre modificado del articulo, portada se utilizara en base a un valor booleano, status se basa en la validacion de si el articulo esta publicado o no con valores logicos).
 ```
 "nombre_servidor"/articulo/Lista-de-especiales/?slug=nombre-articulo``
 "nombre_servidor"/articulo/Lista-de-especiales/?idrevista=identificador-de-la-revista``
 "nombre_servidor"/articulo/Lista-de-especiales/?idcategoria=identificador-de-la-categoria``
 "nombre_servidor"/articulo/Lista-de-especiales/?idsubcategoria=identificador-de-la-subcategoria``
 "nombre_servidor"/articulo/Lista-de-especiales/?portada=False-o-True(deben ser escritos de esta forma)``
-"nombre_servidor"/articulo/Lista-de-especiales/?status=Publicado-o-No%20Publicado(deben ser escritos de esta forma)``
+"nombre_servidor"/articulo/Lista-de-especiales/?publicado=(True o False)``
 ```
 ### `Registro de articulo`
 Para hacer una consulta en la cual se podran revisar los datos de los articulos y ademas el ingreso de nuevos articulos, en esta API se pueden filtrar por el id de cada articulo donde nos permitira hacer modificaciones y/o eliminaciones.
@@ -103,7 +106,7 @@ Para hacer una consulta en la cual solo se podran saber los datos de los contrat
 "nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idcontrato=identificador-del-contrato``
 "nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idrevista=identificador-de-la-revista-de-pertenencia``
 "nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?idpago=identificador-forma-de-pago``
-"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?inicio=fecha-de-inicio-de-contrato``
+"nombre_servidor"/patrocinadores/Lista-de-Patrocinadores/?inicio=aaaa-mm-dd``
 ```
 ### `Registro de planes`
 Para hacer una consulta en la cual se podran revisar los datos de los planes y ademas el ingreso de nuevos planes, en esta API se pueden filtrar por el id de cada plan donde nos permitira hacer modificaciones y/o eliminaciones.
@@ -131,7 +134,7 @@ Para hacer una consulta en la cual solo se podran saber los datos de las publici
 "nombre_servidor"/publicidad/Lista-de-Publicidades/?idpublicidad=identificador-de-la-publicidad``
 "nombre_servidor"/publicidad/Lista-de-Publicidades/?idpatrocinador=identificador-del-patrocinador``
 ```
-### `Registro de contratos`
+### `Registro de publicidad`
 Para hacer una consulta en la cual se podran revisar los datos de las publicidades y ademas el ingreso de nuevas publicidades, en esta API se pueden filtrar por el id de cada publicidad donde nos permitira hacer modificaciones y/o eliminaciones.
 Para ello deberan ingresar a la siguiente url:
 ```
@@ -140,16 +143,18 @@ Para ello deberan ingresar a la siguiente url:
 _____________________________________________________________________________________________________
 ## regiones
 ### `Lista de estados`
-Para hacer una consulta en la cual solo se podran saber los datos de los estados, se pueden filtrar estos estados con varios criterios como son su identificador, el identificador del pais al que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence).
+Para hacer una consulta en la cual solo se podran saber los datos de los estados, se pueden filtrar estos estados con varios criterios como son su identificador, el identificador del pais al que pertenecen o el nombre del estado, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence o nombre parcial o completo del estado).
 ```
 "nombre_servidor"/regiones/Lista-de-estados/?idestado=identificador-del-estado``
 "nombre_servidor"/regiones/Lista-de-estados/?idpais=identificador-del-pais-de-pertenencia``
+"nombre_servidor"/regiones/Lista-de-estados/?nombre=nombre-estado``
 ```
 ### `Lista de ciudades`
-Para hacer una consulta en la cual solo se podran saber los datos de las ciudades, se pueden filtrar estas ciudades con varios criterios como son su identificador, el identificador del estado al que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idciudad se utilizara en base a su identificador, idestado se utilizara en base al identificador del estado al que pertence).
+Para hacer una consulta en la cual solo se podran saber los datos de las ciudades, se pueden filtrar estas ciudades con varios criterios como son su identificador, el identificador del estado al que pertenecen o el nombre de la ciudad, para ello debera ingresar en la siguiente url, (recuerda que idciudad se utilizara en base a su identificador, idestado se utilizara en base al identificador del estado al que pertence o el nombre parcial o completo de la ciudad).
 ```
 "nombre_servidor"/regiones/Lista-de-ciudades/?idciudad=identificador-de-la-ciudad``
 "nombre_servidor"/regiones/Lista-de-ciudades/?idestado=identificador-del-estado-de-pertenencia``
+"nombre_servidor"/regiones/Lista-de-estados/?nombre=nombre-ciudad``
 ```
 ### `Registro de ciudades`
 Para hacer una consulta en la cual se podran revisar los datos de las ciudades y ademas el ingreso de nuevas ciudades, en esta API se pueden filtrar por el id de cada ciudad donde nos permitira hacer modificaciones y/o eliminaciones.
@@ -172,25 +177,28 @@ Para ello deberan ingresar a la siguiente url:
 _____________________________________________________________________________________________________
 ## revista
 ### `Lista de revistas`
-Para hacer una consulta en la cual solo se podran saber los datos de las revistas, se pueden filtrar estas revistas con varios criterios como son su identificador, el identificador del pais al que pertenece, el identificador del estado al que pertenece, el identificador de la ciudad a la que pertenece, el identificador del plan contratado por la revista, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a su identificador, idpais se utilizara en base al identificador del pais al que pertence).
+Para hacer una consulta en la cual solo se podran saber los datos de las revistas, se pueden filtrar estas revistas con varios criterios como son su identificador, el identificador del pais al que pertenece, el identificador del estado al que pertenece, el identificador de la ciudad a la que pertenece, el identificador del plan contratado por la revista o el nombre de la revista, para ello debera ingresar en la siguiente url, (recuerda que idestado se utilizara en base a el identificador del estado, idpais se utilizara en base al identificador del pais al que pertence, idciudad se basa en el identificador de la ciudad, idrevista se basa en el identificador propio de la revista, idplan se basa en el identificador del plan contratado por la revista o por el nombre de la revista ya sea parcial o completo).
 ```
 "nombre_servidor"/revista/Lista-de-revista/?idrevista=identificador-de-la-revista``
 "nombre_servidor"/revista/Lista-de-revista/?idpais=identificador-del-pais``
 "nombre_servidor"/revista/Lista-de-revista/?idestado=identificador-del-estado``
 "nombre_servidor"/revista/Lista-de-revista/?idciudad=identificador-de-la-ciudad``
 "nombre_servidor"/revista/Lista-de-revista/?idplan=identificador-del-plan``
+"nombre_servidor"/revista/Lista-de-revista/?nombre=nombre-revista``
 ```
 ### `Lista de categorias`
-Para hacer una consulta en la cual solo se podran saber los datos de las categorias, se pueden filtrar estas categorias con varios criterios como son su identificador, el identificador de la revista a la que pertenece, para ello debera ingresar en la siguiente url, (recuerda que idcategoria se utilizara en base a su identificador, idrevista se utilizara en base al identificador de la revista a la que pertence).
+Para hacer una consulta en la cual solo se podran saber los datos de las categorias, se pueden filtrar estas categorias con varios criterios como son su identificador, el identificador de la revista a la que pertenece o su nombre, para ello debera ingresar en la siguiente url, (recuerda que idcategoria se utilizara en base a su identificador, idrevista se utilizara en base al identificador de la revista a la que pertence y el nombre puede ser utilizado de forma parcial o completa).
 ```
 "nombre_servidor"/revista/Lista-de-categoria/?idcategoria=identificador-de-la-categria``
 "nombre_servidor"/revista/Lista-de-categoria/?idrevista=identificador-de-la-revista-de-pertenencia``
+"nombre_servidor"/revista/Lista-de-revista/?nombre=nombre-categoria``
 ```
 ### `Lista de subcategorias`
-Para hacer una consulta en la cual solo se podran saber los datos de las subcategorias, se pueden filtrar estas subcategorias con varios criterios como son su identificador, el identificador de la categoria a la que pertenecen, para ello debera ingresar en la siguiente url, (recuerda que idsubcategoria se utilizara en base a su identificador, idcategoria se utilizara en base al identificador de la categoria a la que pertence).
+Para hacer una consulta en la cual solo se podran saber los datos de las subcategorias, se pueden filtrar estas subcategorias con varios criterios como son su identificador, el identificador de la categoria a la que pertenecen o su nombre, para ello debera ingresar en la siguiente url, (recuerda que idsubcategoria se utilizara en base a su identificador, idcategoria se utilizara en base al identificador de la categoria a la que pertence y el nombre puede ser utilizado de forma parcial o completa).
 ```
 "nombre_servidor"/revista/Lista-de-subcategorias/?idsubcategoria=identificador-de-la-subcategoria``
 "nombre_servidor"/revista/Lista-de-subcategorias/?idcategoria=identificador-de-la-categoria``
+"nombre_servidor"/revista/Lista-de-revista/?nombre=nombre-subcategoria``
 ```
 ### `Registro de revistas`
 Para hacer una consulta en la cual se podran revisar los datos de las revistas y ademas el ingreso de nuevas revistas, en esta API se pueden filtrar por el id de cada revista donde nos permitira hacer modificaciones y/o eliminaciones.

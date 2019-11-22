@@ -44,7 +44,7 @@ class POSTSubegionSerializer(serializers.ModelSerializer):
 
 #serializador para datos de ciudad
 class CiudadSerializer(serializers.ModelSerializer):
-    estado      =   NomSubregionSerializer(many=False,read_only=True)
+    estado      =   NomSubregionSerializer(many=False, read_only=True)
     class Meta:
         model   =   Ciudad
         fields  =   '__all__'

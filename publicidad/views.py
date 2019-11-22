@@ -11,12 +11,7 @@ class PublicidadViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self,*args,**kwargs):
         publicidad      =   self.request.GET.get("idpublicidad")
         patrocinador    =   self.request.GET.get("idpatrocinador")
-        nombre          =   self.request.GET.get("nombre")
         queryset_list = super(PublicidadViewSet, self).get_queryset()
-        if nombre:
-            queryset_list = queryset_list.filter(
-				Q(nombre__contains=nombre)
-            )
         if patrocinador:
             queryset_list = queryset_list.filter(patrocinador__id=patrocinador)
         if publicidad:

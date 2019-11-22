@@ -6,7 +6,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-from datetime import timedelta
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8uc9!o%gdq(npy(^@$sedqdy)rsn&%xrac1c@*^myd_5j57&v&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  True
+DEBUG = True
 
 ALLOWED_HOSTS = ['*','beertual.pythonanywhere.com','localhost','127.0.0.1']
 
@@ -83,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'youmagazinebackend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -93,7 +92,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -129,10 +127,6 @@ REST_FRAMEWORK = {
        #'rest_framework.permissions.DjangoModelPermissions',
    ]
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/python
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -159,11 +153,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
 EMAIL_HOST_PASSWORD = '14200531'
 
-<<<<<<< HEAD
 #Para uso de autentificacion JWT
-=======
-#Para autenticacion utilizando JWT
->>>>>>> origin/python
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
@@ -171,9 +161,13 @@ EMAIL_HOST_PASSWORD = '14200531'
 #     ),
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
 #         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.TokenAuthentication',
+#         'rest_framework.authentication.BasicAuthentication',
 #     ),
 # }
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(days=7)
+# JWT_AUTH = { 
+#     'JWT_AUTH_HEADER_PREFIX': 'JWT',
+#     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7)
 # }

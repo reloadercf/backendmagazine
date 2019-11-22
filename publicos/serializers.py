@@ -18,7 +18,7 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model       =   Categorias
         fields      =   '__all__'
 
-class PlanSerializer(serializers.ModelSerializer):
+class PlanRSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   PlanRevista
         fields  =   '__all__'
@@ -32,14 +32,14 @@ class ArticuloSerializer(serializers.ModelSerializer):
         model       =   Articulo
         fields      =   '__all__'
 
-class EspecialArticulo(serializers.ModelSerializer):
+class EspecialArticuloSerializer(serializers.ModelSerializer):
     origen_revista  =   NomRevistaSerializer(many=False, read_only=True)
     categoria       =   NomCategoriaSerializer(many=False, read_only=True)
     subcategoria    =   NomSubcategoriaSerializer(many=False, read_only=True)
     con_art         =   DatosContenidoSerializer(many=True, read_only=True)
     class Meta:
         model       =   Articulo
-        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','status','fecha_fin']
+        fields      =   ['slug','en_portada','origen_revista','titulo','categoria','subcategoria','imagen','con_art','publicado','fecha_fin']
 
 class CiudadSerializer(serializers.ModelSerializer):
     estado      =   NomSubregionSerializer(many=False, read_only=True)

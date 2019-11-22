@@ -9,7 +9,6 @@ from django.db.models import Q
 class PatrocinadorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset            =   Patrocinador.objects.all()
     serializer_class    =   PatrocinadorSerializer
-    pagination_class    =   PatrocinadorPagination
     def get_queryset(self, *args, **kwargs):
         patrocinador    = self.request.GET.get('idpatrocinador')
         revista         = self.request.GET.get('idrevista')

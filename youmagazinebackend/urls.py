@@ -19,6 +19,6 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'api-token-auth/', obtain_jwt_token),
+    url('jwt/', obtain_jwt_token),
 ]+articulo+cotizacion+contenido+patrocinadores+planes+publicidad+publicos+regiones+revista+accounts
 

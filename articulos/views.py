@@ -10,7 +10,6 @@ from datetime import *
 class ArticuloViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Articulo.objects.all().order_by('-fecha_publicacion')
     serializer_class = ArticuloSerializer
-    pagination_class = ArticlePagination
     def get_queryset(self,*args,**kwargs):
         categoria       =   self.request.GET.get("idcategoria")
         subcategoria    =   self.request.GET.get("idsubcategoria")
@@ -19,6 +18,7 @@ class ArticuloViewSet(viewsets.ReadOnlyModelViewSet):
         fin             =   self.request.GET.get("fin")
         inicio          =   self.request.GET.get("inicio")
         portada         =   self.request.GET.get("portada")
+        publicado       =       self.request.GET.get("publicado")
         queryset_list = super(ArticuloViewSet, self).get_queryset()
         if origen_revista:
             queryset_list = queryset_list.filter(origen_revista__id=origen_revista)
@@ -34,6 +34,8 @@ class ArticuloViewSet(viewsets.ReadOnlyModelViewSet):
             queryset_list = queryset_list.filter(slug=slug)
         if portada:
             queryset_list = queryset_list.filter(en_portada=portada)
+        if publicado:
+            queryset_list = queryset_list.filter(publicado=publicado)
         return queryset_list
 
 #vista para CRUD de datos de articulo
@@ -51,7 +53,7 @@ class EspecialArticuloViewSet(viewsets.ReadOnlyModelViewSet):
         origen_revista  =       self.request.GET.get("idrevista")
         slug            =       self.request.GET.get("slug")
         portada         =       self.request.GET.get("portada")
-        status          =       self.request.GET.get("status")
+        publicado       =       self.request.GET.get("publicado")
         queryset_list = super(EspecialArticuloViewSet, self).get_queryset()
         if categoria:
             queryset_list = queryset_list.filter(categoria__id=categoria)
@@ -63,6 +65,6 @@ class EspecialArticuloViewSet(viewsets.ReadOnlyModelViewSet):
             queryset_list = queryset_list.filter(slug=slug)
         if portada:
             queryset_list = queryset_list.filter(en_portada=portada)
-        if status:
-            queryset_list = queryset_list.filter(status=status)
+        if publicado:
+            queryset_list = queryset_list.filter(publicado=publicado)
         return queryset_list

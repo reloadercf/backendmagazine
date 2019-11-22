@@ -12,7 +12,7 @@ from accounts.models import Profile
 #serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
     plan        =   NomPlanSerializer(many=False, read_only=True)
-    country     =   NomRegionSerializer(many=True,read_only=True)
+    country     =   NomRegionSerializer(many=True, read_only=True)
     state       =   NomSubregionSerializer(many=True, read_only=True)
     city        =   NomCiudadSerializer(many=True, read_only=True)
 #    art_revista =   serializers.SerializerMethodField('paginated_art') #forma de definir paginacion a un atributo
@@ -21,7 +21,7 @@ class RevistaSerializer(serializers.ModelSerializer):
         model   =   Revista
         fields  =   '__all__'
 #funcion para paginar la cantidad de articulos de la revista
-#    def paginated_art(self, obj):
+#    def paginated_art(self, obj): 
 #        paginator = Paginator(obj.art_revista.all(), 2) #pagina los objetos y la cantidad a mostrar
 #        art_rev = paginator.page(1) #señala a donde se guardara y que pagina
 #        serializer = DatosArticuloSerializer(art_rev, many=True) #toma el serializador para paginar
@@ -50,7 +50,7 @@ class POSTRevistaSerializer(serializers.ModelSerializer):
     city    =   serializers.PrimaryKeyRelatedField(
                         queryset=Ciudad.objects.all(),
                         required=False,
-                        many=True,)
+                        many=True)
     class Meta:
         model   =   Revista
         fields  =   '__all__'
