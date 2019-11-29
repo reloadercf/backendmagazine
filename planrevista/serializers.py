@@ -5,7 +5,7 @@ from .models import *
 class NomPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model   =   PlanRevista
-        fields  =   ['nombre']
+        fields  =   ['id','nombre']
 
 #serializador para sacar nombre de plan y de la revista
 class RevistaPlanSerializer(serializers.ModelSerializer):

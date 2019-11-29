@@ -167,7 +167,7 @@ EMAIL_HOST_PASSWORD = '14200531'
 #     ),
 # }
 
-# JWT_AUTH = { 
+# JWT_AUTH = {
 #     'JWT_AUTH_HEADER_PREFIX': 'JWT',
 #     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7)
 # }

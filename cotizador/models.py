@@ -24,7 +24,8 @@ class Cotizador(models.Model):
     otras_funciones     =   models.BooleanField(default=False)
     forma_pago          =   models.CharField(choices=forma_de_pago, max_length=50)
     descuento           =   models.CharField(max_length=50, blank=True, null=True)
-    costo               =   models.DecimalField(decimal_places=4, max_digits=10, blank=True, null=True)
+    email               =   models.EmailField(max_length=100, blank=True, null=True)
+    telefono            =   models.CharField(max_length=10, blank=True, null=True)
     fecha_creacion      =   models.DateTimeField(auto_now_add=True)
 
 @receiver(post_save, sender=Cotizador)
@@ -36,9 +37,10 @@ def send_cotizacion(sender, instance, *args, **kwargs):
         'tecnologias' : instance.tecnologias,
         'funciones': instance.otras_funciones,
         'forma': instance.forma_pago,
-        'descuento' : instance.descuento,
-        'costo' : instance.costo,
-        'creacion': instance.fecha_creacion
+        'descuento': instance.descuento,
+        'creacion': instance.fecha_creacion,
+        'email': instance.email,
+        'telefono': instance.telefono
     }
 
     # render email text

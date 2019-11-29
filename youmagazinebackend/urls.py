@@ -20,5 +20,6 @@ from rest_framework_jwt.views import obtain_jwt_token
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('jwt/', obtain_jwt_token),
+    url('password_reset/', include('django_rest_passwordreset.urls')),
 ]+articulo+cotizacion+contenido+patrocinadores+planes+publicidad+publicos+regiones+revista+accounts
 
