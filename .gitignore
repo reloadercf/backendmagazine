@@ -1,0 +1,4 @@
+#ignore pycache
+__pycache__
+*.pyc
+articulos/__pycache__/urls.cpython-36.pyc
