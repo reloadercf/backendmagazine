@@ -1,5 +1,4 @@
 #ignore pycache
+/__pycache__/
 *.pyc
-__pycache__/
-
-
+articulos/__pycache__/urls.cpython-36.pyc
