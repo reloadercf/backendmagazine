@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Categorias,Revista, Subcategorias, Icon
+from .models import Categorias,Revista, Subcategorias
 from planrevista.serializers import NomPlanSerializer
 from planrevista.models import PlanRevista
 from patrocinadores.serializers import DatosPatrocinadorSerializer
@@ -7,31 +7,35 @@ from regiones.serializers import NomRegionSerializer, NomSubregionSerializer, No
 from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, DatosArticuloSerializer
 from regiones.models import *
 from accounts.models import Profile
-#from django.core.paginator import Paginator
+
 
 #serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
+    # plan        =   NomPlanSerializer(many=False, read_only=True)
+    # country     =   NomRegionSerializer(many=True, read_only=True)
+    # state       =   NomSubregionSerializer(many=True, read_only=True)
+    # city        =   NomCiudadSerializer(many=True, read_only=True)
+    class Meta:
+        model   =   Revista
+        fields  =   ['id', 'nombre_revista', 'logo']
+
+#serializador para sacar datos de la categoria
+class CategoriaSerializer(serializers.ModelSerializer):
+    #revista_origen  =   NomRevistaSerializer(many=False, read_only=True)
+    class Meta:
+        model       = Categorias                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        exclude     =['revista_origen']
+
+class RevistaDetalleSerializer(serializers.ModelSerializer):
     plan        =   NomPlanSerializer(many=False, read_only=True)
     country     =   NomRegionSerializer(many=True, read_only=True)
     state       =   NomSubregionSerializer(many=True, read_only=True)
     city        =   NomCiudadSerializer(many=True, read_only=True)
-#    art_revista =   serializers.SerializerMethodField('paginated_art') #forma de definir paginacion a un atributo
-#    pat_revista =   serializers.SerializerMethodField('paginated_pat') #forma de definir paginacion a un atributo
+    cat_revista =   CategoriaSerializer(many=True, read_only=True)
     class Meta:
         model   =   Revista
-        fields  =   '__all__'
-#funcion para paginar la cantidad de articulos de la revista
-#    def paginated_art(self, obj): 
-#        paginator = Paginator(obj.art_revista.all(), 2) #pagina los objetos y la cantidad a mostrar
-#        art_rev = paginator.page(1) #señala a donde se guardara y que pagina
-#        serializer = DatosArticuloSerializer(art_rev, many=True) #toma el serializador para paginar
-#        return serializer.data
-#funcion para paginar la cantidad de patrocinadores de la revista
-#    def paginated_pat(self, obj):
-#        paginator = Paginator(obj.pat_revista.all(), 1) #pagina los objetos y la cantidad a mostrar
-#        pat_rev = paginator.page(2) #señala a donde se guardara y que pagina
-#        serializer = DatosPatr#ocinadorSerializer(pat_rev, many=True) #toma el serializador para paginar
-#        return serializer.data
+        fields  =   ['id', 'nombre_revista', 'logo', 'cat_revista', 'country', 'state', 'city', 'plan']
+
 
 #serializador CRUD de revista
 class POSTRevistaSerializer(serializers.ModelSerializer):
@@ -55,12 +59,6 @@ class POSTRevistaSerializer(serializers.ModelSerializer):
         model   =   Revista
         fields  =   '__all__'
 
-#serializador para sacar datos de la categoria
-class CategoriaSerializer(serializers.ModelSerializer):
-    revista_origen  =   NomRevistaSerializer(many=False, read_only=True)
-    class Meta:
-        model       =   Categorias
-        fields      =   '__all__'
 
 #serializador para CRUD de categoria
 class POSTCategoriaSerializer(serializers.ModelSerializer):
@@ -89,7 +87,3 @@ class POSTSubcategoriaSerializer(serializers.ModelSerializer):
         model   =   Subcategorias
         fields  =   '__all__'
 
-class IconSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Icon
-        fields ='__all__'

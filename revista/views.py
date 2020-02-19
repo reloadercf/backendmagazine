@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from articulos.models import Articulo
 from .serializers import *
+from .serializers import RevistaDetalleSerializer
 from rest_framework import viewsets
 from django.db.models import Prefetch
 from django.db.models import Q
@@ -39,6 +40,9 @@ class RevistaViewSet(viewsets.ReadOnlyModelViewSet):
 class POSTRevistaViewSet(viewsets.ModelViewSet):
     queryset=Revista.objects.all()
     serializer_class=POSTRevistaSerializer
+class DetalleRevistaViewSet(viewsets.ModelViewSet):
+    queryset=Revista.objects.all()
+    serializer_class=RevistaDetalleSerializer
 
 #vista de datos de categoria
 class CategoriaRevistaViewSet(viewsets.ReadOnlyModelViewSet):
@@ -89,7 +93,7 @@ class POSTSubcategoriaRevistaViewSet(viewsets.ModelViewSet):
     serializer_class    =   POSTSubcategoriaSerializer
 
 #vista de CRUD de iconos
-class IconViewSet(viewsets.ModelViewSet):
-    queryset            =   Icon.objects.all()
-    serializer_class    =   IconSerializer
+# class IconViewSet(viewsets.ModelViewSet):
+#     queryset            =   Icon.objects.all()
+#     serializer_class    =   IconSerializer
 

@@ -10,6 +10,8 @@ router = routers.DefaultRouter()
 router.register('Registro-de-revistas',POSTRevistaViewSet)
 #Visualizacion de datos de revista
 router.register('Lista-de-revistas',RevistaViewSet)
+#Detail Revista
+router.register('DetalleRevistaViewSet', DetalleRevistaViewSet)
 #Visualizacion CRUD de categoria
 router.register('Registro-de-categorias',POSTCategoriaRevistaViewSet)
 #Visualizacion de datos de categoria
@@ -19,7 +21,7 @@ router.register('Registro-de-subcategorias',POSTSubcategoriaRevistaViewSet)
 #Visualizacion de datos de subcategori
 router.register('Lista-de-subcategorias',SubcategoriaRevistaViewSet)
 #Visualizacion CRUD de iconos
-router.register('Registro-de-iconos',IconViewSet)
+#router.register('Registro-de-iconos',IconViewSet)
 
 revista = [
     url('revistas/', include(router.urls)),

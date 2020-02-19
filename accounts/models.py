@@ -10,8 +10,8 @@ from revista.models import Revista
 class Profile(models.Model):
     user            = models.OneToOneField(User, related_name='profile_user', on_delete=models.CASCADE)    
     revista         = models.ManyToManyField(Revista)
-    foto            = models.URLField(max_length=300, blank=True, null=True)
-    tipo_usuario    = models.ForeignKey("accounts.TipoUsuario",related_name='revista_perfil', blank=True, null=True, on_delete=models.CASCADE)       
+    foto            = models.URLField(max_length=500, blank=True, null=True)
+    #tipo_usuario    = models.ForeignKey('accounts.TipoUsuario',related_name='revista_perfil', blank=True, null=True, on_delete=models.CASCADE)       
     slug            = models.SlugField(unique=True, blank=True)
     
     class Meta:
@@ -21,10 +21,8 @@ class Profile(models.Model):
             ("Editor", "Editor"),
             ("Admin_Jr", "Administrador Junior"),
         )
-
     def __str__(self):
         return self.user.username
-
     @property
     def username(self):
         return self.user.username

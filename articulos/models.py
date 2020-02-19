@@ -12,7 +12,7 @@ video_choice=(
     ("youtube","youtube"),
     ("vimeo","vimeo"),
     ("sin video","sin video")
-)
+) 
 
 
 class Articulo(models.Model):
@@ -26,9 +26,9 @@ class Articulo(models.Model):
     publicado               =   models.BooleanField(default=False)
     cortesia_de             =   models.CharField(max_length=300,null=True,blank=True)
     fecha_publicacion       =   models.DateField(blank=False,null=False)
-    fecha_fin               =   models.DateField(blank=False,null=False)
+    fecha_fin                =   models.DateField(blank=False,null=False)
     fecha_creacion          =   models.DateField(auto_now_add=True)
-    fecha_modificacion      =   models.DateField(auto_now=True)
+    fecha_modificacion       =   models.DateField(auto_now=True)
     slug                    =   models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
