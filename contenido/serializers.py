@@ -14,6 +14,7 @@ class DatosContenidoSerializer(serializers.ModelSerializer):
         model       =   Contenido
         fields      =   ['tipo','recurso','alt']
 
+
 #serializador para CRUD del modelo contenido
 class POSTContenidoSerializer(serializers.ModelSerializer):
     articulo    =   serializers.PrimaryKeyRelatedField(
@@ -29,4 +30,4 @@ class ContenidoSerializer(serializers.ModelSerializer):
     articulo  =   NomArticuloSerializer(read_only=True)
     class Meta:
         model       =   Contenido
-        fields      =   '__all__'
+        exclude      =  ['articulo']

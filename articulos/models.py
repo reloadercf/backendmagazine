@@ -16,13 +16,13 @@ video_choice=(
 
 
 class Articulo(models.Model):
-    titulo                  =   models.CharField(max_length=150)
+    titulo                  =   models.CharField(max_length=250)
     en_portada              =   models.BooleanField(default=False)
     origen_revista          =   models.ForeignKey("revista.Revista", related_name='art_revista', on_delete=models.CASCADE)
     categoria               =   models.ForeignKey("revista.Categorias", related_name='art_cat', on_delete=models.CASCADE)
     subcategoria            =   models.ForeignKey("revista.Subcategorias", related_name='art_subcat', on_delete=models.CASCADE)   
-    imagen                  =   models.TextField()
-    redactado_por           =   models.CharField(default="Equipo MX OPPORTUNITY",max_length=300,null=True,blank=True)
+    imagen                  =   models.URLField()
+    redactado_por           =   models.CharField(max_length=300,null=True,blank=True)
     publicado               =   models.BooleanField(default=False)
     cortesia_de             =   models.CharField(max_length=300,null=True,blank=True)
     fecha_publicacion       =   models.DateField(blank=False,null=False)

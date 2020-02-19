@@ -92,8 +92,3 @@ class POSTSubcategoriaRevistaViewSet(viewsets.ModelViewSet):
     queryset            =   Subcategorias.objects.all()
     serializer_class    =   POSTSubcategoriaSerializer
 
-#vista de CRUD de iconos
-# class IconViewSet(viewsets.ModelViewSet):
-#     queryset            =   Icon.objects.all()
-#     serializer_class    =   IconSerializer
-

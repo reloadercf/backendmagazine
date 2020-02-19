@@ -4,17 +4,14 @@ from planrevista.serializers import NomPlanSerializer
 from planrevista.models import PlanRevista
 from patrocinadores.serializers import DatosPatrocinadorSerializer
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer, NomCiudadSerializer
-from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, DatosArticuloSerializer
+#from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, DatosArticuloSerializer
 from regiones.models import *
 from accounts.models import Profile
 
 
 #serializador para sacar datos de la revista
 class RevistaSerializer(serializers.ModelSerializer):
-    # plan        =   NomPlanSerializer(many=False, read_only=True)
-    # country     =   NomRegionSerializer(many=True, read_only=True)
-    # state       =   NomSubregionSerializer(many=True, read_only=True)
-    # city        =   NomCiudadSerializer(many=True, read_only=True)
+
     class Meta:
         model   =   Revista
         fields  =   ['id', 'nombre_revista', 'logo']
@@ -25,6 +22,12 @@ class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model       = Categorias                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         exclude     =['revista_origen']
+
+#serializador para datos de subcategoria
+class SubcategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Subcategorias
+        fields  =   ['id', 'nombre_subcategoria']
 
 class RevistaDetalleSerializer(serializers.ModelSerializer):
     plan        =   NomPlanSerializer(many=False, read_only=True)
@@ -70,12 +73,6 @@ class POSTCategoriaSerializer(serializers.ModelSerializer):
         model       =   Categorias
         fields      =   '__all__'
 
-#serializador para datos de subcategoria
-class SubcategoriaSerializer(serializers.ModelSerializer):
-    categoria   =   NomCategoriaSerializer(many=False, read_only=True)
-    class Meta:
-        model   =   Subcategorias
-        fields  =   '__all__'
 
 #serializador para CRUD de subcategoria
 class POSTSubcategoriaSerializer(serializers.ModelSerializer):

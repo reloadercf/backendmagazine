@@ -38,6 +38,11 @@ class ArticuloViewSet(viewsets.ReadOnlyModelViewSet):
             queryset_list = queryset_list.filter(publicado=publicado)
         return queryset_list
 
+
+class ArticuloDetalleViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Articulo.objects.all().order_by('-fecha_publicacion')
+    serializer_class = DetalleArticuloSerializer
+
 #vista para CRUD de datos de articulo
 class POSTArticuloViewSet(viewsets.ModelViewSet):
     queryset = Articulo.objects.all()
