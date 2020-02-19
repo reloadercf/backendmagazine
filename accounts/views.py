@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from django.db.models import Q
-from youmagazinebackend.settings import key
+#from youmagazinebackend.settings import key
 
 #vista para visualizacion de permisos
 class PermissionViewSet(viewsets.ReadOnlyModelViewSet):
@@ -72,14 +72,14 @@ from firebase_admin import credentials, auth
 cred = credentials.Certificate({
   "type": "service_account",
   "project_id": "youmagazine-109a9",
-  "private_key_id":key,
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDcU0kW7AA2xwi7\nrVj3mMCXmD5g1LGTmG2IkhNWEUMQBZj3jqRfoNO1Y6aGk2ET2DKdrJNVPA73dOSG\nuBcY8fN+8DwO4LQMmi/Yx73G2nX4bL9mdPhVO37hQWnoHk2aPpXoFaCQJHOJfL+a\ned4e1mG9Eqs+3K8mLu8MpO9uP3RML+4a6j2PcxN5h4XSfIHPpx2RyrHCqGbEIROY\n4bJPxUDUy0eWto2VW5hpMvCXK1U5lhdXsbwT5Mu4xOQy21Jl58wJ526s0RSsHBKd\nJfFaizlh8MOxXcoQodRVYMYGrs+JxbM5QCzSReNjAG4TiCFSDCr29BvDaK+dDq0O\n9leHl85RAgMBAAECggEAIkP/s4VruRk2Vf3tPsCuf0UpumSJ45MKwfk58aJIpEbC\nlgnEray1EFpZrUdhizUOFjCfT1vCViEDY6Jg0Tvb60uQg53V0rnuJBBYhwM14reD\nAvvBHXxdzMmgH34LAqimJsyqRpCsuV7B69P1RCWCWOX85Q9sXAtjmTtTk3lh7HEj\n/TZ6d9Ro1Xr6zlVpZrqNdSybip6xSis7rqL5aVm9CNfmZ6bxIxysyMw58rqrPGhZ\nlPjfoCmwD7rYAbfcpJx8V1vxBSq8RH1Mc4ILZsTrlF0xArCkxX0n+/JIDt/r9vbn\nm4na0SQAzUDcfNzdSWTJ//0z7u+jHWQodXuv4MYcuQKBgQDwzAkjM6Gm+Ru+KK+h\n1Y9oUQxsr2nbnTeoRAqALiPh+3XuI5uV4y3wdF88CCXtk3DWXIgDrv0O5wgfisvD\nLj/k9yFkkIs0dg+7NIwRYjZt8etnrfiwOYmLw+wl9WAoINI9guP/EM1C1GiIW9JN\nbzY8tI/ej2+bB6K+gZgUNWERBQKBgQDqPF6HvvGExFc6OW+mKvIEGbkdkuFp8Fuw\nyCWFO9Xt/5mcHr4q2Cv50wUXOuC8U8+7fchQ5pLp2vHopZpICbO1ZZNbf20vT1bA\nJjffXzaCCj32brn4eDgU5qTi8u3owN/noTNK7b5aH7Zh+dVLfzjBF8a8Q5GMg6hK\nYx5bhZo53QKBgQDqiFB+ENPqJcd3t3kZT0CWghpv4YphdQe4xEzV/BrHCH0crWHk\n45jjEvWPKwCGHY1RvF5d+BpSYYPv9Ofx+yIQiQPlR0POnQ9FbzDd3aLWA0MdgL0w\nJ1po3zMq5Yv6ib08XDhlPqAt72TBK23yLdfN2LAoPdyeSxmgI+lUBYm9YQKBgGw1\nn2YOq/ytx646Qn39cPi7+WzUIhaS14j/rXWzgs0EO66H9UpNu2MaPUvSA2h9P4Za\nQWQ+YLhwUTks5+1HriGq3zxxzbsBaA40mbMzhTbmDGIAHSHQR/g/5QSDPa09DTMw\noUWIN1vjMppolETgbROnLERk4qSLXf+fcrLNMcZxAoGBAJQttB7P/iGPWlFXyB5l\nqrLwJU1qC2nXLvBF0KdTXrImghR6LeaYLZdYrMGGQcL5fvsqSX3n5YVmhON4bs17\niJ+YlUyJDvobWc4UvAviaJCJmsfB/+1RC4s+V0OKhIIqQluPyJb/xVXnHdbhQR4e\nX+tdwr9jMYaAbRoToZKnLnoS\n-----END PRIVATE KEY-----\n",
-  "client_email": "youmagazine-109a9@appspot.gserviceaccount.com",
-  "client_id": "107047606938047887476",
+
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCxTjNFEd/y0KVO\nhhHZJR7iHkQb+lkTaEtogX2/c9WU3COJPrfKdGXt4adtZJWa+YehIyKMyEpK4shZ\n+rg2C99xOLp7EHCpEBRSunSTbXcDewjaH8nnBL/W1zEd0QqfkwW9vtHWshcwPln3\nh3I8g5s10VunYU/GVfUpS+p8cPnF9E0tOuLKGwRbumHn+JKSSuqnsbrrBt6TjWvL\nUHM7pgochkCbQR+el0S/rVvMyg1RS85roiGh2ZADEs3gTdiMeudw9Nwi+Mx7GXui\n+FiEVZowKqycCx1nzFyFcvQd7b8sKC7gmBHALIA8xqkiXEHePqMzuaglq4vNctlg\nGdCktst1AgMBAAECggEAIyyFkMX5RMEeDiwcNdT+obKJ5ff9/FLkJM0NjnHTFOcw\nGI3L5bq+Ltklfxblc/tdK/sdo0qnrF/9iZYqvbQQxXQQ0JGkG/Hv6jKJpmagpdze\nVnFYez9OtHb3zDe4cQw4ZxpIJByr63rvG6Mv5y/flmdcVKICMrFCQ8lG8R1ze5DF\nPwRQ7puAJtOBM3qYdr9F3WxeJeFvl3dv9dnsW1mMly41YFBBXxyZ+SLSOn3KJjWR\ntLt5ZwylQ8PrcY+ZFxlKgYlOjWWLgF9XydIArIUOcx2khfq8UkrnKne/F0ejtLXV\nn9COm+qteGbNusOQu5112QuZN6Yo8loPqFmZZwnBSQKBgQDbM9tPs87RtEOiAJWc\n0MAESSCz/EQGxk6NDJf19zG+84KOs11tks8KWVHLWnvwyadmM273NpEfrX6pI5Nq\nbbH6BDnTyMfgBFE/ned6zcoWeihexBSj9ffVvnf8+GAq5AS4HjhTSH0px3Itl/+2\nF1U4S8zSDyR6SYy4YJbnAelDWQKBgQDPEdUgmUPMuuo39iiLaUQKrfku3CRlDsob\nfTpLVkQfRo3Ttr1UetOm3V7etvSUzwuSYC1+ASGIwdAx9a/WsnSZ5sF6v+ZoRiZg\nRsbjqLzKVQlsodBgmsloOadzyVfdMsdPpC4bIZFzLNvlWbrv3qKK7Wj0XfJ5CtKK\nqx+AKBgRfQKBgBNMi4CG6iyYXGQE/ScjUeSOs6xlB3A5QW01sKNdMioHsnTx4cXl\n6QiWOJdYzhSzDGP5H0nwqfJKCh7GHRJ/ue2zNYwp3z8f4i9hraGoQKSd+LPvO4n7\n++f7rwC8tWrRTIERWBAtD6gAAVN2UHMttrkQI2ZTIvkJRLRu/Jo2Ft1xAoGAJ4OF\nohTdJUI907P7hK7vtwH/3PtRTp+F3b0F1L5/fWBfTBlBA8/0d5Eiu2k6PvNLiAEm\nbTcWCRzC9+WkSln/eibYoO3hr+BDDngzF9ppPEsB42L1epnO+T6XP7caNzGrav0v\ndynusYXL6HY4//ECH3SyZH9Q99wi1SdWeYQtI5kCgYEAuFpmkR0I+VkBj/cFhgPZ\n9sIFRJCfninZ8GPICdZqO6qu2nHxohkzQnz9nMxh8yOCjesb/FRQjtC45cgaLgzb\nb1OdfQNs+8HiIprH3POLFic9eAQSVOZG/yBf3HASvEEpdjYuD/9zdGL9+tdATzvw\neJT5WvXuHsbpt91BwWYwTe4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-cuw0l@youmagazine-109a9.iam.gserviceaccount.com",
+  "client_id": "100994262960954053826",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/youmagazine-109a9%40appspot.gserviceaccount.com"
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-cuw0l%40youmagazine-109a9.iam.gserviceaccount.com"
 })
 default_app = firebase_admin.initialize_app(cred)
 

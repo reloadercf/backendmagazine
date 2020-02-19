@@ -8,13 +8,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import datetime
 import os
-import environ
-
-env = environ.Env(
-    KEY=str,    
-)
-
-key = env('KEY')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +22,7 @@ SECRET_KEY = '8uc9!o%gdq(npy(^@$sedqdy)rsn&%xrac1c@*^myd_5j57&v&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','beertual.pythonanywhere.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,7 +39,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'articulos',
-    'cotizador',
+    #'cotizador',
     'patrocinadores',
     'revista',
     'planrevista',
@@ -54,9 +47,9 @@ INSTALLED_APPS = [
     'publicos',
     'publicidad',
     'contenido',
-    'django_rest_passwordreset',
-    'import_export',
-    'multiselectfield',
+    #'django_rest_passwordreset',
+    #'import_export',
+    #'multiselectfield',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +140,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
@@ -154,14 +148,13 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 STATIC_URL = '/static/'
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'webmail.planb.com.mx'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
-EMAIL_HOST_PASSWORD = '14200531'
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'webmail.planb.com.mx'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'mariovaldez@planb.com.mx'
+#EMAIL_HOST_PASSWORD = '14200531'
 
 #Para uso de autentificacion JWT
-
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
 #         'rest_framework.permissions.IsAuthenticated',

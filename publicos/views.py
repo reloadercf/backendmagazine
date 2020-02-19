@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from publicos.serializers import *
 from django.db.models import Q
 
-class CotizacionesList(viewsets.ReadOnlyModelViewSet):
-    queryset = Cotizador.objects.all()
-    serializer_class = CotizacionSerializer
+# class CotizacionesList(viewsets.ReadOnlyModelViewSet):
+#     queryset = Cotizador.objects.all()
+#     serializer_class = CotizacionSerializer
 
 class CategoriaRevistaList(viewsets.ReadOnlyModelViewSet):
     queryset            =   Categorias.objects.all()

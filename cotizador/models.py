@@ -1,5 +1,5 @@
 from django.db import models
-from multiselectfield import MultiSelectField
+#from multiselectfield import MultiSelectField
 from django.core.mail import EmailMultiAlternatives
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -20,7 +20,7 @@ tecnologias_choice = (
 class Cotizador(models.Model):
     no_publicaciones    =   models.IntegerField()
     no_usuarios         =   models.IntegerField()
-    tecnologias         =   MultiSelectField (choices = tecnologias_choice)
+    #tecnologias         =   MultiSelectField (choices = tecnologias_choice)
     otras_funciones     =   models.BooleanField(default=False)
     forma_pago          =   models.CharField(choices=forma_de_pago, max_length=50)
     descuento           =   models.CharField(max_length=50, blank=True, null=True)

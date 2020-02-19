@@ -5,7 +5,7 @@ from patrocinadores.models import *
 from articulos.models import *
 from accounts.models import *
 from regiones.models import *
-from cotizador.models import *
+#from cotizador.models import *
 from articulos.serializers import NomRevistaSerializer, NomCategoriaSerializer, NomSubcategoriaSerializer
 from regiones.serializers import NomRegionSerializer, NomSubregionSerializer 
 from planrevista.serializers import NomFormaPagoSerializer, RevistaPlanSerializer, NomPlanSerializer
@@ -64,7 +64,7 @@ class SubcategoriaSerializer(serializers.ModelSerializer):
         model   =   Subcategorias
         fields  =   '__all__'
 
-class CotizacionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model   =   Cotizador
-        fields  =   '__all__'
+# class CotizacionSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model   =   Cotizador
+#         fields  =   '__all__'
