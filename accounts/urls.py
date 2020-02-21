@@ -15,7 +15,7 @@ router.register('Registro-de-usuarios',POSTUserViewSet)
 #CRUD de perfiles para usuarios
 router.register('Registro-de-perfiles',POSTPerfilesViewSet)
 #CRUD de tipo de usuarios
-router.register('Registro-de-tipo_usuarios',TipoViewSet)
+#router.register('Registro-de-tipo_usuarios',TipoViewSet)
 
 accounts = [
     url('accounts/', include(router.urls)),

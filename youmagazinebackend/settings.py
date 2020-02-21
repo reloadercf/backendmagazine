@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'regiones',
     'publicos',
     'publicidad',
-    'contenido',
+    #'contenido',
     #'django_rest_passwordreset',
     #'import_export',
     #'multiselectfield',

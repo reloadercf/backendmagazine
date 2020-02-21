@@ -1,15 +1,11 @@
-from .models import Profile, TipoUsuario
+from .models import Profile
 from django.contrib.auth.models import User, Permission
 from rest_framework import serializers
 #from revista.serializers import *
 from revista.serializers import RevistaSerializer
 from revista.models import Revista
 
-#Serializador para sacar el nombre del tipo de usuario
-class TipoSerializer(serializers.ModelSerializer):
-	class Meta:
-		model	= 	TipoUsuario
-		fields 	=	 ['nombre']
+
 
 #Serializador para sacar los datos del perfil de usuario(Lista)
 class ProfileSerializer(serializers.ModelSerializer):
@@ -25,10 +21,10 @@ class POSTProfileSerializer(serializers.ModelSerializer):
 						queryset=Revista.objects.all(),
 						required=True,
 						many=True)
-	tipo_usuario	=	serializers.PrimaryKeyRelatedField(
-						queryset=TipoUsuario.objects.all(),
-						required=True,
-						many=False)
+	# tipo_usuario	=	serializers.PrimaryKeyRelatedField(
+	# 					queryset=TipoUsuario.objects.all(),
+	# 					required=True,
+	# 					many=False)
 	class Meta:
 		model	= 	Profile
 		fields 	=	 '__all__'

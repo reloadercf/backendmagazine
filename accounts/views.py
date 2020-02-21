@@ -53,9 +53,9 @@ class POSTPerfilesViewSet(viewsets.ModelViewSet):
 	serializer_class = POSTProfileSerializer
 
 #vista para CRUD de datos de tipo de usuarios
-class TipoViewSet(viewsets.ModelViewSet):
-	queryset = TipoUsuario.objects.all()
-	serializer_class = TipoSerializer
+# class TipoViewSet(viewsets.ModelViewSet):
+# 	queryset = TipoUsuario.objects.all()
+# 	serializer_class = TipoSerializer
 
 #vista para visualizacion de datos de usuario loggeado
 class MyUser(APIView):
