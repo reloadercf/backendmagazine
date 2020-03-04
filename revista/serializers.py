@@ -30,22 +30,22 @@ class SubcategoriaSerializer(serializers.ModelSerializer):
         fields  =   ['id', 'nombre_subcategoria']
 
 class RevistaDetalleSerializer(serializers.ModelSerializer):
-    plan        =   NomPlanSerializer(many=False, read_only=True)
+    #plan        =   NomPlanSerializer(many=False, read_only=True)
     country     =   NomRegionSerializer(many=True, read_only=True)
     state       =   NomSubregionSerializer(many=True, read_only=True)
     city        =   NomCiudadSerializer(many=True, read_only=True)
     cat_revista =   CategoriaSerializer(many=True, read_only=True)
     class Meta:
         model   =   Revista
-        fields  =   ['id', 'nombre_revista', 'logo', 'cat_revista', 'country', 'state', 'city', 'plan']
+        fields  =   ['id', 'nombre_revista', 'logo', 'cat_revista', 'country', 'state', 'city']
 
 
 #serializador CRUD de revista
 class POSTRevistaSerializer(serializers.ModelSerializer):
-    plan    =   serializers.PrimaryKeyRelatedField(
-                        queryset=PlanRevista.objects.all(),
-                        required=False,
-                        many=False)
+    # plan    =   serializers.PrimaryKeyRelatedField(
+    #                     queryset=PlanRevista.objects.all(),
+    #                     required=False,
+    #                     many=False)
     country =   serializers.PrimaryKeyRelatedField(
                         queryset=Region.objects.all(),
                         required=False,

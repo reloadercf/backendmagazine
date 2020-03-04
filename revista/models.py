@@ -3,13 +3,11 @@ from regiones.models import Region,Subregion,Ciudad
 
 class Revista(models.Model):
     nombre_revista          =   models.CharField(max_length=100, unique=True)
-    logo                    =   models.URLField(max_length=300, blank=True, null=True)
+    logo                    =   models.URLField(max_length=500, blank=True, null=True)
     descripcion             =   models.TextField(blank=True, null=True)
     country                 =   models.ManyToManyField(Region)
     state                   =   models.ManyToManyField(Subregion)
     city                    =   models.ManyToManyField(Ciudad)
-    plan                    =   models.ForeignKey('planrevista.PlanRevista', related_name='revista_plan', on_delete=models.CASCADE)
-
     def __str__(self):
         return self.nombre_revista
 

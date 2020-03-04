@@ -20,6 +20,7 @@ class NomArticuloSerializer(serializers.ModelSerializer):
 
 #serializador para CRUD del modelo contenido
 class POSTContenidoSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
     articulo    =   serializers.PrimaryKeyRelatedField(
                         queryset=Articulo.objects.all(),
                         required=True,
@@ -80,6 +81,7 @@ class DetalleArticuloSerializer(serializers.ModelSerializer):
 
 #serializador para CRUD de articulos
 class POSTArticuloSerializer(serializers.ModelSerializer):
+    
     origen_revista  =   serializers.PrimaryKeyRelatedField(
                         queryset=Revista.objects.all(),
                         required=True,
@@ -92,9 +94,56 @@ class POSTArticuloSerializer(serializers.ModelSerializer):
                         queryset=Subcategorias.objects.all(),
                         required=True,
                         many=False)
+    con_art         =   POSTContenidoSerializer(many=True)
+
     class Meta:
         model       =   Articulo
         fields      =   '__all__'
+
+    def create(self,validated_data):
+        print(validated_data)
+        contenido_articulo=validated_data.pop('con_art')
+        articulo=Articulo.objects.create(**validated_data)
+        for o in contenido_articulo:
+            tipo    =o['tipo']  
+            recurso =o['recurso']
+            alt     =o['alt']
+            Contenido.objects.create(articulo=articulo, tipo=tipo, recurso=recurso,  alt=alt)
+        return articulo
+        
+    def update(self, instance, validated_data):
+        instance.titulo = validated_data.get('titulo', instance.titulo)
+        instance.categoria = validated_data.get('categoria', instance.categoria)
+        instance.subcategoria = validated_data.get('subcategoria', instance.subcategoria)
+        instance.en_portada = validated_data.get('en_portada', instance.en_portada)
+        instance.imagen = validated_data.get('imagen', instance.imagen)
+        instance.redactado_por = validated_data.get('redactado_por', instance.redactado_por)
+        instance.publicado = validated_data.get('publicado', instance.publicado)
+        instance.cortesia_de = validated_data.get('cortesia_de', instance.cortesia_de)
+        instance.fecha_publicacion = validated_data.get('fecha_publicacion', instance.fecha_publicacion)
+        instance.fecha_fin = validated_data.get('fecha_fin', instance.fecha_fin)
+        instance.fecha_creacion = validated_data.get('fecha_creacion', instance.fecha_creacion)
+        instance.fecha_modificacion = validated_data.get('fecha_modificacion', instance.fecha_modificacion)
+
+        #instance.title = validated_data.get('title', instance.title)
+        instance.save()
+
+
+
+        items = validated_data.get('con_art')
+        for item in items:
+            item_id = item.get('id', None)
+            print(item)
+            if item_id:
+                inv_item = Contenido.objects.get(id=item_id, articulo=instance)
+                inv_item.tipo = item.get('tipo', inv_item.tipo)
+                inv_item.recurso = item.get('recurso', inv_item.recurso)
+                inv_item.alt = item.get('alt', inv_item.alt)
+                inv_item.save()
+            else:
+                print("no se modifico el contenido")
+        return instance
+
 
 #serializador para sacar datos de articulos especiales
 class EspecialArticuloSerializer(serializers.ModelSerializer):

@@ -11,32 +11,42 @@ class ArticuloViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Articulo.objects.all().order_by('-fecha_publicacion')
     serializer_class = ArticuloSerializer
     def get_queryset(self,*args,**kwargs):
-        categoria       =   self.request.GET.get("idcategoria")
-        subcategoria    =   self.request.GET.get("idsubcategoria")
         origen_revista  =   self.request.GET.get("idrevista")
+        categoria       =   self.request.GET.get("idcategoria")
+        titulo          =   self.request.GET.get("titulo")
+        subcategoria    =   self.request.GET.get("idsubcategoria")
         slug            =   self.request.GET.get("slug")
-        fin             =   self.request.GET.get("fin")
+        fin              =   self.request.GET.get("fin")
         inicio          =   self.request.GET.get("inicio")
         portada         =   self.request.GET.get("portada")
-        publicado       =       self.request.GET.get("publicado")
+        publicado       =   self.request.GET.get("publicado")
         queryset_list = super(ArticuloViewSet, self).get_queryset()
         if origen_revista:
             queryset_list = queryset_list.filter(origen_revista__id=origen_revista)
-        if categoria:
-            queryset_list = queryset_list.filter(categoria__id=categoria)
-        if subcategoria:
-            queryset_list = queryset_list.filter(subcategoria__id=subcategoria)
-        if fin:
-            queryset_list = queryset_list.filter(fecha_fin=fin)
-        if inicio:
-            queryset_list = queryset_list.filter(fecha_publicacion=inicio)
-        if slug:
-            queryset_list = queryset_list.filter(slug=slug)
-        if portada:
-            queryset_list = queryset_list.filter(en_portada=portada)
-        if publicado:
-            queryset_list = queryset_list.filter(publicado=publicado)
+            if categoria:
+                queryset_list=queryset_list.filter(categoria__id=categoria)
+            if titulo:
+                queryset_list = queryset_list.filter(titulo__icontains=titulo)
         return queryset_list
+
+
+
+
+        # if categoria:
+        #     queryset_list = queryset_list.filter(categoria__id=categoria)
+        # if subcategoria:
+        #     queryset_list = queryset_list.filter(subcategoria__id=subcategoria)
+        # if fin:
+        #     queryset_list = queryset_list.filter(fecha_fin=fin)
+        # if inicio:
+        #     queryset_list = queryset_list.filter(fecha_publicacion=inicio)
+        # if slug:
+        #     queryset_list = queryset_list.filter(slug=slug)
+        # if portada:
+        #     queryset_list = queryset_list.filter(en_portada=portada)
+        # if publicado:
+        #     queryset_list = queryset_list.filter(publicado=publicado)
+
 
 
 class ArticuloDetalleViewSet(viewsets.ReadOnlyModelViewSet):
